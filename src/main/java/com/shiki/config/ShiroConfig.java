@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Configuration
 public class ShiroConfig {
 
@@ -17,8 +20,16 @@ public class ShiroConfig {
 
         ShiroFilterFactoryBean bean =new ShiroFilterFactoryBean();
 
+
         //设置安全管理器
         bean.setSecurityManager(DefaultWebSecurityManager);
+
+        //在这里完成请求路径的拦截 一般是管理员
+        Map<String,String> filterMap = new LinkedHashMap<String, String>();
+
+
+
+
 
         return bean;
     }
