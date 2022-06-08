@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-/**
- * (Category)表控制层
- *
- * @author makejava
- * @since 2022-06-07 21:13:40
- */
 @Controller
 public class CategoryController {
 
