@@ -1,16 +1,21 @@
 server:
-  port: 8000
+  port: 8001
 spring:
   datasource:
     username: root
     password: wxz15084385062.
-    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/ordering_system?useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    format:
+      time: HH:mm:ss
 
+  thymeleaf:
+    cache: false
 #整合Mybatis
 mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml    #指定下面的xml路径
+  mapper-locations: classpath:mapper/*.xml    #指定下面的xml路径
   type-aliases-package: com.shiki.pojo   # 注意对应实体类的路径  配置包扫描的别名
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
