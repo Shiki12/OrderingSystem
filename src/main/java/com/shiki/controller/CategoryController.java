@@ -25,7 +25,7 @@ public class CategoryController {
     }
         model.addAttribute("list",categories);
 
-        return "index";
+        return "admin/index";
     }
 
 

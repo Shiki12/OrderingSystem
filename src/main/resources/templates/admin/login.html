@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      >
+
+
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>登陆</title>
@@ -16,7 +19,7 @@
             overflow: hidden;
             margin: 0;
             padding: 0;
-            background: url(../static/img/Desert.jpg) no-repeat 0px 0px;
+            background: url(../../static/img/Desert.jpg) no-repeat 0px 0px;
             background-repeat: no-repeat;
             background-size: 100% 100%;
             -moz-background-size: 100% 100%;
@@ -78,12 +81,10 @@
 
 <body>
 <div id="loginDiv">
-    <form th:href="" id="form">
+    <form th:action="@{/login/admin}" id="form" method="post">
         <h1 style="text-align: center;color: aliceblue;">登陆</h1>
-        <p>用户名:<input id="userNname" type="text"><label id="name_trip"></label></p>
-
-        <p>密码:  <input id="password" type="password"><label id="password_trip"></label></p>
-
+        <p>用户名:<input name="username" type="text"><label id="name_trip"></label></p>
+        <p>密码:  <input name="password" type="password"><label id="password_trip"></label></p>
         <div style="text-align: center;margin-top: 30px;">
             <input type="submit" class="button"  value="登陆">
             <input type="reset" class="button" value="重置">

@@ -7,11 +7,12 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-
 /*
   管理员登录设置
  */
 public class AdministratorRealm extends AuthorizingRealm {
+
+
 
     @Override //授权
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -20,7 +21,6 @@ public class AdministratorRealm extends AuthorizingRealm {
 
     @Override //认证
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
 
         return null;
     }

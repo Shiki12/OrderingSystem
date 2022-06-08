@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ShiroConfig {
 
+
+
     @Bean
     public ShiroFilterFactoryBean getShiroFilterFactoryBean( @Qualifier("DefaultWebSecurityManager")
                                                                      DefaultWebSecurityManager DefaultWebSecurityManager){

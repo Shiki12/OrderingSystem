@@ -10,9 +10,11 @@ spring:
   mvc:
     format:
       time: HH:mm:ss
+    static-path-pattern: /static/**
 
   thymeleaf:
     cache: false
+
 #整合Mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml    #指定下面的xml路径
