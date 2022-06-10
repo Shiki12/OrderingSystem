@@ -5,7 +5,42 @@
     <title>Title</title>
 </head>
 <body>
-<h1>管理员登录界面</h1>
-<div th:text="${list}"/>
+<h1>管理员界面</h1>
+
+<form  th:action="@{/product/upload}" enctype="multipart/form-data" method="post">
+    上传文件1：<input type="file" name="file"><br/>
+     <input type="submit">
+</form>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>价格</td>
+                <td>点赞数</td>
+                <td>图片</td>
+                <td>描述</td>
+            </tr>
+        </thead>
+        <tbody>
+           <tr th:each="pro : ${list}">
+               <td th:text="${pro.getId()}"></td>
+               <td th:text="${pro.getName()}"></td>
+               <td th:text="${pro.getPrice()}"></td>
+               <td th:text="${pro.getLike()}"></td>
+               <td >
+                   <img th:src="@{/}+${pro.getImageUrl()}" width="60">
+               </td>
+               <td th:text="${pro.getMiaoshu()}"></td>
+           </tr>
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
 </body>
 </html>

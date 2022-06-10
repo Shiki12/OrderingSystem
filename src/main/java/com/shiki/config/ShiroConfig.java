@@ -1,5 +1,6 @@
 package com.shiki.config;
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +26,8 @@ public class ShiroConfig {
         bean.setSecurityManager(DefaultWebSecurityManager);
 
         //在这里完成请求路径的拦截 一般是管理员
-        Map<String,String> filterMap = new LinkedHashMap<String, String>();
+        //这里完成拦截
+        Map<String,String> filterMap = new LinkedHashMap<>();
 
 
 
@@ -51,7 +53,13 @@ public class ShiroConfig {
 
     @Bean //创建了realm对象
     public AdministratorRealm administratorRealm(){
-        return  new AdministratorRealm();
+
+        AdministratorRealm administratorRealm = new AdministratorRealm();
+        HashedCredentialsMatcher md5 = new HashedCredentialsMatcher("md5");
+        md5.setHashIterations(2);
+
+        administratorRealm.setCredentialsMatcher(md5);
+        return administratorRealm;
     }
 
 }
