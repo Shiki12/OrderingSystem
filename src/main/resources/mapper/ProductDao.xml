@@ -3,11 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shiki.dao.ProductDao">
+    <insert id="addProduct" parameterType="product">
+        insert into product
+            (id,name,price,zan,number,status,imageurl,miaoshu,cid,bid)
+        values (#{id},#{name},#{price},#{like},#{number},#{status},#{imageUrl}
+        ,#{miaoshu},#{cid},#{bid});
+
+    </insert>
+    <update id="update" parameterType="product">
+        update product
+        set name = #{name}
+        set price = #{price}
+        set zan = #{zan}
+        set number = #{number}
+        set status = #{status}
+        set imageurl = #{imageurl}
+        set miaoshu = #{miaoshu}
+        where id = #{id};
+
+    </update>
 
 
     <select id="getAll" resultType="com.shiki.entity.Product">
 
-       select  * from  product;
+       select  * from  product
 
     </select>
 </mapper>

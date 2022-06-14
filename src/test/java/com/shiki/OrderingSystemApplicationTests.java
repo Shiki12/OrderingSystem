@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootTest
 class OrderingSystemApplicationTests {
@@ -48,11 +47,9 @@ class OrderingSystemApplicationTests {
 
     @Test
     void testSql(){
-        List<Product> list = productService.getAll();
-        for (Product product : list) {
-            System.out.println(product);
+       productService.addProduct(new Product(32,"shiki",15,15,25,1,"/images/product/3.jpg","hthh"
+               ,1,1));
 
-        }
 
     }
 }

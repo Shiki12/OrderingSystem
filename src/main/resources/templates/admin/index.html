@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<script>
+function getOnePage(){
+    $.get({
+        url:"",
+        data:
+
+
+    })
+
+}
+
+
+</script>
 <body>
 <h1>管理员界面</h1>
 
 <form  th:action="@{/product/upload}" enctype="multipart/form-data" method="post">
+     商品名称 <input type="text" name="name">
+      价格<input type="text" name="price">
+      数量<input type="text" name="number">
+      描述<input type="text" name="miaoshu">
     上传文件1：<input type="file" name="file"><br/>
      <input type="submit">
+
 </form>
+
+
+
 <div>
     <table>
         <thead>
@@ -21,10 +43,11 @@
                 <td>点赞数</td>
                 <td>图片</td>
                 <td>描述</td>
+                <td>操作</td>
             </tr>
         </thead>
         <tbody>
-           <tr th:each="pro : ${list}">
+           <tr th:each="pro : ${ list.list}">
                <td th:text="${pro.getId()}"></td>
                <td th:text="${pro.getName()}"></td>
                <td th:text="${pro.getPrice()}"></td>
@@ -33,10 +56,12 @@
                    <img th:src="@{/}+${pro.getImageUrl()}" width="60">
                </td>
                <td th:text="${pro.getMiaoshu()}"></td>
+               <td>
+                   <a>编辑</a>
+                   <a>删除</a>
+               </td>
            </tr>
         </tbody>
-
-
     </table>
 
 
