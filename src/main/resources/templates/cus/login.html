@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>登录</title>
+    <link href="../../static/css/cus_css/cuslogin.css" rel="stylesheet" type="text/css">
+    <script src="../../static/js/cus_login/cus_login.js"></script>
+</head>
+<body>
+<div>
+    <div class="cus_top">
+<!--        顶部-->
+    </div>
+    <div class="cus_mid">
+<!--        中间-->
+        <div class="left1">
+<!--           左边-->
+            <img  name="image1" src="../../static/img/test2.jpg">
+            <script language="javascript">
+                setInterval("RandomImage();",2000);
+                function RandomImage()
+                {
+                    var num = Math.random()*2;
+                    num = Math.round(num);
+                    num = num + 1;
+                    document.image1.src="../../static/img/test" + num + ".jpg";
+                }
+            </script>
+        </div>
+        <div class="right1">
+<!--            右边-->
+            <div class="one1">
+                <form class="form1" th:action="@{/logincus/cus}" method="post">
+                    <div class="div1">
+                        <div class="span1">
+                            <span>账 号：</span>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="请输入用户名" id="Username">
+                        </div>
+                        <div class="bl">
+                            <div class="span1">
+                                <span>密 码：</span>
+                            </div>
+                            <div>
+                                <input type="password" placeholder="请输入密码" id="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="div2">
+                        <button class="button">登录</button>
+                    </div>
+                    <div class="div3">
+                        <button class="button">注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="cus_bol">
+<!--        尾部-->
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: url("../../img/test2.jpg") no-repeat ;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.cus_top{
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}
+.cus_mid{
+    height: 80%;
+    width: 100%;
+}
+.cus_mid .left1{
+    width: 50%;
+    position: relative;
+    height: 100%;
+    min-height: 800px;
+    display: inline;
+    float: left;
+}
+.cus_mid .left1 img{
+    padding-left: 100px;
+    padding-top: 200px;
+    position: absolute;
+    height: 40%;
+}
+
+
+.cus_mid .right1{
+    position: relative;
+    width: 50%;
+    float: left;
+    display: inline;
+}
+
+.cus_mid .right1 .one1{
+    height: 200px;
+    position: relative;
+    padding-top: 200px;
+    padding-left: 100px;
+}
+.cus_mid .right1 .form1{
+    border: 2px rgba(136, 255, 0, 0.7) solid;
+    position: absolute;
+    height: 80%;
+    width: 60%;
+}
+.cus_mid .right1 .form1 .div1{
+    padding-left: 100px;
+    padding-top: 125px;
+}
+.cus_mid .right1 .form1 .div1 .span1{
+    float: left;
+}
+.bl{
+    padding-top: 20px;
+}
+
+.cus_mid .right1 .form1 .div2{
+    padding-left: 160px;
+    padding-top: 10px;
+    padding-right: 60px;
+    float: left;
+}
+.cus_mid .right1 .form1 .div3{
+    padding-left: 200px;
+    padding-top: 10px;
+}
+.cus_bol{
+    height: 100px;
+    width: 100%;
+}
+.main{
+    height: 50%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start{
+    width: 100%;
+    height: 100%;
+    border: 2px rgba(136, 255, 0, 0.7) solid;
+    position: absolute;
+    border-radius: 25px;
+}
+
+.left{
+    padding: 0;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    /*不透明度*/
+    text-align: center;
+    float: left;
+
+}
+
+.leftcenter{
+    width: 100%;
+    height: 100%;
+    margin-top: 123px;
+    float: left;
+}
+.right{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    float: right;
+}
+.rightcenter{
+    width: 100%;
+    height: 100%;
+    margin-top: 80px;
+    border-left: #88ff00;
+    float: right;
+}
+
+.c1 input{
+    border: none;
+    outline: medium;
+}
+.c2 input{
+    border: none;
+    outline: medium;
+}
+.c3 input{
+    border: none;
+    outline: medium;
+}
+
+.c1{
+    height: 20%;
+    text-align: center;
+}
+
+.c2{
+    height: 30%;
+    text-align: center;
+
+}
+
+.c3{
+    height: 40%;
+    text-align: center;
+
+}
+.c4{
+    height: 50%;
+    text-align: center;
+}
+
+.c44{
+    width: 144px;
+    margin-left: 70px;
+}
+
+.c5{
+    margin-top: 50px;
+    text-align: center;
+}
+.c55{
+    width: 144px;
+    margin-left: 48px;
+}
+button{
+    width: 50px;
+    height: 20px;
+    background-color: #94f3e5;
+}

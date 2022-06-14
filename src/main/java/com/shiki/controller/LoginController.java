@@ -27,6 +27,11 @@ public class LoginController {
         return "admin/login";
     }
 
+    @RequestMapping("/user")
+    public String toUserLogin(){
+        return "cus/index";
+    }
+
     @RequestMapping ("/admin")
     public String login(
             @RequestParam("username")String username,
@@ -62,9 +67,9 @@ public class LoginController {
 
         }catch (Exception e){
             model.addAttribute("msg","程序异常");
-            return "admin/login";
+            return "cus/login";
         };
-        return "admin/login";
+        return "cus/login";
 
     }
 
