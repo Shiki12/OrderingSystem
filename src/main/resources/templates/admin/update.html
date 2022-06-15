@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<form  th:action="@{/product/update}" enctype="multipart/form-data" method="post">
+      <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
+    商品名称 <input type="text" name="name" th:value="${pro.getName()}"> <br>
+    价格<input type="text" name="price" th:value="${pro.getPrice()}">  <br>
+    数量<input type="text" name="zan" th:value="${pro.getZan()}"> <br>
+    描述<input type="text" name="miaoshu" th:value="${pro.getMiaoshu()}"> <br>
+    <td >
+        <img th:src="@{/}+${pro.getImageUrl()}" width="60">
+    </td>
+    上传的图片：<input type="file" name="file"><br/>
+    <input type="submit">
+</form>
+
+
+</html>

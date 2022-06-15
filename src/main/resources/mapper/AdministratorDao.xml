@@ -2,22 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shiki.dao.AdministratorDao">
+<mapper namespace="com.web.dao.AdministratorDao">
     <update id="update"  parameterType="administrator">
         update user set lasttime = #{lasttime}
-
-
 
 
         where id=#{id}
     </update>
 
 
-    <select id="selectById" resultType="com.shiki.entity.Administrator">
+    <select id="selectById" resultType="com.web.entity.Administrator">
         select *
         from user where id=#{id};
     </select>
-    <select id="selectByName" resultType="com.shiki.entity.Administrator">
+    <select id="selectByName" resultType="com.web.entity.Administrator">
         select *
         from user where name =#{name};
     </select>

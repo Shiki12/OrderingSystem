@@ -6,15 +6,7 @@
 </head>
 
 <script>
-function getOnePage(){
-    $.get({
-        url:"",
-        data:
 
-
-    })
-
-}
 
 
 </script>
@@ -28,7 +20,6 @@ function getOnePage(){
       描述<input type="text" name="miaoshu">
     上传文件1：<input type="file" name="file"><br/>
      <input type="submit">
-
 </form>
 
 
@@ -47,23 +38,31 @@ function getOnePage(){
             </tr>
         </thead>
         <tbody>
-           <tr th:each="pro : ${ list.list}">
+           <tr th:each="pro : ${pageInfo.list}">
                <td th:text="${pro.getId()}"></td>
                <td th:text="${pro.getName()}"></td>
                <td th:text="${pro.getPrice()}"></td>
-               <td th:text="${pro.getLike()}"></td>
+               <td th:text="${pro.getZan()}"></td>
                <td >
                    <img th:src="@{/}+${pro.getImageUrl()}" width="60">
                </td>
                <td th:text="${pro.getMiaoshu()}"></td>
                <td>
-                   <a>编辑</a>
-                   <a>删除</a>
+                   <a th:href="@{/product/toUpdate/{id}(id=${pro.getId()})}">编辑</a>
+                   <a th:href="@{/product/delete/{id}(id=${pro.getId()})}">删除</a>
                </td>
            </tr>
         </tbody>
     </table>
 
+    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
+        <span th:text="${pageInfo.pages}"></span> 页,
+        共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+
+    <a th:href="@{/product/getAll}">首页</a>
+    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+    <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
 
 </div>
 
