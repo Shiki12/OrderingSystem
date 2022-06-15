@@ -1832,10 +1832,13 @@ li.bt-nn {
   float: left;
 }
 }
+.login-cusdiv{
+    float: left;
+}
 /*-- responsive --*/
 @media(max-width:320px){
 .cart.box_1 {
-  width: 100%;
+  width: 60%;
 }
 .logo {
   float: none;
