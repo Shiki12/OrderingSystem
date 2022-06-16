@@ -5,14 +5,15 @@ import com.web.dao.CustomerDao;
 import com.web.entity.Customer;
 import com.web.wechat.dataUtil.ResponseData;
 import com.web.wechat.httpUtil.HttpClientUtil;
-import com.web.wechat.service.wxLoginService;
+
+import com.web.wechat.service.WxCustomerService;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class WxLoginServiceImpl implements wxLoginService {
+public class WxCustomerServiceImpl implements WxCustomerService {
 
     @Autowired
     CustomerDao customerDao;
@@ -55,6 +56,26 @@ public class WxLoginServiceImpl implements wxLoginService {
         }catch (Exception e){
             return new ResponseData(0,"登录异常");
         }
+    }
+
+    @Override
+    public ResponseData wx_register(String name, String phone, String password) {
+        try {
+            System.out.println("wx端后台注册申请");
+
+            //电话验证
+            Customer customer = customerDao.getByPhone(phone);
+            if(customer!=null){
+                return new ResponseData(0,"用户已存在");
+            }
+            Customer newCustomer= new Customer(name,phone,password);
+            customerDao.addCustomer(newCustomer);
+            return new ResponseData(1,"注册成功");
+        }catch (Exception e) {
+            System.out.println(e);
+            return new ResponseData(0,"注册失败");
+        }
+
     }
 
 }

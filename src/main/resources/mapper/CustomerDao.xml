@@ -4,10 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.dao.CustomerDao">
 
-    <insert id="addCustomer">
-        insert into customer (id, name, password,address,phone,status)
-        values (#{id},#{name},#{password},#{address},#{phone},#{token});
+    <insert id="addCustomer" keyProperty="id" useGeneratedKeys="true">
+        insert into customer (name, password,address,phone,status,token)
+        values (#{name},#{password},#{address},#{phone},#{status},#{token})
     </insert>
+
+
     <update id="update">
         update customer
         set name = #{mame},
