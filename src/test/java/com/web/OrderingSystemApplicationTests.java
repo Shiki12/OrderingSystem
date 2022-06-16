@@ -47,7 +47,7 @@ class OrderingSystemApplicationTests {
 
     @Test
     void testSql(){
-       productService.addProduct(new Product(32,"shiki",15,15,25,1,"/images/product/3.jpg","hthh"
+       productService.addProduct(new Product("shiki",15,15,25,1,"/images/product/3.jpg","hthh"
                ,1,1));
 
 

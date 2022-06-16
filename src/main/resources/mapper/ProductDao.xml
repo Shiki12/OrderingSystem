@@ -5,10 +5,8 @@
 <mapper namespace="com.web.dao.ProductDao">
     <insert id="addProduct" parameterType="product">
         insert into product
-            (id,name,price,zan,number,status,imageurl,miaoshu,cid,bid)
-        values (#{id},#{name},#{price},#{zan},#{number},#{status},#{imageUrl}
-        ,#{miaoshu},#{cid},#{bid} )
-
+            (name, price,zan,number,imageurl, miaoshu,cid,bid)
+        VALUES  (#{name},#{price} ,#{zan}, #{number},#{imageUrl}, #{miaoshu},#{cid},#{bid})
     </insert>
     <update id="update" parameterType="product">
         update product set name = #{name},

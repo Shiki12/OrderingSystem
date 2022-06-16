@@ -29,4 +29,5 @@
     <select id="getAll" resultType="customer">
         select * from customer;
     </select>
+    <select id="getById" resultType="com.web.entity.Customer"></select>
 </mapper>

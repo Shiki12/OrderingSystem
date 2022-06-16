@@ -22,4 +22,15 @@ public class Product {
     private  int bid; //是哪个上线的
 
 
+    public Product(String name, float price, int zan, int number, int status, String imageUrl, String miaoshu, int cid, int bid) {
+        this.name = name;
+        this.price = price;
+        this.zan = zan;
+        this.number = number;
+        this.status = status;
+        this.imageUrl = imageUrl;
+        this.miaoshu = miaoshu;
+        this.cid = cid;
+        this.bid = bid;
+    }
 }

@@ -35,14 +35,11 @@ public class ProductController {
         System.out.println(pageInfo);
         return "admin/index";
     }
-
-
-
     //添加商品
     @PostMapping("/upload")
     public String upload(@RequestPart("file") MultipartFile file,Product product,Model model,
-    @RequestParam(defaultValue = "1",value = "pageNum")int pageNum) throws IOException {
-  //         log.info("图片大小={}",file.getSize());
+                         @RequestParam(defaultValue = "1",value = "pageNum")int pageNum) throws IOException {
+        //         log.info("图片大小={}",file.getSize());
 //
 //         log.info("商品名称={},商品价格={},商品数量={},商品详情={}",product.getName(),product.getPrice(),
 //                 product.getNumber(),product.getMiaoshu());
@@ -50,11 +47,11 @@ public class ProductController {
         String originalFilename = file.getOriginalFilename();
 
         //图片完整的地址  System.getProperty("user.dir")表示当前项目的路径
-       String path= System.getProperty("user.dir")+"\\src\\main\\webapp\\images" +
-               "\\product\\"+originalFilename;
-       //图片存入数据库的相对地址
+        String path= System.getProperty("user.dir")+"\\src\\main\\webapp\\images" +
+                "\\product\\"+originalFilename;
+        //图片存入数据库的相对地址
 
-       product.setImageUrl("images/product/"+originalFilename);
+        product.setImageUrl("images/product/"+originalFilename);
 
         log.info("存入数据库的商品地址={}",product.getImageUrl());
         product.setBid(1);
@@ -68,13 +65,16 @@ public class ProductController {
         model.addAttribute("pageInfo",pageInfo);
 
         if (!file.isEmpty()){
-             //保存到webapp
-             file.transferTo(new File(path));
+            //保存到webapp
+            file.transferTo(new File(path));
             return "admin/index";
-         }
-         return "admin/index";
+        }
+        return "admin/index";
 
     }
+
+
+
 
     //去更新页面
     @RequestMapping("/toUpdate/{id}")
@@ -91,7 +91,7 @@ public class ProductController {
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String  update(Model model,Product product,
                           @RequestParam(defaultValue = "1",value = "pageNum")int pageNum
-    ,@RequestPart("file") MultipartFile file) throws IOException {
+            ,@RequestPart("file") MultipartFile file) throws IOException {
         String filename = file.getOriginalFilename();
         //图片完整的地址  System.getProperty("user.dir")表示当前项目的路径
         String path= System.getProperty("user.dir")+"\\src\\main\\webapp\\images" +
@@ -101,17 +101,17 @@ public class ProductController {
         product.setCid(1);
         //判断当前文件是否存在
         //文件不存在的情况
-         if (file.isEmpty()){
-             //通过传过来的id找到商品
-             Product product1 = productService.getById(product.getId());
-             String imageUrl = product1.getImageUrl();
-             //将之前的图片地址赋值给现在的这个
-             product.setImageUrl(imageUrl);
-         }
-         else {
-             product.setImageUrl("images/product/"+filename);
-             file.transferTo(new File(path));  //保存图片
-         }
+        if (file.isEmpty()){
+            //通过传过来的id找到商品
+            Product product1 = productService.getById(product.getId());
+            String imageUrl = product1.getImageUrl();
+            //将之前的图片地址赋值给现在的这个
+            product.setImageUrl(imageUrl);
+        }
+        else {
+            product.setImageUrl("images/product/"+filename);
+            file.transferTo(new File(path));  //保存图片
+        }
         productService.update(product);
 
         PageHelper.startPage(pageNum,10);
