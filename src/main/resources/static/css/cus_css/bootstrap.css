@@ -1129,6 +1129,12 @@ img {
   max-width: 100%;
   height: auto;
 }
+.imglogin{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  float: left;
+}
 .img-rounded {
   border-radius: 6px;
 }

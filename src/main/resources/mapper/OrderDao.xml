@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.dao.OrderDao">
+<resultMap id="orderByCustomer" type="order">
+    <result column="userid" property="customer.id"/>
+    <result column="username" property="customer.name"/>
+    <result column="phone" property="customer.phone"/>
+    <result column="p_name" property="name"/>
+    <result column="order_number" property="totalNumber"/>
+    <result column="p_price" property="price"/>
+    <result column="code" property="code"/>
+    <result column="imageurl" property="url"/>
+    <result column="address" property="address"/>
+    <collection property=""
+</resultMap>
+
+    <select id="getCustomerOrderById" resultType="com.web.entity.Order">
+        SELECT c.id useid,c.`name` username,c.phone ,
+               p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
+               o.address address,o.code,
+               oi.number order_number
+        FROM orderitem oi,order_ o, product p ,customer c
+        WHERE oi.pid=p.id AND oi.cstid=c.id AND  oi.oid=o.id AND c.id=#{id}
+    </select>
+</mapper>

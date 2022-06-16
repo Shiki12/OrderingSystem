@@ -7,7 +7,7 @@ function index() {
     let called = new Promise(
         (a, b) => {
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", 'http://localhost:8000/login1?name=' + username + '&password=' + password);
+            xhr.open("POST", 'http://localhost:8000/login1' + username + '&password=' + password);
             xhr.onload = () => a(xhr.responseText);
             xhr.onerror = () => b(xhr);
             xhr.send();
@@ -27,4 +27,3 @@ function index() {
         })
 
 }
-
