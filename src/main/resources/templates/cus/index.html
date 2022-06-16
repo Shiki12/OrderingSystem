@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
    
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!--====== Title ======-->
-    <title>Rondhon</title>
+    <title>点餐系统</title>
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="../../static/css/front-css/bootstrap.min.css">
@@ -35,6 +35,9 @@
     
     <!--====== Style css ======-->
     <link rel="stylesheet" href="../../static/css/front-css/style.css">
+
+    <!--点击事件-->
+    <script src="../../static/js/front-js/index.js"></script>
   
   
 </head>
@@ -81,13 +84,13 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul class="navbar-nav m-auto">
 										<li class="nav-item">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <a class="nav-link" href="index.html">首页</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about.html">About</a>
+                                            <a class="nav-link" href="about.html">关于</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">Conact</a>
+                                            <a class="nav-link" href="contact.html">订单</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -96,7 +99,7 @@
                                         <li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
                                         <li><a href="#"><i class="fas fa-user"></i></a></li>
                                     </ul>
-                                    <a class="main-btn" href="#">Sign in</a>
+                                    <a class="main-btn" href="login.html">登录</a>
                                 </div>
                             </nav>
                         </div> <!-- navigation -->
@@ -115,18 +118,15 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="banner-content text-center">
-                        <h1 class="title">Good Food For <span>Your Everyday</span></h1>
-                        <p>Maecenas interdum lorem eleifend orci aliquam mollis. <br> Aliquam </p>
+                        <h1 class="title">每日美食<span>——推荐</span></h1>
+                        <p>不知名的 <br> 路人 </p>
                         <div class="search-restaurant">
                             <form action="#">
                                 <div class="input-box">
-                                    <input type="text" placeholder="Type Place, City, Division">
+                                    <input type="text" placeholder="菜品编号或是名字" id="dinenum1123">
                                 </div>
                                 <div class="input-box item-2">
-                                    <input type="text" placeholder="Restaurant">
-                                </div>
-                                <div class="input-box">
-                                    <button class="main-btn" type="button"><i class="far fa-search"></i> Search</button>
+                                    <button class="main-btn" type="button" onclick="getdine()"> 搜索</button>
                                 </div>
                             </form>
                         </div>
@@ -149,21 +149,21 @@
                             <div class="col-lg-6">
                                 <div class="section-title text-center">
                                     <img src="../../static/img/front-images/shape/title-shape.png" alt="title">
-                                    <h3 class="title">How it work</h3>
-                                    <p>The Process of our service</p>
+                                    <h3 class="title">怎么工作</h3>
+                                    <p>我们服务的步骤</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-lg-4 col-md-8">
                                 <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-1.png" alt=""> Choose Restaurant</h4></a>
-                                    <p>Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex.</p>
+                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-1.png" alt="">？？</h4></a>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-8">
                                 <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-2.png" alt=""> Select, you love to eat</h4></a>
+                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-2.png" alt=""> 选择你喜欢的食物</h4></a>
                                     <p>Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex.</p>
                                 </div>
                             </div>
