@@ -14,7 +14,7 @@
             password = #{password},
             address = #{address},
             phone = #{phone},
-            status = #{token}
+            status = #{status}
         where id = #{id};
 
     </update>
