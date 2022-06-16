@@ -16,4 +16,10 @@ public interface CustomerDao {
     Customer getById(@Param("id")  int id);
 
     int deleteById(@Param("id")  int id);
+
+    Customer getByPhone(String phone);
+
+    void update(Customer customer);
+
+    void updateCustmoerToken(String phone, String token);
 }

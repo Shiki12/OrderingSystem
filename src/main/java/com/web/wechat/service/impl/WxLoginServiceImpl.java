@@ -1,7 +1,8 @@
 package com.web.wechat.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.web.dao.AdministratorDao;
+import com.web.dao.CustomerDao;
+import com.web.entity.Customer;
 import com.web.wechat.dataUtil.ResponseData;
 import com.web.wechat.httpUtil.HttpClientUtil;
 import com.web.wechat.service.wxLoginService;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class WxLoginServiceImpl implements wxLoginService {
 
     @Autowired
-    AdministratorDao administratorDao;
+    CustomerDao customerDao;
 
     @Override
     public ResponseData wx_login(String code, String phone, String password){
@@ -22,17 +23,15 @@ public class WxLoginServiceImpl implements wxLoginService {
 
         try {
             //电话验证
-
-            if(null ==null){
+            Customer customer = customerDao.getByPhone(phone);
+            if(customer==null){
                 return new ResponseData(0,"用户不存在");
             }
 
             //密码验证
-            if(null ==null){
+            if(!customer.getPassword().equals(password)){
                 return new ResponseData(0,"密码错误");
             }
-
-
 
 
             //AppID = wx607e482d17d2faf0
@@ -50,8 +49,8 @@ public class WxLoginServiceImpl implements wxLoginService {
             //生成token
             Md5Hash md5Token = new Md5Hash(openid, session_key, 10);
             String Token = md5Token.toString();
-
-
+            customer.setToken(Token);
+            customerDao.updateCustmoerToken(phone,Token);
             return new ResponseData(1,"登录成功",Token);
         }catch (Exception e){
             return new ResponseData(0,"登录异常");

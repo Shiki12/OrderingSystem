@@ -14,9 +14,14 @@
             password = #{password},
             address = #{address},
             phone = #{phone},
-            status = #{status}
+            status = #{status},
         where id = #{id};
 
+    </update>
+    <update id="updateCustmoerToken">
+        update customer
+        set token = #{token}
+        where phone = #{phone}
     </update>
     <delete id="deleteById">
         delete
@@ -32,5 +37,8 @@
 
     <select id="getById" resultType="com.web.entity.Customer">
         select * from customer where id = #{id};
+    </select>
+    <select id="getByPhone" resultType="com.web.entity.Customer">
+        select * from customer where phone = #{phone}
     </select>
 </mapper>
