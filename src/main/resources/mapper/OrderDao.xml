@@ -14,7 +14,6 @@
     <result column="code" property="code"/>
     <result column="imageurl" property="url"/>
     <result column="address" property="address"/>
-    <collection property=""
 </resultMap>
 
     <select id="getCustomerOrderById" resultType="com.web.entity.Order">

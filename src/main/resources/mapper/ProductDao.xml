@@ -7,7 +7,7 @@
         insert into product
             (id,name,price,zan,number,status,imageurl,miaoshu,cid,bid)
         values (#{id},#{name},#{price},#{zan},#{number},#{status},#{imageUrl}
-        ,#{miaoshu},#{cid},#{bid});
+        ,#{miaoshu},#{cid},#{bid} )
 
     </insert>
     <update id="update" parameterType="product">

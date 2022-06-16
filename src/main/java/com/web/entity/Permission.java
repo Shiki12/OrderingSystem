@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/*
+* 权限类
+* */
 public class Permission {
     private Long id;
     private String name;

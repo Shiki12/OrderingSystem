@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class CategoryController {
     CategoryDao categoryDao;
 
 @RequestMapping("/category")
-    public String getall(Model model){
+@ResponseBody
+    public String getAll(Model model){
 
         List<Category> categories = categoryDao.queryList();
 

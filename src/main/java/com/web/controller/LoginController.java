@@ -67,9 +67,9 @@ public class LoginController {
 
         }catch (Exception e){
             model.addAttribute("msg","程序异常");
-            return "cus/login";
+            return "";
         };
-        return "cus/login";
+        return "";
 
     }
 

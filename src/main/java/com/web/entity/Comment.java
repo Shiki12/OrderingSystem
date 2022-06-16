@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class Comment {
 
-
     private  String content;
     private  Integer pid; //商品id
     private  Integer cstid; //顾客id

@@ -38,6 +38,7 @@ public class ProductController {
 
 
 
+    //添加商品
     @PostMapping("/upload")
     public String upload(@RequestPart("file") MultipartFile file,Product product,Model model,
     @RequestParam(defaultValue = "1",value = "pageNum")int pageNum) throws IOException {
