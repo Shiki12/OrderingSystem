@@ -1,7 +1,10 @@
 package com.web;
 
 import com.web.dao.AdministratorDao;
+import com.web.dao.OrderDao;
 import com.web.entity.Administrator;
+import com.web.entity.Customer;
+import com.web.entity.Order;
 import com.web.entity.Product;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
@@ -11,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 class OrderingSystemApplicationTests {
@@ -19,6 +23,10 @@ class OrderingSystemApplicationTests {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    OrderDao  orderDao;
+
 
     @Test
     void contextLoads() {
@@ -51,5 +59,20 @@ class OrderingSystemApplicationTests {
                ,1,1));
 
 
+    }
+
+    @Test
+    void testOrder(){
+        List<Order> orderById = orderDao.getCustomerOrderById(new Customer(1));
+        for (Order order : orderById) {
+            System.out.println(order);
+//            System.out.println("本次订单共有--------->"+order.getProducts().size());
+//            for (Product product : order.getProducts()) {
+//                System.out.println("当前用户名"+order.getCustomer());
+//                System.out.println("该用户下的订单是：");
+//                System.out.println(product);
+//            }
+
+        }
     }
 }

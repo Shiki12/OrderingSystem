@@ -5,19 +5,41 @@
 
 <mapper namespace="com.web.dao.OrderDao">
 <resultMap id="orderByCustomer" type="order">
-    <result column="userid" property="customer.id"/>
-    <result column="username" property="customer.name"/>
-    <result column="phone" property="customer.phone"/>
-    <result column="p_name" property="name"/>
-    <result column="order_number" property="totalNumber"/>
-    <result column="p_price" property="price"/>
-    <result column="code" property="code"/>
-    <result column="imageurl" property="url"/>
+    <id column="id" property="id"/>
     <result column="address" property="address"/>
+    <result property="code" column="code"/>
+    <association property="customer" javaType="customer">
+        <id column="userid" property="id"/>
+        <result column="username" property="name"/>
+        <result column="phone" property="phone"/>
+    </association>
+    <collection property="products" ofType="product">
+        <result column="p_name" property="name"/>
+        <result column="order_number" property="number"/>
+        <result column="p_price" property="price"/>
+        <result property="imageUrl" column="imageurl"/>
+    </collection>
 </resultMap>
+<!--    插入订单表-->
+    <insert id="addOrder">
+        insert into order_ (code,address,cstid)
+        values (#{code},#{address},#{cstid});
+    </insert>
+<!--插入同一单号下的商品列表-->
+    <insert id="addOrderItem" parameterType="">
 
-    <select id="getCustomerOrderById" resultType="com.web.entity.Order">
-        SELECT c.id useid,c.`name` username,c.phone ,
+
+    </insert>
+
+
+
+    <!-- 加上o.id 就表示同一次订单购买了哪些东西，即下单多选 能够得到完整的订单信息
+     不加上就说明 这个用户买了哪些  我的想法是先不加上 可以新建一个vo用来整合这个用户购买的
+     信息,不过这样的话订单的id就拿不到了，只能拿到订单的单号
+    -->
+    <select id="getCustomerOrderById" resultMap="orderByCustomer">
+
+        SELECT c.id userid,c.`name` username,c.phone ,
                p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
                o.address address,o.code,
                oi.number order_number
