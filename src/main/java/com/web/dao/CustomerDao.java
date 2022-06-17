@@ -2,16 +2,24 @@ package com.web.dao;
 
 import com.web.entity.Customer;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
 public interface CustomerDao {
-    int addCustomer(Customer customer) ;
-    int update(Customer customer);
+
+    int addCustomer(Customer customer);
+
     List<Customer> getAll();
-    Customer getById( int id) ;
-    int deleteById(int id);
 
+    Customer getById(@Param("id")  int id);
 
+    int deleteById(@Param("id")  int id);
+
+    Customer getByPhone(String phone);
+
+    void update(Customer customer);
+
+    void updateCustmoerToken(String phone, String token);
 }
