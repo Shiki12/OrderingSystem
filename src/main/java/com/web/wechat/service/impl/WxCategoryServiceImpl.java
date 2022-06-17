@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WxCategoryServiceImpl implements WxCategoryService {
@@ -16,7 +17,10 @@ public class WxCategoryServiceImpl implements WxCategoryService {
 
     @Override
     public List<String> getAll() {
-        categoryDao.queryList();
-        return null;
+        //wx端获取商品分类
+        List<Category> categoryList = categoryDao.queryList();
+        List<String> categories = categoryList.stream().map(Category::getName).collect(Collectors.toList());
+        System.out.println(categories);
+        return categories;
     }
 }

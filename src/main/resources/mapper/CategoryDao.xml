@@ -5,10 +5,15 @@
 
 <mapper namespace="com.web.dao.CategoryDao">
 
+    <resultMap type="com.web.entity.Category" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+    </resultMap>
 
-    <select id="queryList" resultType="com.web.entity.Category">
-        select *
-        from category;
+
+    <select id="queryList" resultMap="UserMap">
+        SELECT `id`,`name`
+        FROM `category`
     </select>
 
 </mapper>
