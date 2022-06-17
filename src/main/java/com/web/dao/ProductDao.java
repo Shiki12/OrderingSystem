@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ProductDao {
@@ -16,4 +17,7 @@ public interface ProductDao {
 
     //模糊查询
     List<Product> fuzzyQuery(String key);
+
+    List<Integer> getProNum();
+    Product getOnlineById(@Param("id")int id);
 }

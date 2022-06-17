@@ -17,6 +17,11 @@ public class Customer {
     private  String  token; //保留令牌  对应数据库status字段
     private String phone;
 
+    public Customer(String name, String phone, String password) {
+        this.name=name;
+        this.phone=phone;
+        this.password=password;
+    }
     public Customer(int id) {
         this.id = id;
     }

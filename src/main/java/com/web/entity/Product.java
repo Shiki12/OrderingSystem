@@ -13,7 +13,7 @@ public class Product {
     private Integer id;
     private  String name;
     private  float price;
-    private  int zan;
+    private  int like;
     private  int number;  //出售数量
     private  int status;  // 商品状态
     private  String imageUrl; //图片地址

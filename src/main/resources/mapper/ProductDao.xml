@@ -5,13 +5,15 @@
 <mapper namespace="com.web.dao.ProductDao">
     <insert id="addProduct" parameterType="product">
         insert into product
-            (name, price,zan,number,imageurl, miaoshu,cid,bid)
-        VALUES  (#{name},#{price} ,#{zan}, #{number},#{imageUrl}, #{miaoshu},#{cid},#{bid})
+            (id,name,price,zan,number,status,imageurl,miaoshu,cid,bid)
+        values (#{id},#{name},#{price},#{zan},#{number},#{status},#{imageUrl}
+        ,#{miaoshu},#{cid},#{bid} )
+
     </insert>
     <update id="update" parameterType="product">
         update product set name = #{name},
         price = #{price},
-        zan = #{zan},
+        like = #{like},
         number = #{number},
         status = #{status},
         imageurl = #{imageUrl},
@@ -28,7 +30,7 @@
 
     <select id="getAll" resultType="com.web.entity.Product">
 
-       select  * from  product
+       select  * from  product where status = 1;
 
     </select>
     <select id="getById" resultType="com.web.entity.Product">
@@ -39,5 +41,16 @@
 
         select  * from  product where name like "%"#{key}"%" or miaoshu like  "%"#{key}"%"
 
+    </select>
+
+    <select id="getOnlineById" resultType="com.web.entity.Product">
+        select *
+        from product where id = #{id} and status = 1;
+    </select>
+
+    <select id="getProNum" resultType="Integer">
+        SELECT COUNT( * ) from product p
+        where p.status = 1
+        GROUP BY p.cid
     </select>
 </mapper>

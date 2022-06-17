@@ -1,6 +1,7 @@
 package com.web.service;
 
 import com.web.entity.Product;
+import com.web.wechat.dataUtil.ResponseData;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface ProductService {
 
     //模糊查询
     List<Product> fuzzyQuery(String key);
+
 }
