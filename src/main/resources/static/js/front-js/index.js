@@ -1,6 +1,5 @@
 function getdine(){
     var name1=document.getElementById('dinenum1123').value;
-
     $.ajax({
         type: "get",
         url: 'http://localhost:8001/index/index1',

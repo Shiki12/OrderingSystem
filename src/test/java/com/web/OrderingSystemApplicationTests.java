@@ -6,6 +6,7 @@ import com.web.entity.Administrator;
 import com.web.entity.Customer;
 import com.web.entity.Order;
 import com.web.entity.Product;
+import com.web.entity.po.OrderItem;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ class OrderingSystemApplicationTests {
 
     @Test
     void contextLoads() {
-
-
+        System.out.println(System.currentTimeMillis());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间，也可使用当前时间戳
     }
 
     @Test
@@ -73,6 +75,29 @@ class OrderingSystemApplicationTests {
 //                System.out.println(product);
 //            }
 
+        }
+    }
+
+    @Test
+    void testPlaceOrder(){
+        OrderItem orderItem = new OrderItem(6, 1, 1, 15,"地址");
+
+        OrderItem[] orderItems = new OrderItem[100];
+        orderItems[0]= orderItem;
+        orderItems[1]= orderItem;
+        orderItems[2]= orderItem;
+        //添加了订单
+        orderDao.addOrderItem(orderItems[0]);
+        orderDao.addOrderItem(orderItems[1]);
+        orderDao.addOrderItem(orderItems[2]);
+
+    }
+
+    @Test
+    void testSearch(){
+        List<Product> list = productService.fuzzyQuery("蛋糕");
+        for (Product product : list) {
+            System.out.println(product);
         }
     }
 }

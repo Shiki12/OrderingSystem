@@ -25,13 +25,15 @@
         insert into order_ (code,address,cstid)
         values (#{code},#{address},#{cstid});
     </insert>
-<!--插入同一单号下的商品列表-->
-    <insert id="addOrderItem" parameterType="">
-
+    <insert id="addOrderItem">
+        insert into orderitem (pid,oid,cstid,number)
+        values (#{pid},#{oid},#{cstid},#{number});
 
     </insert>
-
-
+    <insert id="addOrderChild" parameterType="orderChild">
+        insert into order_ (code,address,cstid,status)
+        values (#{code},#{address},#{cstid},#{status});
+    </insert>
 
     <!-- 加上o.id 就表示同一次订单购买了哪些东西，即下单多选 能够得到完整的订单信息
      不加上就说明 这个用户买了哪些  我的想法是先不加上 可以新建一个vo用来整合这个用户购买的

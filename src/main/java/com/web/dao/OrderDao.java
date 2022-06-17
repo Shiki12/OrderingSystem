@@ -3,6 +3,8 @@ package com.web.dao;
 
 import com.web.entity.Customer;
 import com.web.entity.Order;
+import com.web.entity.po.OrderChild;
+import com.web.entity.po.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,5 +19,8 @@ public interface OrderDao {
     int addOrder(Order order);
 
     //添加 order_item
+    int addOrderItem(OrderItem orderItem);
+
+    int addOrderChild(OrderChild orderChild);
 
 }

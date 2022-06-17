@@ -13,4 +13,7 @@ public interface ProductDao {
     int update(Product product);
     Product getById(@Param("id") int id);
     int deleteById(@Param("id") int id);
+
+    //模糊查询
+    List<Product> fuzzyQuery(String key);
 }

@@ -13,5 +13,15 @@ public class OrderItem {
     private  int pid;
     private  int oid;
     private  int cstid;
+    private String address;
+
+    public OrderItem(int pid, int oid, int cstid, int number,String address) {
+        this.pid = pid;
+        this.oid = oid;
+        this.cstid = cstid;
+        this.number = number;
+        this.address = address;
+    }
+
     private  int number;
 }

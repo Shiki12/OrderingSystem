@@ -10,4 +10,7 @@ public interface ProductService {
     int update(Product product);
     Product getById(int id);
     int deleteById(int id);
+
+    //模糊查询
+    List<Product> fuzzyQuery(String key);
 }

@@ -43,5 +43,10 @@ public class ProductServiceImpl implements ProductService {
         return productDao.deleteById(id);
     }
 
+    @Override
+    public List<Product> fuzzyQuery(String key) {
+        return productDao.fuzzyQuery(key);
+    }
+
 
 }
