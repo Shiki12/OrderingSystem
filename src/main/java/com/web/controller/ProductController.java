@@ -39,10 +39,6 @@ public class ProductController {
     @PostMapping("/upload")
     public String upload(@RequestPart("file") MultipartFile file,Product product,Model model,
                          @RequestParam(defaultValue = "1",value = "pageNum")int pageNum) throws IOException {
-        //         log.info("图片大小={}",file.getSize());
-//
-//         log.info("商品名称={},商品价格={},商品数量={},商品详情={}",product.getName(),product.getPrice(),
-//                 product.getNumber(),product.getMiaoshu());
 
         String originalFilename = file.getOriginalFilename();
 
