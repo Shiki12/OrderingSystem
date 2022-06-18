@@ -18,6 +18,7 @@ public interface CustomerDao {
     int deleteById(@Param("id")  int id);
 
     Customer getByPhone(String phone);
+    Customer getByName(String name);
 
     int update(Customer customer);
 

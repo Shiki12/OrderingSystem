@@ -36,6 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer getByName(String name) {
+        return customerDao.getByName(name);
+    }
+
+    @Override
     public int deleteById(int id) {
         return customerDao.deleteById(id);
     }

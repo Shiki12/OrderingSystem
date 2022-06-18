@@ -2,6 +2,8 @@ package com.web.controller;
 
 import com.web.dao.AdministratorDao;
 import com.web.entity.Administrator;
+import com.web.entity.Customer;
+import com.web.service.CustomerService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -22,6 +24,9 @@ import java.util.Date;
 public class LoginController {
     @Autowired
     AdministratorDao administratorDao;
+
+    @Autowired
+    CustomerService customerService;
 
     @RequestMapping("/") //
     public String toLogin(){
@@ -74,15 +79,27 @@ public class LoginController {
         return "";
 
     }
-    @RequestMapping("/user")
+    @RequestMapping("/customer")
 
     public String login(@RequestParam("Username") String username,
-                        @RequestParam("Password") String password,HttpSession httpSession){
+                        @RequestParam("Password") String password,HttpSession session,Model model){
 
+        Customer customer = customerService.getByName(username);
+        if (customer!=null){
+            if (password.equals(customer.getPassword())){
+              session.setAttribute("customer",customer);
+              model.addAttribute("msg","登录成功");
+              return "cus/index";
+            }
+            else {
+                model.addAttribute("msg","账号或密码错误");
+                return "cus/login";
+            }
+        }
+        else {
+            return "cus/login";
+        }
 
-
-
-        return "";
     }
 
 
