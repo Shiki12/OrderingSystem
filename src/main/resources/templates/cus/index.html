@@ -38,8 +38,9 @@
 
     <!--点击事件-->
     <script src="../../static/js/front-js/index.js"></script>
-  
-  
+
+    <!-- 我的样式   -->
+    <link rel="stylesheet" href="../../static/css/front-css/addmy-index.css">
 </head>
 
 <body>
@@ -84,22 +85,22 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul class="navbar-nav m-auto">
 										<li class="nav-item">
-                                            <a class="nav-link" href="index.html">首页</a>
+                                            <a class="nav-link" href="http://localhost:8001/index/index">首页</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about.html">关于</a>
+                                            <a class="nav-link" href="http://localhost:8001/index/menu">食物</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.html">订单</a>
+                                            <a class="nav-link" href="http://localhost:8001/index/about">订单</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
                                 <div class="navbar-btn d-none d-md-flex">
                                     <ul>
-                                        <li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
-                                        <li><a href="#"><i class="fas fa-user"></i></a></li>
+                                        <li><a href="#"><img class="topiconone" src="../../static/img/front-images/icon/topicon.png"></a></li>
+                                        <li><a href="#"><img class="topiconone" src="../../static/img/front-images/icon/topusericon.png"></a></li>
                                     </ul>
-                                    <a class="main-btn" href="login.html">登录</a>
+                                    <a class="main-btn" href="http://localhost:8001/index/cuslogin" >登录</a>
                                 </div>
                             </nav>
                         </div> <!-- navigation -->
@@ -130,6 +131,27 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="expressdine">
+                <div class="dineimage">
+                   <img src="../../static/img/cus/login.png">
+                </div>
+                <div >
+                    <div class="indexspan">
+                        <span>宫保鸡丁</span>
+                    </div>
+                    <div class="indexspan1">
+                        <span >&nbsp&nbsp&nbsp&nbsp
+                            &nbsp
+                            描述有可能。”霍胖子答道，说话都显得特别小心，压低了声音，生怕引起这些灵体的注意，“我看过这家医院的资料，病人有几百号，医生护士只有几十个，这里的灵体至少有上百吧？</span>
+                    </div>
+                    <div class="dine-prece">
+                        <span >价格</span>
+                    </div>
+                    <div class="dine-But">
+                        <button type="submit">下单</button>
                     </div>
                 </div>
             </div>
@@ -164,13 +186,12 @@
                             <div class="col-lg-4 col-md-8">
                                 <div class="how-it-work-item mt-30">
                                     <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-2.png" alt=""> 选择你喜欢的食物</h4></a>
-                                    <p>Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex.</p>
+                                    <p>各种各样的食物</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-8">
                                 <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-3.png" alt=""> Pickup or delivery</h4></a>
-                                    <p>Duis pretium gravida enim, vel maximus ligula fermentum a. Sed rhoncus eget ex.</p>
+                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-3.png" alt=""> 下单</h4></a>
                                 </div>
                             </div>
                         </div>
@@ -190,8 +211,7 @@
                 <div class="col-lg-6">
                     <div class="section-title text-center">
                         <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">
-                        <h3 class="title">Search by food category</h3>
-                        <p>The Process of our service</p>
+                        <h3 class="title">食物类别搜索</h3>
                     </div>
                 </div>
             </div>
@@ -205,7 +225,7 @@
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a href="#">Breakfast Iteam</a>
+                            <a onclick="getsortfromindex(1)" >奶茶专区</a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +238,7 @@
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a href="#">Lunch Iteam</a>
+                            <a onclick="getsortfromindex(2)">甜品/蛋糕</a>
                         </div>
                     </div>
                 </div>
@@ -231,7 +251,46 @@
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a href="#">Dinner Iteam</a>
+                            <a onclick="getsortfromindex(3)">包子/早点</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="category-item mt-30">
+                        <div class="category-thumb">
+                            <img src="../../static/img/front-images/category-3.jpg" alt="category">
+                            <div class="item">
+                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                            </div>
+                        </div>
+                        <div class="category-content text-center">
+                            <a onclick="getsortfromindex(4)">午饭套餐</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="category-item mt-30">
+                        <div class="category-thumb">
+                            <img src="../../static/img/front-images/category-3.jpg" alt="category">
+                            <div class="item">
+                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                            </div>
+                        </div>
+                        <div class="category-content text-center">
+                            <a onclick="getsortfromindex(5)">肉类炒菜</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="category-item mt-30">
+                        <div class="category-thumb">
+                            <img src="../../static/img/front-images/category-3.jpg" alt="category">
+                            <div class="item">
+                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                            </div>
+                        </div>
+                        <div class="category-content text-center">
+                            <a onclick="getsortfromindex(6)">素菜专区</a>
                         </div>
                     </div>
                 </div>
@@ -284,8 +343,7 @@
                 <div class="col-lg-8">
                     <div class="section-title text-center">
                         <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">
-                        <h3 class="title">Restaurant With Special Menu All</h3>
-                        <p>The Process of our service</p>
+                        <h3 class="title">每天特别食物</h3>
                     </div>
                 </div>
             </div>
@@ -296,12 +354,13 @@
                     <div class="food-menu-box bg_cover" style="background-image: url(../../static/img/front-images/food-menu-bg.jpg);">
                         <div class="project-menu">
                             <ul>
-                                <li data-filter="*" class="active">All</li>
-                                <li data-filter=".cat-1">Breakfast</li>
-                                <li data-filter=".cat-2">Lunch</li>
-                                <li data-filter=".cat-3">Dinner</li>
-                                <li data-filter=".cat-4">Coffee</li>
-                                <li data-filter=".cat-5">Snacks</li>
+                                <li data-filter="*" class="active">所有</li>
+                                <li data-filter=".cat-1">奶茶专区</li>
+                                <li data-filter=".cat-2">甜品/蛋糕</li>
+                                <li data-filter=".cat-3">包子/早点</li>
+                                <li data-filter=".cat-4">午饭套餐</li>
+                                <li data-filter=".cat-5">肉类炒菜</li>
+                                <li data-filter=".cat-5">素菜专区</li>
                             </ul>
                         </div>
                         <div class="row grid">
@@ -412,8 +471,7 @@
                 <div class="col-lg-8">
                     <div class="section-title text-center">
                         <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">
-                        <h3 class="title">Download our app</h3>
-                        <p>The Process of our service</p>
+                        <h3 class="title">微信小程序</h3>
                     </div>
                 </div>
             </div>
@@ -428,8 +486,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="download-item-content">
-                            <h3 class="title">Rondhon Now In Your Hand</h3>
-                            <p>Download! to get this app Faster way to order food</p>
+                            <h3 class="title">扫描上面二维码</h3>
+                            <p>注册登录有优惠哦！！！</p>
                             <ul>
                                 <li><a href="#"><img src="../../static/img/front-images/store-1.png" alt=""></a></li>
                                 <li><a href="#"><img src="../../static/img/front-images/store-2.png" alt=""></a></li>
@@ -708,7 +766,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-copyright d-block d-sm-flex justify-content-between align-items-center">
-                        <p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                        <p>tests特踏实神擦第三次<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
                         <a href="#"><img src="../../static/img/front-images/payment.png" alt=""></a>
                     </div>
                 </div>

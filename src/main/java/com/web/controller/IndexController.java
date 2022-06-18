@@ -15,7 +15,7 @@ public class IndexController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping("/index1")
+    @RequestMapping("/search")
     @ResponseBody
     public ResponseData getdinedata(@RequestParam("dinename")String key){
 
@@ -33,8 +33,22 @@ public class IndexController {
 
     }
 
-    @RequestMapping("/test")
-    public String test(){
+    @RequestMapping("/index")
+    public String tocusindex(){
         return  "cus/index";
     }
+
+    @RequestMapping("/menu")
+    public String tocusmenu(){
+        return "cus/menu";
+    }
+    @RequestMapping("/about")
+    public String tocusabout(){
+        return "cus/about";
+    }
+    @RequestMapping("/cuslogin")
+    public String tocuslogin(){
+        return "cus/login";
+    }
+
 }

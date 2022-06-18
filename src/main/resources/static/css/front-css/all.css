@@ -4667,9 +4667,6 @@ readers do not read off random characters that represent icons */
 .fa-shopping-bag:before {
   content: "\f290"; }
 
-.fa-shopping-basket:before {
-  content: "\f291"; }
-
 .fa-shopping-cart:before {
   content: "\f07a"; }
 
@@ -5689,10 +5686,6 @@ readers do not read off random characters that represent icons */
 
 .fa-usd-square:before {
   content: "\f2e9"; }
-
-.fa-user:before {
-  content: "\f007"; }
-
 .fa-user-alt:before {
   content: "\f406"; }
 

@@ -1,0 +1,67 @@
+.expressdine{
+    background-color: whitesmoke;
+    border-width: 2px;
+    width: 100%;
+    height: 200px;
+    margin: auto;
+}
+.expressdine .dineimage{
+    float: left;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-color: white;
+    width: 20%;
+    height: 100%;
+}
+.expressdine .indexspan{
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 40px;
+    width: 30%;
+    height: 100%;
+    min-height: 200px;
+    /*font-size: 20px;*/
+    /*padding-left: 50px;*/
+}
+.expressdine .indexspan1{
+    display: flex;
+    word-wrap:break-word;
+    word-break:normal;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 30%;
+    height: 100%;
+    min-height: 200px;
+    float: left;
+    /*font-size: 20px;*/
+    /*padding-left: 50px;*/
+}
+.expressdine .dine-prece{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 10%;
+    height: 100%;
+    min-height: 200px;
+    float: left;
+}
+.expressdine .dine-But{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 10%;
+    height: 100%;
+    min-height: 200px;
+    float: left;
+}
+.topiconone{
+    width: 20px;
+    height: 20px;
+}
