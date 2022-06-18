@@ -35,6 +35,6 @@ public class IndexController {
 
     @RequestMapping("/test")
     public String test(){
-        return "cus/index";
+        return  "cus/index";
     }
 }
