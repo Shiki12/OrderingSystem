@@ -3,16 +3,16 @@ function logincus1(){
     var password1=document.getElementById('Password1').value;
     $.ajax({
         type: "get",
-        url: 'http://localhost:8001/index/cuslogin',
+        url: 'http://localhost:8001/login/customer',
         data :{"username": username1 , "password": password1},
         dataType: 'json',
         async: true,
-        success: function (data) {
-            if(data===4)
-                document.getElementById("myDiv").innerHTML;
+        success: function (data1) {
+            if(data1.responseText==="success")
+                alert("success");
         },
-        error() {
-            alert("请求失败！！！")
+        error(data1) {
+            console.log(data1.responseText);
         },
     });
 }

@@ -80,16 +80,16 @@ public class LoginController {
 
     }
     @RequestMapping("/customer")
-
-    public String login(@RequestParam("Username") String username,
-                        @RequestParam("Password") String password,HttpSession session,Model model){
+    @ResponseBody
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password,HttpSession session,Model model){
 
         Customer customer = customerService.getByName(username);
         if (customer!=null){
             if (password.equals(customer.getPassword())){
               session.setAttribute("customer",customer);
               model.addAttribute("msg","登录成功");
-              return "cus/index";
+              return "success";
             }
             else {
                 model.addAttribute("msg","账号或密码错误");

@@ -5,13 +5,12 @@ function getdine(){
         url: 'http://localhost:8001/index/search',
         data :{"dinename": name1},
         dataType: 'json',
-        async: true,
         success: function (data) {
-            if(data==4)
-                document.getElementById("myDiv").innerHTML;
+            if(data=="登录成功")
+                alert("登录成功！！");
         },
         error() {
-            alert("请求失败！！！")
+            alert(data);
         },
     });
 }
