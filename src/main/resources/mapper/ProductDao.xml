@@ -13,7 +13,8 @@
     <update id="update" parameterType="product">
         update product set name = #{name},
         price = #{price},
-        like = #{like},
+        zan
+            = #{zan},
         number = #{number},
         status = #{status},
         imageurl = #{imageUrl},
@@ -30,7 +31,7 @@
 
     <select id="getAll" resultType="com.web.entity.Product">
 
-       select  * from  product where status = 1;
+       select  * from  product
 
     </select>
     <select id="getById" resultType="com.web.entity.Product">
@@ -45,7 +46,7 @@
 
     <select id="getOnlineById" resultType="com.web.entity.Product">
         select *
-        from product where id = #{id} and status = 1;
+        from product where id = #{id} and status = 1
     </select>
 
     <select id="getProNum" resultType="Integer">
@@ -53,4 +54,5 @@
         where p.status = 1
         GROUP BY p.cid
     </select>
+
 </mapper>

@@ -5,18 +5,15 @@
 <mapper namespace="com.web.dao.CustomerDao">
 
     <insert id="addCustomer" keyProperty="id" useGeneratedKeys="true">
-        insert into customer (name, password,address,phone,status,token)
-        values (#{name},#{password},#{address},#{phone},#{status},#{token})
+        insert into customer (name, password,address,phone,status)
+        values (#{name},#{password},#{address},#{phone},#{status})
     </insert>
 
 
     <update id="update">
         update customer
-        set name = #{mame},
-            password = #{password},
-            address = #{address},
-            phone = #{phone},
-            status = #{status},
+        set name = #{name},password = #{password},address = #{address},phone = #{phone},
+            status = #{status}
         where id = #{id};
 
     </update>

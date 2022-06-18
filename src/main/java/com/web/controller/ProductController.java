@@ -50,8 +50,12 @@ public class ProductController {
         product.setImageUrl("images/product/"+originalFilename);
 
         log.info("存入数据库的商品地址={}",product.getImageUrl());
-        product.setBid(1);
-        product.setCid(1);
+
+        product.setBid(1); //这个是商品种类id
+
+        product.setCid(1); //这个是前端传过来管理员的id
+
+        product.setStatus(1); //默认状态是有存货
         productService.addProduct(product);
 
         PageHelper.startPage(pageNum,10);

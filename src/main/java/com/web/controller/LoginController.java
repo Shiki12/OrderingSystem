@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.ParsePosition;
@@ -22,17 +23,19 @@ public class LoginController {
     @Autowired
     AdministratorDao administratorDao;
 
-    @RequestMapping("/")
+    @RequestMapping("/") //
     public String toLogin(){
         return "admin/login";
     }
 
-    @RequestMapping("/user")
+
+    @RequestMapping("") //
     public String toUserLogin(){
-        return "cus/index";
+        return "cus/login";
     }
 
-    @RequestMapping ("/admin")
+    @RequestMapping ("/admin")  //管理员登录功能
+    @ResponseBody
     public String login(
             @RequestParam("username")String username,
             @RequestParam("password")String password, Model model, HttpSession session){
@@ -64,13 +67,22 @@ public class LoginController {
                 return "admin/index";
             }
 
-
         }catch (Exception e){
             model.addAttribute("msg","程序异常");
             return "";
         };
         return "";
 
+    }
+    @RequestMapping("/user")
+
+    public String login(@RequestParam("Username") String username,
+                        @RequestParam("Password") String password,HttpSession httpSession){
+
+
+
+
+        return "";
     }
 
 

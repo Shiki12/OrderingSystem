@@ -30,7 +30,5 @@ public class CategoryController {
         return "admin/index";
     }
 
-
-
 }
 

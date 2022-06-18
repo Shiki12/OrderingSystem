@@ -9,23 +9,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
+@ResponseBody
 @RequestMapping("/customer")
 @Slf4j
 public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+
     @RequestMapping("/getAll")
-    public String getAll(Model model){
+
+    public List getAll(Model model){
         List<Customer> customers = customerService.getAll();
 
         model.addAttribute("customers",customers);
 
-        return "admin";
+        return customers;
     }
 
     @RequestMapping("/add")
@@ -33,9 +37,15 @@ public class CustomerController {
 
         log.info("customer={}",customer);
 
-        customerService.addCustomer(customer);
 
-        return "";   //返回管理的页面
+        if ( customerService.addCustomer(customer)>0){
+            return "ok";
+        }
+        else {
+
+            return "false";
+        }
+        //返回管理的页面
 
     }
 
@@ -43,9 +53,12 @@ public class CustomerController {
    public String delete(@PathVariable("id") int id){
 
         log.info("删除的id是={}",id);
-        customerService.deleteById(id);
 
-        return ""; //返回视图
+        if (customerService.deleteById(id)>0){
+            return "ok";
+        }
+
+        return "false"; //返回视图
 
     }
 
@@ -53,21 +66,24 @@ public class CustomerController {
     public String update(Customer customer){
         log.info("需要更新的用户是={}",customer);
 
-        if ( customerService.update(customer)>0){
-            System.out.println("更新成功");
+        if (customerService.update(customer)>0){
+            return "更新成功";
         }
 
 
-        return "";//返回新视图
+        return "shibai";//返回新视图
     }
     @RequestMapping("/toUpdate/{id}")
     public String toUpdate(@PathVariable("id") int id,Model model){
 
-        Customer customer = customerService.getById(id);
 
-        model.addAttribute("customer",customer);
 
-        return "";
+        if (customerService.getById(id)!=null){
+            return "ok";
+        }
+        //model.addAttribute("customer",customer);
+
+        return "false";
     }
 
 

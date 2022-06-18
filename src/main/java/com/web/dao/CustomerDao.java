@@ -19,7 +19,7 @@ public interface CustomerDao {
 
     Customer getByPhone(String phone);
 
-    void update(Customer customer);
+    int update(Customer customer);
 
     void updateCustmoerToken(String phone, String token);
 }

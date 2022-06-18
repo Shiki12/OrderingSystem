@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int update(Customer customer) {
-        return customerDao.addCustomer(customer);
+        return customerDao.update(customer);
     }
 
     @Override
