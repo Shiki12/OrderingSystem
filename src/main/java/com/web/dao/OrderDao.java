@@ -8,9 +8,6 @@ import com.web.entity.po.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 //订单接口
 @Mapper
@@ -27,4 +24,7 @@ public interface OrderDao {
     int addOrderChild(OrderChild orderChild);
 
     List<Order> getOrderByToken(String token);
+
+    //统计最大的订单id
+    int count();
 }

@@ -10,7 +10,11 @@ import java.util.List;
 public interface OrderService {
      List<Order> getCustomerOrder(Customer customer);
 
+
+     //一个订单一件商品
      int addBoth(OrderItem orderItem);
+
+     int addSomeOrders(List<OrderItem> orderItem);
      int addOrderChild(OrderChild orderChild);
      //添加order订单表
      int addOrder(Order order);

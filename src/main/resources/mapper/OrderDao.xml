@@ -28,11 +28,11 @@
     <insert id="addOrderItem">
         insert into orderitem (pid,oid,cstid,number)
         values (#{pid},#{oid},#{cstid},#{number});
-
     </insert>
+
     <insert id="addOrderChild" parameterType="orderChild">
-        insert into order_ (code,address,cstid,status)
-        values (#{code},#{address},#{cstid},#{status});
+        insert into order_ (id,code,address,cstid,status)
+        values (#{id},#{code},#{address},#{cstid},#{status});
     </insert>
 
     <!-- 加上o.id 就表示同一次订单购买了哪些东西，即下单多选 能够得到完整的订单信息
@@ -40,7 +40,6 @@
      信息,不过这样的话订单的id就拿不到了，只能拿到订单的单号
     -->
     <select id="getCustomerOrderById" resultMap="orderByCustomer">
-
         SELECT c.id userid,c.`name` username,c.phone ,
                p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
                o.address address,o.code,
@@ -61,4 +60,9 @@
         FROM orderitem o,product p,customer c
         WHERE isNull(o.oid) and p.id = o.pid and c.id=o.cstid and token=#{token}
     </select>
+    <select id="count" resultType="java.lang.Integer">
+        select max(id) from  order_
+    </select>
+
+
 </mapper>

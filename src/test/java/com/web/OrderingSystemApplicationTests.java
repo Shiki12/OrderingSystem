@@ -6,7 +6,6 @@ import com.web.entity.Administrator;
 import com.web.entity.Customer;
 import com.web.entity.Order;
 import com.web.entity.Product;
-import com.web.entity.po.OrderItem;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,16 +79,7 @@ class OrderingSystemApplicationTests {
 
     @Test
     void testPlaceOrder(){
-        OrderItem orderItem = new OrderItem(6, 1, 1, 15,"地址");
 
-        OrderItem[] orderItems = new OrderItem[100];
-        orderItems[0]= orderItem;
-        orderItems[1]= orderItem;
-        orderItems[2]= orderItem;
-        //添加了订单
-        orderDao.addOrderItem(orderItems[0]);
-        orderDao.addOrderItem(orderItems[1]);
-        orderDao.addOrderItem(orderItems[2]);
 
     }
 

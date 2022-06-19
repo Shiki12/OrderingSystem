@@ -2,8 +2,11 @@ package com.web.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
+
 
 public class Utils {
+
 
     public static String getStringDate() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//设置日期格式
@@ -13,7 +16,14 @@ public class Utils {
         for (String string : strings) {
             if (string != null) stringBuffer.append(string);
         }
+
         return stringBuffer.toString();
+    }
+
+    public static int genId(){
+        Random random = new Random();
+        int number=random.nextInt(9000000)+1000000;
+        return number;
     }
 
 
