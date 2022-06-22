@@ -19,5 +19,4 @@ public class LeavingMessages {
     private  Integer status; //审核状态
     private  Date fubudate; //发布时间
 
-
 }

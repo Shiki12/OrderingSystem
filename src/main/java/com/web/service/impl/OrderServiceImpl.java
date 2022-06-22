@@ -56,6 +56,9 @@ public class OrderServiceImpl<getUtils> implements OrderService {
 
             //添加进order表
             addOrderChild(orderChild);
+
+            String time = Utils.getTime();
+            orderItem.setTime(time);
             // 添加商品
             addOrderItem(orderItem); //添加进了orderItem表 即添加了商品
         }catch (Exception e){

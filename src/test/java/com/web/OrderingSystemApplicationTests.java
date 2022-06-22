@@ -1,11 +1,13 @@
 package com.web;
 
 import com.web.dao.AdministratorDao;
+import com.web.dao.CommentDao;
 import com.web.dao.OrderDao;
 import com.web.entity.Administrator;
 import com.web.entity.Customer;
 import com.web.entity.Order;
 import com.web.entity.Product;
+import com.web.entity.po.CommentVo;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ class OrderingSystemApplicationTests {
 
     @Autowired
     OrderDao  orderDao;
+
+    @Autowired
+    CommentDao commentDao;
 
 
     @Test
@@ -89,5 +94,16 @@ class OrderingSystemApplicationTests {
         for (Product product : list) {
             System.out.println(product);
         }
+    }
+
+    @Test
+
+    void testComment(){
+        List<CommentVo> comment = commentDao.getCommentByCusId(1);
+        for (CommentVo commentVo : comment) {
+
+            System.out.println(commentVo);
+        }
+
     }
 }

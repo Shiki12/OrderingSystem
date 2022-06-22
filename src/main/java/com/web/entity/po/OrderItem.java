@@ -13,6 +13,7 @@ public class OrderItem {
     private  int pid;
     private  int oid;
     private  int cstid;
+    private  String  time;
     private String address;
 
     public OrderItem(int pid, int oid, int cstid, int number,String address) {

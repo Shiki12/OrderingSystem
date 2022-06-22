@@ -8,6 +8,7 @@
     <id column="id" property="id"/>
     <result column="address" property="address"/>
     <result property="code" column="code"/>
+    <result property="time" column="order_time"/>
     <association property="customer" javaType="customer">
         <id column="userid" property="id"/>
         <result column="username" property="name"/>
@@ -26,8 +27,8 @@
         values (#{code},#{address},#{cstid});
     </insert>
     <insert id="addOrderItem">
-        insert into orderitem (pid,oid,cstid,number)
-        values (#{pid},#{oid},#{cstid},#{number});
+        insert into orderitem (pid,oid,cstid,number,time)
+        values (#{pid},#{oid},#{cstid},#{number},#{time});
     </insert>
 
     <insert id="addOrderChild" parameterType="orderChild">
@@ -43,7 +44,7 @@
         SELECT c.id userid,c.`name` username,c.phone ,
                p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
                o.address address,o.code,
-               oi.number order_number
+               oi.number order_number,oi.time order_time
         FROM orderitem oi,order_ o, product p ,customer c
         WHERE oi.pid=p.id AND oi.cstid=c.id AND  oi.oid=o.id AND c.id=#{id}
     </select>

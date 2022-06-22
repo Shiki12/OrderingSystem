@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.MessageDao">
+
+    <insert id="addMessage" parameterType="leavingMessages">
+        insert into zixun (content,cstid,`status`,fabudate)
+        values (#{content},#{cstid},#{status},#{fubudate});
+    </insert>
+    <delete id="deleteById">
+            delete  from zixun where id = #{id}
+    </delete>
+
+
+</mapper>

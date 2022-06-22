@@ -19,6 +19,7 @@ public class Order {
     private Integer status; //订单状态 0 没出货 1配送中 2完成
     private Integer totalNumber; //商品总数量
     private  String address; //送达的地址
+    private  String time;
     private  float total; //总价格
 
 }

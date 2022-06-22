@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.CommentDao">
+
+    <resultMap id="commentVo" type="commentVo">
+
+
+
+    </resultMap>
+    <insert id="addComment" parameterType="comment">
+        insert into review (content,cstid,pid,createtime)
+        values (#{content},#{cstid},#{pid},#{createtime});
+    </insert>
+    <delete id="deleteById">
+        delete
+        from review
+        where id = #{id};
+    </delete>
+
+    <select id="getCommentById" resultType="commentPo">
+        SELECT  r.id id ,c.`name` username,r.content content,r.createtime time
+             from review r,customer c
+            WHERE r.cstid = c.id AND r.pid=#{id}
+    </select>
+    <select id="getCommentByCusId" resultMap="commentVo">
+        SELECT p.name proname, p.imageurl imageurl,
+               r.id id ,c.`name` username,r.content content,r.createtime time
+        from review r,customer c,product p
+        WHERE r.cstid = c.id AND p.id = r.pid AND r.cstid=#{id}
+    </select>
+
+
+</mapper>
