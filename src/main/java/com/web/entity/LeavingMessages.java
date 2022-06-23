@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 /*
   留言
  */
@@ -17,6 +15,6 @@ public class LeavingMessages {
     private String content;
     private  Integer cstid;
     private  Integer status; //审核状态
-    private  Date fubudate; //发布时间
+    private  String fabudate; //发布时间
 
 }

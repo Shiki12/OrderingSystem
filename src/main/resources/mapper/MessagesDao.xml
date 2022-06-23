@@ -8,9 +8,20 @@
         insert into zixun (content,cstid,`status`,fabudate)
         values (#{content},#{cstid},#{status},#{fubudate});
     </insert>
+    <update id="updateById">
+        update zixun
+        set content = #{content},
+            cstid = #{cstid},
+            status = #{status},
+            fubudate = #{fubudate}
+        where id =#{id};
+    </update>
     <delete id="deleteById">
             delete  from zixun where id = #{id}
     </delete>
+    <select id="getAll" resultType="com.web.entity.LeavingMessages">
+        select * from  zixun;
+    </select>
 
 
 </mapper>

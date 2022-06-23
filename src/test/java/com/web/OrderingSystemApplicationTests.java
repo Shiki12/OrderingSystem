@@ -2,11 +2,9 @@ package com.web;
 
 import com.web.dao.AdministratorDao;
 import com.web.dao.CommentDao;
+import com.web.dao.MessageDao;
 import com.web.dao.OrderDao;
-import com.web.entity.Administrator;
-import com.web.entity.Customer;
-import com.web.entity.Order;
-import com.web.entity.Product;
+import com.web.entity.*;
 import com.web.entity.po.CommentVo;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
@@ -31,6 +29,9 @@ class OrderingSystemApplicationTests {
 
     @Autowired
     CommentDao commentDao;
+
+    @Autowired
+    MessageDao messageDao;
 
 
     @Test
@@ -97,7 +98,6 @@ class OrderingSystemApplicationTests {
     }
 
     @Test
-
     void testComment(){
         List<CommentVo> comment = commentDao.getCommentByCusId(1);
         for (CommentVo commentVo : comment) {
@@ -105,5 +105,13 @@ class OrderingSystemApplicationTests {
             System.out.println(commentVo);
         }
 
+    }
+
+    @Test
+    void testMessage(){
+        List<LeavingMessages> all = messageDao.getAll();
+        for (LeavingMessages leavingMessages : all) {
+            System.out.println(leavingMessages);
+        }
     }
 }
