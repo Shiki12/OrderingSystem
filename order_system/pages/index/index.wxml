@@ -1,0 +1,37 @@
+<page>
+
+  <!-- 滚动推荐 -->
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+    <block wx:for="{{bannerData}}" wx:key="*this">
+      <swiper-item>
+        <image></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <view class="content">
+    <!-- 左导航 -->
+    <scroll-view scroll-y scroll-into-view="Left{{currentLeftmenuIndex}}" class="nav_left">
+      <view class="nav_left_items {{index === currentLeftmenuIndex ? 'active' : ''}}" wx:for="{{leftMenuList}}" wx:key="id" data-index="{{index}}" data-rightindex="{{RightItemsNumber[index]}}" bindtap="onTapLeftmenu">{{item}}</view>
+    </scroll-view>
+
+    <!-- 商品信息 -->
+    <scroll-view scroll-y enhanced show-scrollbar="false" scroll-with-animation="true" scroll-into-view="Right{{currentRightmenuIndex}}" 
+    class="nav_right">
+      <view class="nav_right_items" id="Right{{item.id}}" wx:for="{{RightItems}}" wx:key="id" bindtap="toProDetail" data-id="{{item.id}}" data-scrolltop="{{scrollTop}}">
+        <view class="proInfo">
+          <view>
+            <view class="proname">{{item.name}}</view>
+            <view class="proprice">价格：{{item.price}}</view>
+            <view class="like">喜欢：{{item.like}}</view>
+            <!-- <view>{{item.miaoshu}}</view> -->
+            <!-- <image src="{{item.imageUrl}}"></image> -->
+
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+</page>

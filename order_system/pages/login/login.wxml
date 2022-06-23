@@ -1,0 +1,8 @@
+<!--pages/login/login.wxml-->
+<!--授权登录-->
+<view class="wapper">
+  <button class="login_yes" bindtap="getUserProfile">授权登录</button>
+  <button class="login_no"  bindtap="exitMiniProgram">退出</button>
+</view>
+
+

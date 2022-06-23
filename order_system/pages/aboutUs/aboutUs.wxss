@@ -1,0 +1,33 @@
+/* pages/aboutUs/aboutUs.wxss */
+page{
+  width: 100%;
+}
+
+.company{
+  font-weight: bold;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.address{
+  font-weight: bold;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.phone{
+  font-weight: bold;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.consult{
+  font-weight: bold;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
