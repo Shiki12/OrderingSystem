@@ -1,0 +1,30 @@
+.wapper{
+
+  margin-top: 30%;
+  padding: 0 20rpx;
+}
+
+.formItem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formItem input{
+  border: 1px solid #999;
+  padding: 10rpx 15rpx;
+  margin-top: 7%;
+}
+
+.btn{
+  background-color: rgba(22, 189, 44, 0.562);
+  font-weight: bold;
+  color: #fff;
+  margin-top: 20%;
+}
+
+.register{
+  background-color: rgba(245, 213, 33, 0.822);
+  font-weight: bold;
+  color: #fff;
+  margin-top: 5%;
+}
