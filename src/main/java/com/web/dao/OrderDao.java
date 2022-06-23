@@ -14,4 +14,6 @@ public interface OrderDao {
     Order getCustomerOrderById(Customer customer);
 
     List<Order> getOrderByToken(String token);
+
+    boolean addOrder(int pid, int cid ,int number);
 }

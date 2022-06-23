@@ -35,6 +35,12 @@
             c.`name` cname,
             c.phone
         FROM orderitem o,product p,customer c
-        WHERE isNull(o.oid) and p.id = o.pid and c.id=o.cstid and token=#{token}
+        WHERE isNull(o.oid) and p.id = o.pid and c.id = o.cstid and token=#{token}
     </select>
+
+    <insert id="addOrder" keyProperty="id" useGeneratedKeys="true">
+        insert into orderitem (pid,oid,cstid,number)
+        values (#{pid},#{oid},#{cid},#{number})
+    </insert>
+
 </mapper>

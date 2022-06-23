@@ -21,20 +21,16 @@ public class WxCustomerServiceImpl implements WxCustomerService {
     @Override
     public ResponseData wx_login(String code, String phone, String password){
         System.out.println("wx端后台登录申请");
-
         try {
             //电话验证
             Customer customer = customerDao.getByPhone(phone);
             if(customer==null){
                 return new ResponseData(0,"用户不存在");
             }
-
             //密码验证
             if(!customer.getPassword().equals(password)){
                 return new ResponseData(0,"密码错误");
             }
-
-
             //AppID = wx607e482d17d2faf0
             //AppSecret = a86f77fcf21eafa7559a478109e8ed52
             String url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx607e482d17d2faf0&secret=a86f77fcf21eafa7559a478109e8ed52&js_code="+code+"&grant_type=authorization_code";

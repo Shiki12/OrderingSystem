@@ -43,4 +43,8 @@
     <select id="getByPhone" resultType="com.web.entity.Customer">
         select * from customer where phone = #{phone}
     </select>
+
+    <select id="getCustomerByToken" resultType="com.web.entity.Customer">
+        select * from customer where token = #{token}
+    </select>
 </mapper>

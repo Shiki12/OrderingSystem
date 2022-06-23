@@ -22,4 +22,6 @@ public interface CustomerDao {
     void update(Customer customer);
 
     void updateCustmoerToken(String phone, String token);
+
+    Customer getCustomerByToken(String token);
 }
