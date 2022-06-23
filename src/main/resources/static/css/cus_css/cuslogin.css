@@ -31,7 +31,7 @@ body{
 }
 .box .inputBox input
 {
-    width: 100%;
+    width:100%;
     padding: 10px 0;
     font-side:16px;
     color: #fff;
@@ -99,4 +99,14 @@ body{
 }
 .cusregistbottom:active .registcus{
     display: block;
+}
+.worrypicno{
+    display: none;
+}
+.worrypicon{
+    top: 0;
+    padding-top: 10px;
+    left: 300px;
+    display: block;
+    position: absolute;
 }
