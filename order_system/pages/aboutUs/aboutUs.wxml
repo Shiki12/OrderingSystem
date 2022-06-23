@@ -1,8 +1,0 @@
-<page>
-  <view class="container">
-    <text class="company">名称：XXXX食品有限公司</text>
-    <text class="address">地址：XXXX1216</text>
-    <text class="phone"> 电话：6666-6666</text>
-    <text class="consult">客服QQ：132</text>
-  </view>
-</page>
