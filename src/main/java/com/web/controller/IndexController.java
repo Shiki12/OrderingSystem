@@ -51,4 +51,9 @@ public class IndexController {
         return "cus/login";
     }
 
+    @RequestMapping("commod")
+    public String getcommod(){
+        return "评论";
+    }
+
 }

@@ -12,6 +12,11 @@
     <!--====== Title ======-->
     <title>点餐系统</title>
 
+    <!--   manu底端的样式 -->
+    <link href="../../static/css/menu/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="../../static/css/menu/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../../static/css/menu/lightbox.css">
+
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="../../static/css/front-css/bootstrap.min.css">
     
@@ -134,25 +139,20 @@
                     </div>
                 </div>
             </div>
-            <div class="expressdine">
-                <div class="dineimage">
-                   <img src="../../static/img/cus/login.png">
-                </div>
-                <div >
-                    <div class="indexspan">
-                        <span>宫保鸡丁</span>
-                    </div>
-                    <div class="indexspan1">
-                        <span >&nbsp&nbsp&nbsp&nbsp
-                            &nbsp
-                            描述有可能。”霍胖子答道，说话都显得特别小心，压低了声音，生怕引起这些灵体的注意，“我看过这家医院的资料，病人有几百号，医生护士只有几十个，这里的灵体至少有上百吧？</span>
-                    </div>
-                    <div class="dine-prece">
-                        <span >价格</span>
-                    </div>
-                    <div class="dine-But">
-                        <button type="submit">下单</button>
-                    </div>
+            <div class="contactsearch">
+                <div class=" expressdine overflowdine">
+                    <table class="table-index">
+                        <tbody>
+                        <tr>
+                            <th class="thname">菜单名字</th>
+                            <th class="thpicture">样品展示</th>
+                            <th class="thmiaoshu">描述</th>
+                            <th class="thname">价格</th>
+                            <th class="thname">下单</th>
+                        </tr>
+                        </tbody >
+                        <tbody id="search-dine"></tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -162,44 +162,44 @@
 
     <!--====== HOW IT WORK PART START ======-->
     
-    <section class="how-it-work-area bg_cover pt-150 pb-150 parallaxie" style="background-image: url(../../static/img/front-images/how-it-work-bg.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="how-it-work-box">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="section-title text-center">
-                                    <img src="../../static/img/front-images/shape/title-shape.png" alt="title">
-                                    <h3 class="title">怎么工作</h3>
-                                    <p>我们服务的步骤</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-lg-4 col-md-8">
-                                <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-1.png" alt="">？？</h4></a>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-8">
-                                <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-2.png" alt=""> 选择你喜欢的食物</h4></a>
-                                    <p>各种各样的食物</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-8">
-                                <div class="how-it-work-item mt-30">
-                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-3.png" alt=""> 下单</h4></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="how-it-work-area bg_cover pt-150 pb-150 parallaxie" style="background-image: url(../../static/img/front-images/how-it-work-bg.jpg);">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="how-it-work-box">-->
+<!--                        <div class="row justify-content-center">-->
+<!--                            <div class="col-lg-6">-->
+<!--                                <div class="section-title text-center">-->
+<!--                                    <img src="../../static/img/front-images/shape/title-shape.png" alt="title">-->
+<!--                                    <h3 class="title"></h3>-->
+<!--                                    <p>我们服务的步骤</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row justify-content-center">-->
+<!--                            <div class="col-lg-4 col-md-8">-->
+<!--                                <div class="how-it-work-item mt-30">-->
+<!--                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-1.png" alt="">？？</h4></a>-->
+<!--                                    <p></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-8">-->
+<!--                                <div class="how-it-work-item mt-30">-->
+<!--                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-2.png" alt=""> 选择你喜欢的食物</h4></a>-->
+<!--                                    <p>各种各样的食物</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-8">-->
+<!--                                <div class="how-it-work-item mt-30">-->
+<!--                                    <a href="#"><h4 class="title"><img src="../../static/img/front-images/icon/icon-3.png" alt=""> 下单</h4></a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
     
     <!--====== HOW IT WORK PART ENDS ======-->
 
@@ -308,25 +308,25 @@
                 <div class="col-lg-3 col-md-6 col-sm-7">
                     <div class="fun-facts-item mt-30 text-center">
                         <h3 class="title odometer" data-count="275">00</h3>
-                        <span>Daily Orders</span>
+                        <span>每日订单</span>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-7">
-                    <div class="fun-facts-item mt-30 text-center">
-                        <h3 class="title odometer" data-count="925">00</h3>
-                        <span>Active Restaurant</span>
-                    </div>
-                </div>
+<!--                <div class="col-lg-3 col-md-6 col-sm-7">-->
+<!--                    <div class="fun-facts-item mt-30 text-center">-->
+<!--                        <h3 class="title odometer" data-count="925">00</h3>-->
+<!--                        <span>Active Restaurant</span>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="col-lg-3 col-md-6 col-sm-7">
                     <div class="fun-facts-item mt-30 text-center">
                         <h3 class="title odometer" data-count="989">00</h3>
-                        <span>Daily traffic</span>
+                        <span>外卖交通工具</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-7">
                     <div class="fun-facts-item mt-30 text-center">
                         <h3 class="title odometer" data-count="125">00</h3>
-                        <span>Delivery Boy</span>
+                        <span>外卖员</span>
                     </div>
                 </div>
             </div>
@@ -488,10 +488,10 @@
                         <div class="download-item-content">
                             <h3 class="title">扫描上面二维码</h3>
                             <p>注册登录有优惠哦！！！</p>
-                            <ul>
-                                <li><a href="#"><img src="../../static/img/front-images/store-1.png" alt=""></a></li>
-                                <li><a href="#"><img src="../../static/img/front-images/store-2.png" alt=""></a></li>
-                            </ul>
+<!--                            <ul>-->
+<!--                                <li><a href="#"><img src="../../static/img/front-images/store-1.png" alt=""></a></li>-->
+<!--                                <li><a href="#"><img src="../../static/img/front-images/store-2.png" alt=""></a></li>-->
+<!--                            </ul>-->
                         </div>
                     </div>
                 </div>
@@ -507,7 +507,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-2 col-md-3 col-sm-3">
-                    <div class="client-area-thumb-ltem">
+                    <div class="client-area-thumb-ltem" id="commondone">
                         <ul>
                             <li><img src="../../static/img/front-images/client-user-1.png" alt="user"></li>
                             <li><img src="../../static/img/front-images/client-user-2.png" alt="user"></li>
@@ -517,17 +517,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-9 col-sm-9">
-                    <div class="client-slide">
+                    <div class="client-slide" id="commmodtow">
                         <div class="client-box">
                             <h4 class="title">Very Taste and Professional Behave </h4>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <ul>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
                             <div class="user mt-40">
                                 <div class="thumb">
                                     <img src="../../static/img/front-images/user-1.png" alt="">
@@ -539,13 +532,6 @@
                         <div class="client-box">
                             <h4 class="title">Very Taste and Professional Behave </h4>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <ul>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
                             <div class="user mt-40">
                                 <div class="thumb">
                                     <img src="../../static/img/front-images/user-2.png" alt="">
@@ -603,192 +589,250 @@
 
     <!--====== BLOG PART START ======-->
     
-    <section class="blog-area  pb-150">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">
-                        <h3 class="title">Latest from Blog</h3>
-                        <p>The Process of our service</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="blog-item mt-30">
-                        <div class="blog-thumb">
-                            <img src="../../static/img/front-images/blog-1.jpg" alt="blog">
-                            <span>May 24, 2020</span>
-                        </div>
-                        <div class="blog-content">
-                            <span>Fast  Food</span>
-                            <a href="#"><h4 class="title">Air Fryer French Fries</h4></a>
-                            <p>There are many variations of  passages of Lorem Ipsum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="blog-item mt-30">
-                        <div class="blog-thumb">
-                            <img src="../../static/img/front-images/blog-2.jpg" alt="blog">
-                            <span>May 24, 2020</span>
-                        </div>
-                        <div class="blog-content">
-                            <span>Fast  Food</span>
-                            <a href="#"><h4 class="title">Layered Yogurt Flatbreads</h4></a>
-                            <p>There are many variations of  passages of Lorem Ipsum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="blog-item mt-30">
-                        <div class="blog-thumb">
-                            <img src="../../static/img/front-images/blog-3.jpg" alt="blog">
-                            <span>May 24, 2020</span>
-                        </div>
-                        <div class="blog-content">
-                            <span>Fast  Food</span>
-                            <a href="#"><h4 class="title">Any-kind-of-fruit Galette</h4></a>
-                            <p>There are many variations of  passages of Lorem Ipsum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--    <section class="blog-area  pb-150">-->
+<!--        <div class="container">-->
+<!--            <div class="row justify-content-center">-->
+<!--                <div class="col-lg-8">-->
+<!--                    <div class="section-title text-center">-->
+<!--                        <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">-->
+<!--                        <h3 class="title">Latest from Blog</h3>-->
+<!--                        <p>The Process of our service</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row justify-content-center">-->
+<!--                <div class="col-lg-4 col-md-7 col-sm-9">-->
+<!--                    <div class="blog-item mt-30">-->
+<!--                        <div class="blog-thumb">-->
+<!--                            <img src="../../static/img/front-images/blog-1.jpg" alt="blog">-->
+<!--                            <span>May 24, 2020</span>-->
+<!--                        </div>-->
+<!--                        <div class="blog-content">-->
+<!--                            <span>Fast  Food</span>-->
+<!--                            <a href="#"><h4 class="title">Air Fryer French Fries</h4></a>-->
+<!--                            <p>There are many variations of  passages of Lorem Ipsum.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 col-md-7 col-sm-9">-->
+<!--                    <div class="blog-item mt-30">-->
+<!--                        <div class="blog-thumb">-->
+<!--                            <img src="../../static/img/front-images/blog-2.jpg" alt="blog">-->
+<!--                            <span>May 24, 2020</span>-->
+<!--                        </div>-->
+<!--                        <div class="blog-content">-->
+<!--                            <span>Fast  Food</span>-->
+<!--                            <a href="#"><h4 class="title">Layered Yogurt Flatbreads</h4></a>-->
+<!--                            <p>There are many variations of  passages of Lorem Ipsum.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 col-md-7 col-sm-9">-->
+<!--                    <div class="blog-item mt-30">-->
+<!--                        <div class="blog-thumb">-->
+<!--                            <img src="../../static/img/front-images/blog-3.jpg" alt="blog">-->
+<!--                            <span>May 24, 2020</span>-->
+<!--                        </div>-->
+<!--                        <div class="blog-content">-->
+<!--                            <span>Fast  Food</span>-->
+<!--                            <a href="#"><h4 class="title">Any-kind-of-fruit Galette</h4></a>-->
+<!--                            <p>There are many variations of  passages of Lorem Ipsum.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
     
     <!--====== BLOG PART ENDS ======-->
 
     <!--====== FOOTER PART START ======-->
     
-    <footer class="footer-area bg_cover" style="background-image: url(../../static/img/front-images/footer-bg.jpg);">
+<!--    <footer class="footer-area bg_cover" style="background-image: url(../../static/img/front-images/footer-bg.jpg);">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="footer-widget mt-30">-->
+<!--                        <div class="footer-title">-->
+<!--                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">-->
+<!--                            <h4 class="title">About  Rondhon</h4>-->
+<!--                        </div>-->
+<!--                        <div class="footer-about-info mt-30">-->
+<!--                            <p>There are many variations of passages of Lorem Ipsum.</p>-->
+<!--                            <ul>-->
+<!--                                <li><i class="fal fa-map-marker-alt"></i> 21/3 Soi Saladaeng 1, Silom road, New York, USA</li>-->
+<!--                                <li><i class="fal fa-phone"></i> 515-708-9386</li>-->
+<!--                                <li><i class="fal fa-envelope"></i> deliveyinfo@rondhon.com</li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="footer-widget mt-30">-->
+<!--                        <div class="footer-title">-->
+<!--                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">-->
+<!--                            <h4 class="title">Opening Hours</h4>-->
+<!--                        </div>-->
+<!--                        <div class="footer-list mt-20">-->
+<!--                            <ul>-->
+<!--                                <li><span>Monday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Tuesday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Wednesday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Thursday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Friday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Saturday</span> <p>8.00 - 20.00</p></li>-->
+<!--                                <li><span>Sunday</span> <p>closed</p></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="footer-widget mt-30">-->
+<!--                        <div class="footer-title">-->
+<!--                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">-->
+<!--                            <h4 class="title">We Are On Instagram</h4>-->
+<!--                        </div>-->
+<!--                        <div class="footer-instagram mt-25">-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-1.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-2.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-3.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-4.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-5.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">-->
+<!--                                        <img src="../../static/img/front-images/ins-6.jpg" alt="ins">-->
+<!--                                        <span class="instagram-overlay">-->
+<!--                                            <i class="fab fa-instagram"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="footer-copyright d-block d-sm-flex justify-content-between align-items-center">-->
+<!--                        <p>tests特踏实神擦第三次<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>-->
+<!--                        <a href="#"><img src="../../static/img/front-images/payment.png" alt=""></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </footer>-->
+
+    <div class="w3-agile-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-widget mt-30">
-                        <div class="footer-title">
-                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">
-                            <h4 class="title">About  Rondhon</h4>
-                        </div>
-                        <div class="footer-about-info mt-30">
-                            <p>There are many variations of passages of Lorem Ipsum.</p>
-                            <ul>
-                                <li><i class="fal fa-map-marker-alt"></i> 21/3 Soi Saladaeng 1, Silom road, New York, USA</li>
-                                <li><i class="fal fa-phone"></i> 515-708-9386</li>
-                                <li><i class="fal fa-envelope"></i> deliveyinfo@rondhon.com</li>
-                            </ul>
-                        </div>
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <div class="footer-grid-heading">
+                        <h4>地点</h4>
+                    </div>
+                    <div class="footer-grid-info">
+                        <p>重庆
+                            <span>双福</span>
+                        </p>
+                        <p class="phone">电话 : +1 123 456 789
+                            <span>邮电 : <a href="mailto:example@email.com">mail@</a></span>
+                        </p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-widget mt-30">
-                        <div class="footer-title">
-                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">
-                            <h4 class="title">Opening Hours</h4>
-                        </div>
-                        <div class="footer-list mt-20">
-                            <ul>
-                                <li><span>Monday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Tuesday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Wednesday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Thursday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Friday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Saturday</span> <p>8.00 - 20.00</p></li>
-                                <li><span>Sunday</span> <p>closed</p></li>
-                            </ul>
-                        </div>
+                <div class="col-md-3 footer-grid">
+                    <div class="footer-grid-heading">
+                        <h4>网页链接</h4>
+                    </div>
+                    <div class="footer-grid-info">
+                        <ul>
+                            <li><a href="../../templates/index.html">主页</a></li>
+                            <li><a href="../../templates/about.html">关于</a></li>
+                            <li><a href="../../templates/menu.html">菜品</a></li>
+                            <li><a href="../../templates/contact.html">个人</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-widget mt-30">
-                        <div class="footer-title">
-                            <img src="../../static/img/front-images/shape/title-shape-2.png" alt="">
-                            <h4 class="title">We Are On Instagram</h4>
-                        </div>
-                        <div class="footer-instagram mt-25">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-1.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-2.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-3.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-4.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-5.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="../../static/img/front-images/ins-6.jpg" alt="ins">
-                                        <span class="instagram-overlay">
-                                            <i class="fab fa-instagram"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="col-md-3 footer-grid">
+                    <div class="footer-grid-heading">
+                        <h4>Follow</h4>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-copyright d-block d-sm-flex justify-content-between align-items-center">
-                        <p>tests特踏实神擦第三次<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-                        <a href="#"><img src="../../static/img/front-images/payment.png" alt=""></a>
+                <div class="col-md-3 footer-grid">
+                    <div class="footer-grid-heading">
+                        <h4>Newsletter</h4>
+                    </div>
+                    <div class="footer-grid-info">
+                        <form action="#" method="post">
+                            <input type="email" id="mc4wp_email" name="EMAIL" placeholder="Enter your email here" required="">
+                            <input type="submit" value="Subscribe">
+                        </form>
                     </div>
                 </div>
+                <div class="clearfix"> </div>
             </div>
         </div>
-    </footer>
+    </div>
     
     <!--====== FOOTER PART ENDS ======-->
     
     <!--====== GO TO TOP PART START ======-->
     
-    <div class="go-top-area">
-        <div class="go-top-wrap">
-            <div class="go-top-btn-wrap">
-                <div class="go-top go-top-btn">
-                    <i class="fa fa-angle-double-up"></i>
-                    <i class="fa fa-angle-double-up"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+<!--    <div class="go-top-area">-->
+<!--        <div class="go-top-wrap">-->
+<!--            <div class="go-top-btn-wrap">-->
+<!--                <div class="go-top go-top-btn">-->
+<!--                    <i class="fa fa-angle-double-up"></i>-->
+<!--                    <i class="fa fa-angle-double-up"></i>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    -->
     <!--====== GO TO TOP PART ENDS ======-->
     
 

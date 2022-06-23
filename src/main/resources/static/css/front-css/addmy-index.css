@@ -1,9 +1,7 @@
 .expressdine{
-    background-color: whitesmoke;
     border-width: 2px;
-    width: 100%;
-    height: 200px;
-    margin: auto;
+    width: 80%;
+    position: absolute;
 }
 .expressdine .dineimage{
     float: left;
@@ -64,4 +62,54 @@
 .topiconone{
     width: 20px;
     height: 20px;
+}
+.table-index{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/front-images/searchback.jpeg");
+    overflow-y: auto;
+    overflow: visible;
+}
+
+.table-index .thname {
+    border-width: 2px;
+    padding: 8px;
+    text-align: center;
+    border-style: solid;
+    font-size: 20px;
+    border-color: black;
+    width: 10%;
+}
+.table-index .thmiaoshu{
+    border-width: 2px;
+    padding: 8px;
+    text-align: center;
+    border-style: solid;
+    font-size: 20px;
+    border-color: black;
+    width: 30%;
+}
+.table-index .thpicture{
+    border-width: 2px;
+    padding: 8px;
+    text-align: center;
+    border-style: solid;
+    font-size: 20px;
+    border-color: black;
+    width: 40%;
+}
+.table-index td {
+    border-width: 1px;
+    padding: 8px;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+}
+.overflowdine{
+    overflow-y: auto;
+    max-height: 300px;
+}
+.contactsearch{
+    padding-top: 10px;
+    max-height: 400px;
 }
