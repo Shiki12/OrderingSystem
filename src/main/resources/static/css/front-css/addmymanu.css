@@ -1,0 +1,20 @@
+.titleone{
+    padding-top: 60px;
+    position: fixed;
+    z-index:900;
+}
+.lititle{
+    font-size: 40px;
+}
+.lititle1{
+
+}
+.dineall{
+    display: none;
+}
+.lititle1:hover .dineall{
+    display: block;
+}
+.contentdine{
+    padding-left: 100px;
+}

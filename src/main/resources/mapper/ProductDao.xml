@@ -40,7 +40,7 @@
     </select>
     <select id="fuzzyQuery" resultType="com.web.entity.Product">
 
-        select  * from  product where name like "%"#{key}"%" or miaoshu like  "%"#{key}"%"
+        select  * from  product where name like "%"#{key}"%"
 
     </select>
 
