@@ -110,3 +110,23 @@ body{
     display: block;
     position: absolute;
 }
+.inputBoxnumber{
+    position:relative;
+}
+.inputBoxnumber .inputone{
+    width: 40%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.inputBoxnumber .inputtow{
+    width: 30%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    cursor: pointer;
+    border-radius: 5px;
+}

@@ -27,7 +27,7 @@ function registercus(){//注册账号
     var respass=document.getElementById('respass').value;
     var ressure=document.getElementById('ressure').value;
     var resmail=document.getElementById('resmail').value;
-
+    var resnum=document.getElementById('ressurenumber').value;
     $.ajax({
         type: "get",
         url: 'http://localhost:8001/login/register',
@@ -163,6 +163,12 @@ function toregist(){//更改login的样式到regist
         "        <div class=\"inputBox\">\n" +
         "            <input type=\"password\" id=\"resmail\" required=\"\">\n" +
         "            <label>请输入邮箱</label>\n" +
+        "        </div>\n" +
+        "        <div class=\"inputBoxnumber\">\n" +
+        "            <input class=\"inputone\" type=\"text\" id=\"resnumsure\" required=\"\">\n" +
+        "            <label id=\"ressurenumber\">验证码</label>\n" +
+        "            <input class=\"inputtow\" type=\"button\" value=\"发送信息\" id=\"resnumsure\" required=\"\">\n" +
+        "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"cusloginbottom\">\n" +
         "            <input type=\"submit\" name=\"\" value=\"注册\" onclick=\"registercus()\">\n" +
