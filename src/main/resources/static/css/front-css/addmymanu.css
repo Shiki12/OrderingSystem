@@ -1,5 +1,5 @@
 .titleone{
-    padding-top: 60px;
+    padding-top: 80px;
     position: fixed;
     z-index:900;
 }
@@ -16,5 +16,10 @@
     display: block;
 }
 .contentdine{
-    padding-left: 100px;
+    margin-left: 100px;
+    margin-top: 100px;
+    border-style: outset;
+}
+.spaceondine{
+    margin-top: 10px;
 }

@@ -126,17 +126,17 @@
 				<ul class="lititle1">
 					<li> <a class="lititle" href="">菜单</a></li>
 					<ul class="dineall">
-						<li><a href="menu.html">奶茶专区</a></li>
-						<li><a href="menu.html">甜品/蛋糕</a></li>
-						<li><a href="menu.html">包子/早点</a></li>
-						<li><a href="menu.html">午饭套餐</a></li>
-						<li><a href="menu.html">肉类炒菜</a></li>
-						<li><a href="menu.html">素菜专区</a></li>
+						<li><span id="dineone" onclick="dineone()">奶茶专区</span></li>
+						<li><span id="dinetow" onclick="dinetow()">甜品/蛋糕</span></li>
+						<li><span id="dinethree" onclick="dinethree()">包子/早点</span></li>
+						<li><span id="dinefour" onclick="dinefour()">午饭套餐</span></li>
+						<li><span id="dinefive" onclick="dinefive()">肉类炒菜</span></li>
+						<li><span id="dinesix" onclick="dinesix()">素菜专区</span></li>
 					</ul>
 				</ul>
 			</nav>
-			<div class="contentdine">
-				<div class="col-md-3 w3-agileits-gallery-grids">
+			<div class="contentdine" id="menu" onload="getmenu()">
+				<div class="col-md-3 w3-agileits-gallery-grids spaceondine">
 					<a class="w3 wow zoomIn animated" data-wow-delay=".5s" href="../test/images/g1.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
 						<img src="../test/images/g1.jpg" class="img-responsive zoom-img" alt=""/>
 						<div class="agile-b-wrapper">
