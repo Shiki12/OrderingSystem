@@ -19,7 +19,7 @@ public class WxOrderController {
     }
 
     @RequestMapping("/addOrder")
-    public ResponseData addOrder(int pid,int number,String token){
-        return wxOrderService.addOrder(pid,number,token);}
+    public ResponseData addOrder(int pid,String token){
+        return wxOrderService.addOrder(pid,1,token);}
 
 }

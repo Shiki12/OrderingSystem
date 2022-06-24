@@ -24,4 +24,8 @@ public interface CustomerDao {
     void updateCustmoerToken(String phone, String token);
 
     Customer getCustomerByToken(String token);
+
+    String isPhoneExist(String phone);
+
+    void WXupdate(Customer customer);
 }

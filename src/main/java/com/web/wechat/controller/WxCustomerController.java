@@ -3,6 +3,7 @@ package com.web.wechat.controller;
 
 import com.web.wechat.dataUtil.ResponseData;
 import com.web.wechat.service.WxCustomerService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
@@ -30,4 +31,18 @@ public class WxCustomerController {
         return wxCustomerService.wx_register(name,phone,password);
     }
 
+    @GetMapping("/getUserInfo")
+    public ResponseData wx_getUserInfo(String token){
+        return wxCustomerService.wx_getUserInfo(token);
+    }
+
+    @RequestMapping("/updateUserInfo")
+    public ResponseData wx_updateUserInfo(String token,String name,String phone,String address){
+        return wxCustomerService.wx_updateUserInfo(token,name,phone,address);
+    }
+
+    @RequestMapping("/updateUserPwd")
+    public ResponseData wx_updateUserPwd(){
+        return null;
+    }
 }
