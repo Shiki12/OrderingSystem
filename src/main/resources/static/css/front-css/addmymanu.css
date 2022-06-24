@@ -1,7 +1,7 @@
 .titleone{
-    padding-top: 60px;
+    padding-top: 80px;
     position: fixed;
-    z-index:900;
+    z-index:200;
 }
 .lititle{
     font-size: 40px;
@@ -16,5 +16,37 @@
     display: block;
 }
 .contentdine{
-    padding-left: 100px;
+    margin-left: 100px;
+    margin-top: 100px;
+    border-style: outset;
+}
+.spaceondine{
+    margin-top: 10px;
+}
+.dinepic{
+    width: 15%;
+    height: auto;
+    transition: all 0.2s linear;
+}
+.dinepic:hover{
+    transform: scale(1.5);
+    transition: all 0.2s linear;
+}
+.expressdinepic{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: rgba(52, 52, 52, 0.8);
+    background-size: 50%;
+}
+.spanmenupic{
+    position: absolute;
+    top: 0;
+    left: 0;
 }

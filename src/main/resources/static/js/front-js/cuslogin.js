@@ -1,6 +1,7 @@
 function logincus1(){//登录账号
-    var username1=document.getElementById('name').value;
-    var password1=document.getElementById('pass').value;
+    var username1=document.getElementById('loguser').value;
+    var password1=document.getElementById('logpass').value;
+    console.log(password1+"123");
     $.ajax({
         type: "get",
         url: 'http://localhost:8001/login/customer',
@@ -22,9 +23,15 @@ function logincus1(){//登录账号
     });
 }
 function registercus(){//注册账号
+    var resuser=document.getElementById('resuser').value;
+    var respass=document.getElementById('respass').value;
+    var ressure=document.getElementById('ressure').value;
+    var resmail=document.getElementById('resmail').value;
+    var resnum=document.getElementById('ressurenumber').value;
     $.ajax({
         type: "get",
         url: 'http://localhost:8001/login/register',
+        data: {"resuser":resuser,"respass":respass,"ressure":ressure,"resmail":resmail},
         dataType: 'text',
         success: function (data) {
             if(data.toString()=="success")
@@ -41,65 +48,15 @@ function registercus(){//注册账号
         },
     });
 }
-function toregist(){//更改login的样式到regist
-    var bottomres=document.getElementById('logincus');
-    var titleres=document.getElementById('titlelogin');
-    titleres.innerHTML="";
-    titleres.innerText="用户注册";
-    bottomres.innerHTML="";
-    bottomres.innerHTML="<form class=\"logincus\">\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"text\" name=\"\" required=\"\">\n" +
-        "            <label>请输入用户名</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" name=\"\" required=\"\">\n" +
-        "            <label>请输入密码</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" name=\"\" required=\"\">\n" +
-        "            <label>请确认密码</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" name=\"\" required=\"\">\n" +
-        "            <label>请输入邮箱</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"cusloginbottom\">\n" +
-        "            <input type=\"submit\" name=\"\" value=\"注册\" onclick=\"registercus()\">\n" +
-        "        </div>\n" +
-        "        <div class=\"cusregistbottom\">\n" +
-        "            <input type=\"submit\" name=\"\" value=\"返回\" onclick=\"tologin()\">\n" +
-        "        </div>\n" +
-        "    </form>";
-
-}
-function toforgetnumber(){
-    var bottomres=document.getElementById('logincus');
-    bottomres.innerHTML="";
-    var titleres=document.getElementById('titlelogin');
-    titleres.innerHTML="";
-    titleres.innerText="密码找回";
-    bottomres.innerHTML="<form class=\"logincus\">\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"text\" name=\"\" required=\"\">\n" +
-        "            <label>请输入用户名</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" name=\"\" required=\"\">\n" +
-        "            <label>请输入邮箱</label>\n" +
-        "        </div>\n" +
-        "        <div class=\"cusloginbottom\">\n" +
-        "            <input type=\"submit\" name=\"\" value=\"找回\" onclick=\"forgetnumber()\">\n" +
-        "        </div>\n" +
-        "        <div class=\"cusregistbottom\">\n" +
-        "            <input type=\"submit\" name=\"\" value=\"返回\" onclick=\"tologin()\">\n" +
-        "        </div>\n" +
-        "    </form>";
-}
 function forgetnumber(){//找回密码
+
+    var foruser=document.getElementById('foruser').value;
+    var formail=document.getElementById('formail').value;
+
     $.ajax({
         type: "get",
-        url: 'http://localhost:8001/login/register',
+        url: 'http://localhost:8001/login/forget',
+        data:{"foruser":foruser,"formail":formail},
         dataType: 'text',
         success: function (data) {
             if(data.toString()=="success")
@@ -116,6 +73,167 @@ function forgetnumber(){//找回密码
         },
     });
 }
+function tosureuserout(one){
+    console.log(one.value)
+    if(one.value!=""){
+        $.ajax({
+            type: "get",
+            url: 'http://localhost:8001/login/forget',
+            data:{"tosureuser":one.value},
+            dataType: 'text',
+            success: function (data) {
+                if(data.toString()=="success")
+                {
+                    var imgworry=document.getElementById('worryimgone');
+                    imgworry.className="worrypicon";
+                    var testone=document.getElementById('resjaguser');
+                    testone.innerText="请输入账号";
+                }
+                else{
+                    var resjag=document.getElementById('resjaguser');
+                    resjag.innerText="该用户名已经被注册过！！！";
+                    var imgworry=document.getElementById('worryimgone');
+                    imgworry.className="worrypicno";
+                }
+            },
+            error() {
+                alert("出现异常！！！");
+            },
+        });
+    }
+    else {
+        var resjag=document.getElementById('resjaguser');
+        resjag.innerText="账号不能为空！！！";
+        var imgworry=document.getElementById('worryimgone');
+        imgworry.className="worrypicno";
+    }
+}
+
+function tosurepass(one){
+    if(one.value!=""){
+        var imgworry=document.getElementById('worryimgtow');
+        imgworry.className="worrypicno";
+        var testone=document.getElementById('resjagpass');
+        testone.innerText="请输入密码";
+    }
+    else {
+        var imgworry=document.getElementById('worryimgtow');
+        imgworry.className="worrypicon";
+        var testone=document.getElementById('resjagpass');
+        testone.innerText="密码不能为空";
+    }
+}
+
+function tosurepasssame(one){
+    var tow=document.getElementById('respass').value;
+
+    if(one.value!=tow){
+        var imgworry=document.getElementById('worryimgthree');
+        imgworry.className="worrypicon";
+        var testone=document.getElementById('ressurepass');
+        testone.innerText="两次新密码输入不一样！";
+    }
+    else {
+        var imgworry=document.getElementById('worryimgthree');
+        imgworry.className="worrypicno";
+        var testone=document.getElementById('ressurepass');
+        testone.innerText="请确认密码";
+    }
+}
+
+function tosuremissage(one) {//获取验证码
+    $.ajax({
+        type: "get",
+        url: 'http://localhost:8001/login/missage',
+        dataType: 'text',
+        success: function (data) {
+            if(data.toString()=="success")
+            {
+                for(let a=0;a<60;a++){
+                    one.value=a;
+                    setInterval("RandomImage();",1000);
+                }
+            }
+            else{
+            }
+        },
+        error() {
+            alert("出现异常！！！");
+        },
+    });
+
+}
+
+function toregist(){//更改login的样式到regist
+    var bottomres=document.getElementById('logincus');
+    var titleres=document.getElementById('titlelogin');
+    titleres.innerHTML="";
+    titleres.innerText="用户注册";
+    bottomres.innerHTML="";
+    bottomres.innerHTML="<form class=\"logincus\" id=\"logincus\">\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input onmouseout=\"tosureuserout(this)\" type=\"text\" id=\"resuser\" required=\"\">\n" +
+        "            <label id=\"resjaguser\" >请输入用户名</label>\n" +
+        "            <img id=\"worryimgone\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "        </div>\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input onmouseout=\"tosurepass(this)\" type=\"password\" id=\"respass\" required=\"\">\n" +
+        "            <label id=\"resjagpass\">请输入密码</label>\n" +
+        "            <img id=\"worryimgtow\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "        </div>\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input onmouseout=\"tosurepasssame(this)\" type=\"password\" id=\"ressure\" required=\"\">\n" +
+        "            <label id=\"ressurepass\">请确认密码</label>\n" +
+        "            <img id=\"worryimgthree\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "        </div>\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input type=\"password\" id=\"resmail\" required=\"\">\n" +
+        "            <label>请输入邮箱</label>\n" +
+        "        </div>\n" +
+        "        <div class=\"inputBoxnumber\">\n" +
+        "            <input class=\"inputone\" type=\"text\" id=\"resnumsure\" required=\"\">\n" +
+        "            <label id=\"ressurenumber\">验证码</label>\n" +
+        "            <input class=\"inputtow\" onclick=\"tosuremissage(this)\" type=\"button\" value=\"获取验证码\" id=\"resnumsure\" required=\"\">\n" +
+        "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "        </div>\n" +
+        "        <div class=\"cusloginbottom\">\n" +
+        "            <input type=\"submit\" name=\"\" value=\"注册\" onclick=\"registercus()\">\n" +
+        "        </div>\n" +
+        "        <div class=\"cusregistbottom\">\n" +
+        "            <input type=\"submit\" name=\"\" value=\"返回\" onclick=\"tologin()\">\n" +
+        "        </div>\n" +
+        "    </form>";
+
+}
+function toforgetnumber(){
+    var bottomres=document.getElementById('logincus');
+    bottomres.innerHTML="";
+    var titleres=document.getElementById('titlelogin');
+    titleres.innerHTML="";
+    titleres.innerText="密码找回";
+    bottomres.innerHTML="<form class=\"logincus\" id=\"logincus\">\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input type=\"text\" id=\"foruser\" required=\"\">\n" +
+        "            <label>请输入用户名</label>\n" +
+        "        </div>\n" +
+        "        <div class=\"inputBox\">\n" +
+        "            <input type=\"password\" id=\"formail\" required=\"\">\n" +
+        "            <label>请输入邮箱</label>\n" +
+        "        </div>\n" +
+        "        <div class=\"inputBoxnumber\">\n" +
+        "            <input class=\"inputone\" type=\"text\" id=\"resnumsure\" required=\"\">\n" +
+        "            <label id=\"ressurenumber\">验证码</label>\n" +
+        "            <input class=\"inputtow\" onclick=\"tosuremissage(this)\" type=\"button\" value=\"获取验证码\" id=\"resnumsure\" required=\"\">\n" +
+        "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "        </div>\n" +
+        "        <div class=\"cusloginbottom\">\n" +
+        "            <input type=\"submit\" id=\"\" value=\"找回\" onclick=\"forgetnumber()\">\n" +
+        "        </div>\n" +
+        "        <div class=\"cusregistbottom\">\n" +
+        "            <input type=\"submit\" id=\"\" value=\"返回\" onclick=\"tologin()\">\n" +
+        "        </div>\n" +
+        "    </form>";
+}
 function tologin() {
     var bottomres=document.getElementById('logincus');
     bottomres.innerHTML="";
@@ -124,15 +242,15 @@ function tologin() {
     titleres.innerText="用户登录";
     bottomres.innerHTML="<form class=\"logincus\" id=\"logincus\">\n" +
         "        <div class=\"inputBox\">\n" +
-        "            <input type=\"text\" name=\"\" required=\"\">\n" +
+        "            <input type=\"text\" id=\"loguser\" required=\"\">\n" +
         "            <label>用户名</label>\n" +
         "        </div>\n" +
         "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" name=\"\" required=\"\">\n" +
+        "            <input type=\"password\" id=\"logpass\" required=\"\">\n" +
         "            <label>密码</label>\n" +
         "        </div>\n" +
         "        <div class=\"cusloginbottom\">\n" +
-        "            <input type=\"submit\" name=\"\" value=\"登录\" onclick=\"logincus1()\">\n" +
+        "            <input type=\"submit\" id=\"\" value=\"登录\" onclick=\"logincus1()\">\n" +
         "        </div>\n" +
         "        <div class=\"cusregistbottom\">\n" +
         "            <input type=\"submit\" name=\"\" value=\"注册\" onclick=\"toregist()\">\n" +
