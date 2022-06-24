@@ -24,10 +24,10 @@ public class WxOrderServiceImpl implements WxOrderService {
     public ResponseData getOrderByToken(String token) {
         try {
             List<Order> orderList=orderDao.getOrderByToken(token);
-            for(Object s:orderList){
-                System.out.println(s);
-            }
-            return new ResponseData(1,"通过token查询用户购物车");
+//            for(Object s:orderList){
+//                System.out.println(s);
+//            }
+            return new ResponseData(1,"通过token查询用户购物车",orderList);
         }catch (Exception e){
             return new ResponseData(0,"未知异常，请查看后台");
         }
