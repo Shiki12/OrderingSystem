@@ -33,6 +33,17 @@ public class Utils {
        return date;
     }
 
+    public static  int getRandomNumber(){
+        Random random = new Random();
+        int number=random.nextInt(900000)+100000;
+        return number;
+    }
+
+    //算出时间差了多少分钟
+    public static int compare(Date date,Date date1){
+        return (int) (date1.getTime() - date.getTime()) / (60 * 1000);
+    }
+
 
 
 }

@@ -3,17 +3,25 @@ package com.web.controller;
 import com.web.dao.AdministratorDao;
 import com.web.entity.Administrator;
 import com.web.entity.Customer;
+import com.web.entity.po.VerCode;
 import com.web.service.CustomerService;
+import com.web.utils.Utils;
+import com.web.wechat.dataUtil.ResponseData;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -27,6 +35,9 @@ public class LoginController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    JavaMailSender javaMailSender;//注入
 
     @RequestMapping("/") //
     public String toLogin(){
@@ -101,6 +112,70 @@ public class LoginController {
         }
 
     }
+
+    @RequestMapping("/check") //查看用户名是否存在
+    @ResponseBody
+    public ResponseData check(String name){
+
+        Customer customer = customerService.getByName(name);
+        if (customer !=null){
+            return new ResponseData(0,"用户名已存在");
+        }
+        else {
+          return new ResponseData(1,"用户名可行");
+        }
+    }
+
+    @RequestMapping("/register") //查看用户名是否存在
+    @ResponseBody
+    public ResponseData register(HttpSession session){
+        VerCode vercode =(VerCode) session.getAttribute("vercode");
+        Date date = new Date();
+        int i = Utils.compare(vercode.getDate(), date);
+        if (i>2){
+            return new ResponseData(0,"验证码已过期");
+        }
+        else {
+            return new ResponseData(1,"注册成功");
+        }
+
+
+    }
+
+    @Async
+    @RequestMapping(value = "/mail",method = RequestMethod.GET)
+    @ResponseBody
+    //发送邮件
+    public  String mail(String mail,HttpSession session) throws Exception{
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage,true);
+        mimeMessageHelper.setFrom("941728409@qq.com");
+
+        mimeMessageHelper.setTo(mail);
+
+        mimeMessageHelper.setSubject("OrderingSystem");
+        StringBuffer sb = new StringBuffer();
+
+        //存放将验证码类存放session中。
+        int randomNumber = Utils.getRandomNumber();
+        Integer integer = new Integer(randomNumber);
+        VerCode verCode = new VerCode(integer.toString(), new Date());
+        session.setAttribute("vercode",verCode);
+
+
+        sb.append("尊敬的用户,您好:\n"
+                + "\n本次请求的邮件验证码为:" + randomNumber + ",本验证码5分钟内有效，请及时输入。（请勿泄露此验证码）\n"
+                + "\n如非本人操作，请忽略该邮件。\n(这是一封自动发送的邮件，请不要直接回复）");
+
+        mimeMessageHelper.setText(sb.toString());
+
+        javaMailSender.send(mimeMessage);
+
+        return "发送成功";
+
+    }
+
+
 
 
 }

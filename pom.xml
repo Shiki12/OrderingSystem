@@ -99,6 +99,20 @@
             <artifactId>httpcore</artifactId>
             <version>4.4.11</version>
         </dependency>
+<!--邮件模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+<!--        支付模块-->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-easysdk</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
+
 
 
     </dependencies>

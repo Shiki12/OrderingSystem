@@ -6,6 +6,7 @@ import com.web.entity.Order;
 import com.web.entity.po.OrderChild;
 import com.web.entity.po.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface OrderDao {
 
     //统计最大的订单id
     int count();
+    //更改订单状态
+    int updateStatus(@Param("status") int status,@Param("id") int id);
 }

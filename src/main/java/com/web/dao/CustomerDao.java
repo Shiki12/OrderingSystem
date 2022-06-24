@@ -23,4 +23,8 @@ public interface CustomerDao {
     int update(Customer customer);
 
     void updateCustmoerToken(String phone, String token);
+
+    int updateVcode(String vcode,@Param("id") int id); //给新用户设置验证码
+
+    int addVcode(String vcode);
 }

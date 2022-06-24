@@ -8,6 +8,9 @@
         insert into customer (name, password,address,phone,status)
         values (#{name},#{password},#{address},#{phone},#{status})
     </insert>
+    <insert id="addVcode">
+        INSERT into  customer (vcode) VALUES (#{vcode})
+    </insert>
 
 
     <update id="update">
@@ -21,6 +24,11 @@
         update customer
         set token = #{token}
         where phone = #{phone}
+    </update>
+    <update id="updateVcode">
+        update into customer (vcode)
+        values (#{vcode})
+         where id = #{id};
     </update>
     <delete id="deleteById">
         delete
