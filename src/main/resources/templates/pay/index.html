@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>支付宝沙箱支付</h1>
+    <form th:action="@{/alipay/create}" method="post">
+        订单编号： <input type="text" name="traceNo"> <br>
+        订单金额：<input type="text" name="totalAmount"> <br>
+        订单标题：<input type="text" name="subject"> <br>
+        <input type="submit" value="创建订单">
+    </form>
+</body>
+</html>
