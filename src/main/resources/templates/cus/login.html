@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="box">
-    <h2>用户登录</h2>
+    <h2 id="titleloginone">用户登录</h2>
     <form class="logincus" id="logincus">
         <div class="inputBox">
             <input type="text" id="loguser">
@@ -21,13 +21,13 @@
             <label>密码</label>
         </div>
         <div class="cusloginbottom">
-            <input onmouseout="tosureuserout(this)" type="submit" value="登录" onclick="logincus1()">
+            <button type="button" onclick="logincus1()">登录</button>
         </div>
         <div class="cusregistbottom">
-            <input type="submit"  value="注册" onclick="toregist()">
+            <button type="button" onclick="toregist()">注册</button>
         </div>
         <div class="divforgetcus">
-            <span class="spanlogincus" onclick="toforgetnumber()">忘记密码</span>
+            <span class="spanlogincus"  onclick="toforgetnumber()">忘记密码</span>
         </div>
     </form>
 

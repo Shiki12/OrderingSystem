@@ -61,7 +61,7 @@ body{
     color: #03a9f4;
     font-size: 12px;
 }
-.box  input[type="submit"]
+.box  button[type="button"]
 {
     background: transparent;
     border: none;
@@ -119,7 +119,7 @@ body{
     margin-bottom: 20px;
 }
 .inputBoxnumber .inputtow{
-    width: 30%;
+    width: 35%;
     padding-top: 10px;
     padding-bottom: 10px;
     background: transparent;
