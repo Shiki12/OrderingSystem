@@ -102,7 +102,10 @@ function tosureuserout(one){
         });
     }
     else {
-        console.log("执行");
+        var resjag=document.getElementById('resjaguser');
+        resjag.innerText="账号不能为空！！！";
+        var imgworry=document.getElementById('worryimgone');
+        imgworry.className="worrypicno";
     }
 }
 
@@ -138,6 +141,29 @@ function tosurepasssame(one){
     }
 }
 
+function tosuremissage(one) {//获取验证码
+    $.ajax({
+        type: "get",
+        url: 'http://localhost:8001/login/missage',
+        dataType: 'text',
+        success: function (data) {
+            if(data.toString()=="success")
+            {
+                for(let a=0;a<60;a++){
+                    one.value=a;
+                    setInterval("RandomImage();",1000);
+                }
+            }
+            else{
+            }
+        },
+        error() {
+            alert("出现异常！！！");
+        },
+    });
+
+}
+
 function toregist(){//更改login的样式到regist
     var bottomres=document.getElementById('logincus');
     var titleres=document.getElementById('titlelogin');
@@ -167,7 +193,7 @@ function toregist(){//更改login的样式到regist
         "        <div class=\"inputBoxnumber\">\n" +
         "            <input class=\"inputone\" type=\"text\" id=\"resnumsure\" required=\"\">\n" +
         "            <label id=\"ressurenumber\">验证码</label>\n" +
-        "            <input class=\"inputtow\" type=\"button\" value=\"发送信息\" id=\"resnumsure\" required=\"\">\n" +
+        "            <input class=\"inputtow\" onclick=\"tosuremissage(this)\" type=\"button\" value=\"获取验证码\" id=\"resnumsure\" required=\"\">\n" +
         "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"cusloginbottom\">\n" +
@@ -193,6 +219,12 @@ function toforgetnumber(){
         "        <div class=\"inputBox\">\n" +
         "            <input type=\"password\" id=\"formail\" required=\"\">\n" +
         "            <label>请输入邮箱</label>\n" +
+        "        </div>\n" +
+        "        <div class=\"inputBoxnumber\">\n" +
+        "            <input class=\"inputone\" type=\"text\" id=\"resnumsure\" required=\"\">\n" +
+        "            <label id=\"ressurenumber\">验证码</label>\n" +
+        "            <input class=\"inputtow\" onclick=\"tosuremissage(this)\" type=\"button\" value=\"获取验证码\" id=\"resnumsure\" required=\"\">\n" +
+        "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"cusloginbottom\">\n" +
         "            <input type=\"submit\" id=\"\" value=\"找回\" onclick=\"forgetnumber()\">\n" +
