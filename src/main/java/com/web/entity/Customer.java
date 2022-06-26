@@ -16,6 +16,7 @@ public class Customer {
     private  int status; // 0:普通用户 1:会员
     private  String  token; //保留令牌  对应数据库status字段
     private String phone;
+    private  String mail;
 
     public Customer(String name, String phone, String password) {
         this.name=name;

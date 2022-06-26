@@ -36,8 +36,12 @@ public class LoginController {
     @Autowired
     CustomerService customerService;
 
-    @Autowired
+
     JavaMailSender javaMailSender;//注入
+    @Autowired
+    public void setJavaMailSender(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
     @RequestMapping("/") //
     public String toLogin(){
@@ -128,18 +132,29 @@ public class LoginController {
 
     @RequestMapping("/register") //查看用户名是否存在
     @ResponseBody
-    public ResponseData register(HttpSession session){
+    public ResponseData register(HttpSession session,String resuser,
+                                 String respass,String resmail,String vcode){
         VerCode vercode =(VerCode) session.getAttribute("vercode");
+
+        Customer customer = new Customer();
+        customer.setName(resuser);
+        customer.setPassword(respass);
+        customer.setMail(resmail); ;
+        customer.setName(resuser);
         Date date = new Date();
-        int i = Utils.compare(vercode.getDate(), date);
-        if (i>2){
-            return new ResponseData(0,"验证码已过期");
-        }
-        else {
-            return new ResponseData(1,"注册成功");
-        }
 
+        if (vcode.equals(vercode.getCode())){
+            int i = Utils.compare(vercode.getDate(), date);
+            if (i>2){
+                return new ResponseData(0,"验证码已过期");
+            }
+            else {
+                customerService.addCustomer(customer);
+                return new ResponseData(1,"注册成功");
+            }
 
+        }
+        return new ResponseData(0,"验证码错误");
     }
 
     @Async
@@ -160,6 +175,7 @@ public class LoginController {
         int randomNumber = Utils.getRandomNumber();
         Integer integer = new Integer(randomNumber);
         VerCode verCode = new VerCode(integer.toString(), new Date());
+        //将验证码放在session中
         session.setAttribute("vercode",verCode);
 
 

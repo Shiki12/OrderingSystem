@@ -5,8 +5,8 @@
 <mapper namespace="com.web.dao.CustomerDao">
 
     <insert id="addCustomer" keyProperty="id" useGeneratedKeys="true">
-        insert into customer (name, password,address,phone,status)
-        values (#{name},#{password},#{address},#{phone},#{status})
+        insert into customer (name, password,address,phone,status,mail)
+        values (#{name},#{password},#{address},#{phone},#{status},#{mail})
     </insert>
     <insert id="addVcode">
         INSERT into  customer (vcode) VALUES (#{vcode})
