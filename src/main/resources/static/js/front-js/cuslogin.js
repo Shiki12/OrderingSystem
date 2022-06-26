@@ -10,6 +10,8 @@ function logincus1(){
         success: function (data1) {
             if(data1.responseText==="success")
                 alert("success");
+            var u1=document.getElementById('Username1');
+
         },
         error(data1) {
             console.log(data1.responseText);

@@ -1,70 +1,345 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>后台管理</title>
+
+    <!-- Bootstrap Styles-->
+    <link href="../../static/css/xf_css/assets/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- FontAwesome Styles-->
+    <link href="../../static/css/xf_css/assets/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom Styles-->
+    <link href="../../static/css/xf_css/assets/css/custom-styles.css" rel="stylesheet" />
+
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <!-- TABLE STYLES-->
+    <link href="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+
+
+
+
 </head>
-
-<script>
-
-
-
-</script>
 <body>
-<h1>管理员界面</h1>
+<div id="wrapper">
+    <!--Top导航栏-->
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-comments"></i> <strong>点餐后台 </strong></a>
+        </div>
 
-<form  th:action="@{/product/upload}" enctype="multipart/form-data" method="post">
-     商品名称 <input type="text" name="name">
-      价格<input type="text" name="price">
-      数量<input type="text" name="number">
-      描述<input type="text" name="miaoshu">
-    上传文件1：<input type="file" name="file"><br/>
-     <input type="submit">
-</form>
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <img src="../../static/img/xf/img.png" width="20" height="20">
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+    </nav>
+    <!--TOP导航栏 End  -->
+
+    <!-- Nav 侧边栏 -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="http://localhost:8001/backstage/index">
+                        <i class="fa fa-dashboard"></i>
+                        首页
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/elements">
+                        <i class="fa fa-desktop"></i>
+                        待定1
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/chart">
+                        <i class="fa fa-bar-chart-o"></i>
+                        待定2
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/panel"><i class="fa fa-qrcode"></i>
+                        待定3
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/table"><i class="fa fa-table"></i>
+                        待定4
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/form"><i class="fa fa-edit"></i>
+                        待定5
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active-menu" href="http://localhost:8001/backstage/empty"><i class="fa fa-fw fa-file"></i>
+                        商品
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- Nav 侧边栏 End-->
+
+    <!-- 内容 -->
+    <div id="page-wrapper" >
+
+        <div id = "page-inner">
+
+            <!--添加商品表单-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                    data-target="#myModal">
+                添加商品
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!--添加商品表单-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4>添加商品 <small>请输入商品信息</small></h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+
+                                            <form th:action="@{/product/upload}"
+                                                  enctype="multipart/form-data"
+                                                  method="post">
+
+                                                <div class="form-group"  th:class="col-lg-2">
+                                                    <label for="na">商品名称</label>
+                                                    <input class="form-control" type="text" name="name" id="na">
+
+                                                </div>
+
+                                                <div class="form-group" th:class="col-lg-2">
+                                                    <label for="pri">价格</label>
+                                                    <input  placeholder="Enter text" type="text" class="form-control" name = "price"
+                                                            id="pri" >
+                                                </div>
+
+                                                <div class="form-group" th:class="col-lg-2">
+                                                    <label for="num">数量</label>
+                                                    <input type="text" class="form-control" name = "number" id="num">
+                                                </div>
+
+                                                <div class="form-group" th:class="col-lg-2">
+                                                    <label for="ms">描述</label>
+                                                    <input type="text" class="form-control" name = "miaoshu" id="ms">
+                                                </div>
+
+                                                <div class="form-group" th:class="col-lg-4">
+                                                    <label for="fl">上传文件</label>
+                                                    <input type="file" name="file" class="form-control" id="fl">
+                                                    <!-- /input-group -->
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <div class="form-group" th:class="col-lg-2">
+                                                    <input type="submit">
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <!-- /.row (nested) -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        商品信息 <small>Responsive tables</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>id</td>
-                <td>name</td>
-                <td>价格</td>
-                <td>点赞数</td>
-                <td>图片</td>
-                <td>描述</td>
-                <td>操作</td>
-            </tr>
-        </thead>
-        <tbody>
-           <tr th:each="pro : ${pageInfo.list}">
-               <td th:text="${pro.getId()}"></td>
-               <td th:text="${pro.getName()}"></td>
-               <td th:text="${pro.getPrice()}"></td>
-               <td th:text="${pro.getZan()}"></td>
-               <td >
-                   <img th:src="@{/}+${pro.getImageUrl()}" width="60">
-               </td>
-               <td th:text="${pro.getMiaoshu()}"></td>
-               <td>
-                   <a th:href="@{/product/toUpdate/{id}(id=${pro.getId()})}">编辑</a>
-                   <a th:href="@{/product/delete/{id}(id=${pro.getId()})}">删除</a>
-               </td>
-           </tr>
-        </tbody>
-    </table>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Product Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
 
-    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
-        <span th:text="${pageInfo.pages}"></span> 页,
-        共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+                                <!--商品信息表-->
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 50px" class="text-center">ID</th>
+                                        <th style="width: 150px" class="text-center">昵称</th>
+                                        <th style="width: 50px" class="text-center">价格</th>
+                                        <th style="width: 80px" class="text-center">点赞数</th>
+                                        <th style="width: 100px" class="text-center">图片</th>
+                                        <th style="width: 500px" class="text-center">描述</th>
+                                        <td style="width: 150px" class="text-center">操作</td>
 
-    <a th:href="@{/product/getAll}">首页</a>
-    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
-    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
-    <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+                                        <!--<th th:class="col-md-1">ID</th>
+                                        <th th:class="col-md-1">昵称</th>
+                                        <th th:class="col-md-1">价格</th>
+                                        <th th:class="col-md-1">点赞数</th>
+                                        <th th:class="col-md-1">图片</th>
+                                        <th th:class="col-md-2">描述</th>
+                                        <td th:class="col-md-1">操作</td>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="pro : ${pageInfo.list}" class="text-center">
+                                        <td  th:text="${pro.getId()}">
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
+
+                                        </td>
+                                        <td  th:text="${pro.getName()}">
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div></td>
+
+                                        <td  th:text="${pro.getPrice()}">
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
+
+                                        </td>
+                                        <td  th:text="${pro.getZan()}">
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
+
+                                        </td>
+                                        <td >
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;">
+                                                <img th:src="@{/}+${pro.getImageUrl()}" width="60">
+                                            </div>
+
+                                        </td>
+                                        <td th:text="${pro.getMiaoshu()}" th:class="text-left"
+                                            style="height:20px; width: 500px; overflow:hidden; text-overflow: ellipsis;">
+
+
+                                        </td>
+                                        <td >
+
+                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;">
+                                                <button><a th:href="@{/product/toUpdate/{id}(id=${pro.getId()})}">编辑</a></button>
+                                                <button><a th:href="@{/product/delete/{id}(id=${pro.getId()})}">删除</a></button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+
+                                <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
+                                    <span th:text="${pageInfo.pages}"></span> 页,
+                                    共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+
+                                <a th:href="@{/product/getAll}">首页</a>
+                                <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                                <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                                <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+        </div>
+        <!-- /. PAGE INNER  -->
+
+    </div>
 
 </div>
+<!-- /. WRAPPER  -->
+
+
+
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="../../static/css/xf_css/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../../static/css/xf_css/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../../static/css/xf_css/assets/js/jquery.metisMenu.js"></script>
+
+<!-- DATA TABLE SCRIPTS -->
+<script src="../../static/css/xf_css/assets/js/dataTables/jquery.dataTables.js"></script>
+
+<script src="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+
+<!-- Custom Js -->
+<script src="../../static/css/xf_css/assets/js/custom-scripts.js"></script>
 
 </body>
 </html>
