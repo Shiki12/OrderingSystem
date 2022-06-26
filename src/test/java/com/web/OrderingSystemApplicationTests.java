@@ -5,6 +5,7 @@ import com.web.dao.CommentDao;
 import com.web.dao.MessageDao;
 import com.web.dao.OrderDao;
 import com.web.entity.*;
+import com.web.entity.po.AlipayDto;
 import com.web.entity.po.CommentVo;
 import com.web.service.ProductService;
 import org.junit.jupiter.api.Test;
@@ -112,6 +113,14 @@ class OrderingSystemApplicationTests {
         List<LeavingMessages> all = messageDao.getAll();
         for (LeavingMessages leavingMessages : all) {
             System.out.println(leavingMessages);
+        }
+    }
+
+    @Test
+    void testAlipay(){
+        List<AlipayDto> alipayDtos = orderDao.selectAlipay(1);
+        for (AlipayDto alipayDto : alipayDtos) {
+            System.out.println(alipayDto);
         }
     }
 }

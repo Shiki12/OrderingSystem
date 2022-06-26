@@ -69,6 +69,15 @@
     <select id="count" resultType="java.lang.Integer">
         select max(id) from  order_
     </select>
+    <select id="selectAlipay" resultType="alipayDto">
+        select  o.id, o.`code` ,oi.number,p.`name`,p.price
+        from order_ o ,orderitem oi ,product p
+        WHERE  oi.oid=o.id and o.id = p.id and o.id = #{id}
+    </select>
+
+    <select id="selectPriceAndName" resultType="com.web.entity.po.ProductChild">
+        select price,name from product where id = #{id}
+    </select>
 
 
 </mapper>

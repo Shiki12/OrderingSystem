@@ -1,5 +1,6 @@
 package com.web.controller;
 
+import com.web.entity.Alipay;
 import com.web.entity.Customer;
 import com.web.entity.po.OrderItem;
 import com.web.service.OrderService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -26,13 +28,13 @@ public class OrderController {
 
     }
     @RequestMapping("/placeOrder") //下单
-    @ResponseBody
-    public String placeOrder(OrderItem orderItem){
+    public String placeOrder(OrderItem orderItem, RedirectAttributes re){
 
-        orderService.addBoth(orderItem);
+        Alipay alipay = orderService.addBoth(orderItem);
 
         System.out.println(orderItem);
-        return "ok";
+        re.addFlashAttribute("alipay",alipay);
+        return "redirect:/alipay/create";
     }
 
 }

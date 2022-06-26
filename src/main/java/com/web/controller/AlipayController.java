@@ -6,14 +6,12 @@ import com.web.service.AlipayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/alipay")
 public class AlipayController {
+
 
    AlipayService alipayService;
     @Autowired
@@ -27,8 +25,8 @@ public class AlipayController {
         return "pay/index";
     }
 
-    @PostMapping("/create")
-    public String create(Alipay alipay, Model model){
+    @GetMapping ("/create")
+    public String create(@ModelAttribute("alipay") Alipay alipay, Model model){
         String pay = alipayService.pay(alipay);
         model.addAttribute("form", pay);
         return "pay/pay";

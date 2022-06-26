@@ -1,5 +1,6 @@
 package com.web.service;
 
+import com.web.entity.Alipay;
 import com.web.entity.Customer;
 import com.web.entity.Order;
 import com.web.entity.po.OrderChild;
@@ -12,7 +13,7 @@ public interface OrderService {
 
 
      //一个订单一件商品
-     int addBoth(OrderItem orderItem);
+     Alipay addBoth(OrderItem orderItem);
 
      int addSomeOrders(List<OrderItem> orderItem);
      int addOrderChild(OrderChild orderChild);

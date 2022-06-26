@@ -3,8 +3,10 @@ package com.web.dao;
 
 import com.web.entity.Customer;
 import com.web.entity.Order;
+import com.web.entity.po.AlipayDto;
 import com.web.entity.po.OrderChild;
 import com.web.entity.po.OrderItem;
+import com.web.entity.po.ProductChild;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +32,10 @@ public interface OrderDao {
     int count();
     //更改订单状态
     int updateStatus(@Param("status") int status,@Param("id") int id);
+
+    //创建沙箱支付的条件
+    List<AlipayDto> selectAlipay(@Param("id") int id);
+
+  ProductChild selectPriceAndName(@Param("id")int id);
+
 }

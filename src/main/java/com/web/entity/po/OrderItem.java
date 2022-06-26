@@ -15,7 +15,7 @@ public class OrderItem {
     private  int cstid;
     private  String  time;
     private String address;
-
+    private  int number;
     public OrderItem(int pid, int oid, int cstid, int number,String address) {
         this.pid = pid;
         this.oid = oid;
@@ -24,5 +24,5 @@ public class OrderItem {
         this.address = address;
     }
 
-    private  int number;
+
 }
