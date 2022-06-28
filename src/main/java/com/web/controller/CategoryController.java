@@ -1,7 +1,9 @@
 package com.web.controller;
 
 import com.web.dao.CategoryDao;
+import com.web.dao.ProductDao;
 import com.web.entity.Category;
+import com.web.entity.Product;
 import com.web.wechat.dataUtil.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +20,11 @@ public class CategoryController {
     @Autowired
     CategoryDao categoryDao;
 
+    @Autowired
+    ProductDao productDao;
+
     @RequestMapping("/getList")
-    @ResponseBody
+    @ResponseBody //得到所有的菜品
     public ResponseData getAll(Model model){
 
         List<Category> categories = categoryDao.queryList();
@@ -32,6 +37,22 @@ public class CategoryController {
          }
 
     }
+    @RequestMapping("/getOneType")
+    @ResponseBody  //得到某一种的食物
+    public ResponseData getOneType(int id){
+
+        List<Product> list = productDao.getOneType(id);
+        if (list.isEmpty()){
+            return new ResponseData(0,"响应失败");
+        }
+        else{
+            return  new ResponseData(1,"响应成功",list);
+        }
+    }
+
+
+
+
 
 }
 

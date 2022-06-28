@@ -54,5 +54,9 @@
         where p.status = 1
         GROUP BY p.cid
     </select>
+    <select id="getOneType" resultType="com.web.entity.Product">
+        select *
+        from product where cid = #{id} ;
+    </select>
 
 </mapper>

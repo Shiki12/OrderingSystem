@@ -3,7 +3,7 @@
 <html lang="ch" xmlns:th="http://www.thymeleaf.org">
 
 <p> 更新页面 </p>
-<form  th:action="@{/product/update}" enctype="multipart/form-data" method="post">
+<form th:action="@{/product/update}" enctype="multipart/form-data" method="post">
       <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
     商品名称 <input type="text" name="name" th:value="${pro.getName()}"> <br>
     价格<input type="text" name="price" th:value="${pro.getPrice()}">  <br>

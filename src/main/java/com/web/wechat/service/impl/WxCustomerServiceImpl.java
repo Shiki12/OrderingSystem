@@ -33,13 +33,14 @@ public class WxCustomerServiceImpl implements WxCustomerService {
             if(!customer.getPassword().equals(password)){
                 return new ResponseData(0,"密码错误");
             }
-
-
             //AppID = wx607e482d17d2faf0
             //AppSecret = a86f77fcf21eafa7559a478109e8ed52
-            String url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx607e482d17d2faf0&secret=a86f77fcf21eafa7559a478109e8ed52&js_code="+code+"&grant_type=authorization_code";
-            String result = HttpClientUtil.doGet(url);
-            System.out.println("code解析后的字符串："+result);
+            //调用微信接口
+      //https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+            String url="https://api.weixin.qq.com/sns/jscode2session?appid=wx930ffb4e79b78151&secret=8ec24d40c377f4994eadca21f37a0a1c&js_code="+code+"&grant_type=authorization_code";
+
+            String result= HttpClientUtil.doGet(url);
+            System.out.println("code解析后的字符串"+result);
 
             JSONObject jsonResult = (JSONObject) JSONObject.parse(result);
             String openid = (String) jsonResult.get("openid");

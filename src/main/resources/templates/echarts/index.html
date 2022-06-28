@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+
+<div id="pai" style="height: 800px;width: 600px">
+
+
+</div>
+<script>
+   const option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                data: [150, 230, 224, 218, 135, 147, 260],
+                type: 'line'
+            }
+        ]
+    };
+
+   var chartDom = document.getElementById('pai');
+   var myChart = echarts.init(chartDom);
+   myChart.setOption(option)
+</script>
+
+</body>
+</html>

@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface ProductDao {
@@ -20,4 +19,7 @@ public interface ProductDao {
 
     List<Integer> getProNum();
     Product getOnlineById(@Param("id")int id);
+
+    List<Product> getOneType(@Param("id")int id);
+
 }
