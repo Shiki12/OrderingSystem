@@ -27,4 +27,10 @@ public interface CustomerDao {
     int updateVcode(String vcode,@Param("id") int id); //给新用户设置验证码
 
     int addVcode(String vcode);
+
+    Customer getCustomerByToken(String token);
+
+    String isPhoneExist(String phone);
+
+    void WXupdate(Customer customer);
 }

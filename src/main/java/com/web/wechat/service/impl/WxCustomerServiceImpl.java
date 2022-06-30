@@ -21,14 +21,12 @@ public class WxCustomerServiceImpl implements WxCustomerService {
     @Override
     public ResponseData wx_login(String code, String phone, String password){
         System.out.println("wx端后台登录申请");
-
         try {
             //电话验证
             Customer customer = customerDao.getByPhone(phone);
             if(customer==null){
                 return new ResponseData(0,"用户不存在");
             }
-
             //密码验证
             if(!customer.getPassword().equals(password)){
                 return new ResponseData(0,"密码错误");
@@ -80,4 +78,51 @@ public class WxCustomerServiceImpl implements WxCustomerService {
 
     }
 
+    @Override
+    public ResponseData wx_getUserInfo(String token) {
+        try {
+            Customer customer=customerDao.getCustomerByToken(token);
+            if(customer==null){
+                return new ResponseData(0,"用户搜索异常");
+            }
+            return new ResponseData(1,"获取用户信息",customer);
+        }catch (Exception e) {
+            System.out.println(e);
+            return new ResponseData(0,"注册失败");
+        }
+    }
+
+    @Override
+    public ResponseData wx_updateUserInfo(String token,String name, String phone, String address) {
+        try {
+            Customer customer=customerDao.getCustomerByToken(token);
+            //System.out.println(customer);
+            if(customer==null){
+                return new ResponseData(0,"用户搜索异常");
+            }
+            if(name!="")
+            {
+                customer.setName(name);
+            }
+            if(phone!="")
+            {
+                String isPhoneExist = customerDao.isPhoneExist(phone);
+                //System.out.println(isPhoneExist);
+                if(isPhoneExist!=null){
+                    return new ResponseData(0,"号码已存在");
+                }
+                else customer.setPhone(phone);
+            }
+            if(address!=""){
+                customer.setAddress(address);
+            }
+            System.out.println(customer);
+            customerDao.WXupdate(customer);
+            return new ResponseData(1,"修改成功");
+        }catch (Exception e) {
+            System.out.println(e);
+            return new ResponseData(0,"修改失败");
+        }
+    }
 }
+

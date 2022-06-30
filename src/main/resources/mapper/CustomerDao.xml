@@ -51,4 +51,23 @@
     <select id="getByName" resultType="com.web.entity.Customer">
         select * from customer where name = #{name}
     </select>
+
+    <select id="getCustomerByToken" resultType="com.web.entity.Customer">
+        select * from customer where token = #{token}
+    </select>
+
+    <select id="isPhoneExist" resultType="String">
+        select phone from customer where phone=#{phone}
+    </select>
+
+    <update id="WXupdate">
+        update customer
+        <set>
+            name = #{name},
+            phone = #{phone},
+            address = #{address},
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>

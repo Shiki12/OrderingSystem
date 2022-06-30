@@ -38,4 +38,6 @@ public interface OrderDao {
 
   ProductChild selectPriceAndName(@Param("id")int id);
 
+
+    boolean addOrder(int pid, int cid ,int number);
 }

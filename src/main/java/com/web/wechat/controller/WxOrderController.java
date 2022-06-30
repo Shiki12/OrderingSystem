@@ -18,4 +18,8 @@ public class WxOrderController {
         return wxOrderService.getOrderByToken(token);
     }
 
+    @RequestMapping("/addOrder")
+    public ResponseData addOrder(int pid,String token){
+        return wxOrderService.addOrder(pid,1,token);}
+
 }

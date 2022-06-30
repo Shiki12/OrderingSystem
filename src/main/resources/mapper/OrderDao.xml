@@ -49,22 +49,22 @@
         SELECT c.id userid,c.`name` username,c.phone ,
                p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
                o.address address,o.code,
-               oi.number order_number,oi.time order_time
+               oi.number order_number
         FROM orderitem oi,order_ o, product p ,customer c
         WHERE oi.pid=p.id AND oi.cstid=c.id AND  oi.oid=o.id AND c.id=#{id}
     </select>
 
-    <select id="getOrderByToken" resultType="com.web.entity.Order">
+    <select id="getOrderByToken" resultType="com.web.wechat.entity.cart">
         select
+            o.id,
             o.pid,
             o.number,
             p.imageurl,
             p.`name`,
             p.price,
-            c.`name` cname,
             c.phone
         FROM orderitem o,product p,customer c
-        WHERE isNull(o.oid) and p.id = o.pid and c.id=o.cstid and token=#{token}
+        WHERE isNull(o.oid) and p.id = o.pid and c.id = o.cstid and token=#{token}
     </select>
     <select id="count" resultType="java.lang.Integer">
         select max(id) from  order_
@@ -78,6 +78,13 @@
     <select id="selectPriceAndName" resultType="com.web.entity.po.ProductChild">
         select price,name from product where id = #{id}
     </select>
+
+
+
+    <insert id="addOrder" keyProperty="id" useGeneratedKeys="true">
+        insert into orderitem (pid,oid,cstid,number)
+        values (#{pid},#{oid},#{cid},#{number})
+    </insert>
 
 
 </mapper>
