@@ -173,7 +173,7 @@
             </div>
             <div class="leftMain_middle_right">
                 <div class="leftMain_middle_rightIn">
-                    <h3>这里是标题</h3>
+                    <h3>销量排行榜</h3>
                     <div class="biaoge biaoge_pai" style="width:100%; height:25vh">
                         <div class="biaoge_paiIn">
                             <ul>
@@ -222,6 +222,23 @@
                             </ul>
                         </div>
                     </div>
+                    <script>
+                          //取出销量最好的
+                          fetch("/echarts/").then(response=>response.json()).then(res=>{
+                              const  dataname =res.data.map(v=>v.name)
+                              console.log(dataname)
+                              barOption.xAxis.data=dataname
+
+                              const datanumber =res.data.map(v=>v.number)
+                              console.log(datanumber)
+                              barOption.series[1].data = datanumber
+                              // 使用刚指定的配置项和数据显示图表。
+                              barchart.setOption(barOption);
+                          })
+
+
+
+                    </script>
                     <span class="border_bg_leftTop"></span>
                     <span class="border_bg_rightTop"></span>
                     <span class="border_bg_leftBottom"></span>

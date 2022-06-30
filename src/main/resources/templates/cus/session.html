@@ -1,0 +1,14 @@
+<!doctype html>
+
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<div>
+    <h1>取session</h1>
+    <h1 th:text="${session.customer}"></h1>
+
+    <script th:inline="javascript">
+        let customerid = '[[${session.customer.id}]]';
+        console.log(customerid)
+    </script>
+</div>
+
+</html>

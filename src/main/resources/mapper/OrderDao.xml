@@ -111,5 +111,13 @@
         FROM order_ o,orderitem oi,product p
         WHERE o.`code`=#{code} AND oi.oid=o.id AND p.id=oi.pid
     </select>
+    <select id="getAllOrder" resultMap="orderByCustomer">
+        SELECT c.id userid,c.`name` username,c.phone ,
+               p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
+               o.address address,o.code,
+               oi.number order_number
+        FROM orderitem oi,order_ o, product p ,customer c
+        WHERE oi.pid=p.id AND oi.cstid=c.id AND  oi.oid=o.id
+    </select>
 
 </mapper>

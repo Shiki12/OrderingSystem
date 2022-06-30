@@ -23,7 +23,8 @@ public class OrderController {
     @RequestMapping("/get")
     @ResponseBody
     public List getCustomerOrder(Customer customer){
-    orderService.getCustomerOrder(customer);
+
+        orderService.getCustomerOrder(customer);
         return orderService.getCustomerOrder(customer);
 
     }

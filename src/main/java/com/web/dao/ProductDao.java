@@ -25,7 +25,9 @@ public interface ProductDao {
 
 
     //数据可视化得到剩余数量最多的食物
-    @Select("select id,name,number from product order by number desc LIMIT 0,6")
+    @Select("select id,name,number from product order by number desc LIMIT 0,8")
     List<Product> getLastMost();
+
+
 
 }

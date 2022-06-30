@@ -41,7 +41,7 @@ public interface OrderDao {
     //创建沙箱支付的条件
     List<AlipayDto> selectAlipay(@Param("id") int id);
 
-  ProductChild selectPriceAndName(@Param("id")int id);
+    ProductChild selectPriceAndName(@Param("id")int id);
 
 
     boolean addOrder(int pid, int cid ,int number);
@@ -50,4 +50,8 @@ public interface OrderDao {
     List<wxOrder> getAllOrderByToken(String token);
 
     List<wxOrderDetail> getOrderDetailByCode(String code);
+
+    //得到所有的订单
+    List<Order> getAllOrder();
+
 }

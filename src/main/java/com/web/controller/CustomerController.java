@@ -9,12 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
-@ResponseBody
 @RequestMapping("/customer")
 @Slf4j
 public class CustomerController {
@@ -24,29 +22,25 @@ public class CustomerController {
 
     @RequestMapping("/getAll")
 
-    public List getAll(Model model){
+    public String getAll(Model model){
         List<Customer> customers = customerService.getAll();
 
         model.addAttribute("customers",customers);
 
-        return customers;
+        return "admin/cusIndex";
     }
 
     @RequestMapping("/add")
     public String addCustomer(Customer customer){
-
         log.info("customer={}",customer);
 
-
-        if ( customerService.addCustomer(customer)>0){
-            return "ok";
+        if (customerService.addCustomer(customer)>0){
+            return "admin/cusIndex";
         }
         else {
-
-            return "false";
+            return "admin/404";
         }
         //返回管理的页面
-
     }
 
     @RequestMapping("/delete/{id}")
@@ -55,10 +49,9 @@ public class CustomerController {
         log.info("删除的id是={}",id);
 
         if (customerService.deleteById(id)>0){
-            return "ok";
+            return "admin/cusIndex";
         }
-
-        return "false"; //返回视图
+        return "admin/404"; //返回视图
 
     }
 
@@ -67,23 +60,21 @@ public class CustomerController {
         log.info("需要更新的用户是={}",customer);
 
         if (customerService.update(customer)>0){
-            return "更新成功";
+            return "admin/cusIndex";
         }
 
 
-        return "shibai";//返回新视图
+        return "admin/404";//返回新视图
     }
     @RequestMapping("/toUpdate/{id}")
     public String toUpdate(@PathVariable("id") int id,Model model){
-
-
-
-        if (customerService.getById(id)!=null){
-            return "ok";
+        Customer customer = customerService.getById(id);
+        if (customer!=null){
+            model.addAttribute("customer",customer);
+            return "admin/cusIndex";
         }
-        //model.addAttribute("customer",customer);
-
-        return "false";
+        model.addAttribute("msg","数据请求错误");
+        return "admin/404";
     }
 
 

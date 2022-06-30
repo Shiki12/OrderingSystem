@@ -48,6 +48,11 @@ public class LoginController {
         return "admin/login";
     }
 
+    @RequestMapping("/session")
+    public  String tosession(){
+        return "cus/session";
+    }
+
 
     @RequestMapping("") //
     public String toUserLogin(){
