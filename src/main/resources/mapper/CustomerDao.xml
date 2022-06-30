@@ -58,6 +58,7 @@
             name = #{name},
             phone = #{phone},
             address = #{address},
+            password = #{password}
         </set>
         where id = #{id}
     </update>

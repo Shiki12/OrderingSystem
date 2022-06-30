@@ -42,7 +42,7 @@ public class WxCustomerController {
     }
 
     @RequestMapping("/updateUserPwd")
-    public ResponseData wx_updateUserPwd(){
-        return null;
+    public ResponseData wx_updateUserPwd(String token,String newPwd){
+        return wxCustomerService.wx_updateUserPwd(token,newPwd);
     }
 }
