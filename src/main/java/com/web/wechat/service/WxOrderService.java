@@ -5,7 +5,7 @@ import com.web.wechat.dataUtil.ResponseData;
 public interface WxOrderService {
     ResponseData getOrderByToken(String token);
 
-    ResponseData addOrder(int pid,int number, String token);
+    ResponseData wxAddOrder(int pid, int number, String token);
 
     ResponseData getOrderByStatusAndToken(int status, String token);
 

@@ -19,9 +19,11 @@ public class WxOrderController {
         return wxOrderService.getOrderByToken(token);
     }
 
-    @RequestMapping("/addOrder")
-    public ResponseData addOrder(int pid,String token){
-        return wxOrderService.addOrder(pid,1,token);}
+    @RequestMapping("/wxAddOrder")
+    public ResponseData wxAddOrder(int pid,String token){
+        //System.out.println(pid+"+"+token);
+        return wxOrderService.wxAddOrder(pid,1,token);
+    }
 
     @GetMapping("/getOrderByStatusAndToken")
     public ResponseData getOrderByStatusAndToken(int status,String token){

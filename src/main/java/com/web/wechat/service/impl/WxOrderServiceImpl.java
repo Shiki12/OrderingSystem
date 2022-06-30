@@ -36,10 +36,11 @@ public class WxOrderServiceImpl implements WxOrderService {
     }
 
     @Override
-    public ResponseData addOrder(int pid, int number,String token) {
+    public ResponseData wxAddOrder(int pid, int number,String token) {
         try {
             Customer customer = customerDao.getCustomerByToken(token);
-            orderDao.wxAddOrder(pid,customer.getId(),number);
+            int cid=customer.getId();
+            orderDao.wxAddOrder(pid,cid,number);
             return new ResponseData(1,"添加成功");
         }catch (Exception e){
             return new ResponseData(0,"未知异常，请查看后台");

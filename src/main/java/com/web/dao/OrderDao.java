@@ -18,7 +18,7 @@ public interface OrderDao {
 
     List<cart> getOrderByToken(String token);
 
-    boolean wxAddOrder(int pid, int cid ,int number);
+    void wxAddOrder(int pid, int cid ,int number);
 
     List<wxOrder> getOrderByStatusAndToken(int status, String token);
 

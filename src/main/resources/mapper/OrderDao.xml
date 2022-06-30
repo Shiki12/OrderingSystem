@@ -40,7 +40,7 @@
 
     <insert id="wxAddOrder" keyProperty="id" useGeneratedKeys="true">
         insert into orderitem (pid,oid,cstid,number)
-        values (#{pid},#{oid},#{cid},#{number})
+        values (#{pid},null,#{cid},#{number})
     </insert>
 
     <select id="getOrderByStatusAndToken" resultType="com.web.wechat.entity.wxOrder">
