@@ -12,4 +12,5 @@ public class wxOrderDetail {
     private String name;
     private double price;
     private int number;
+    private int cid;
 }

@@ -24,6 +24,11 @@ public class WxOrderController {
         //System.out.println(pid+"+"+token);
         return wxOrderService.wxAddOrder(pid,1,token);
     }
+    @RequestMapping("/wxDeleteOrder")
+    public ResponseData wxDeletaOrder(int id,String token){
+        return wxOrderService.wxDeleteOrder(id,token);
+    }
+
 
     @GetMapping("/getOrderByStatusAndToken")
     public ResponseData getOrderByStatusAndToken(int status,String token){

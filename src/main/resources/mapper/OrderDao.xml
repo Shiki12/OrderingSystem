@@ -69,4 +69,16 @@
         WHERE o.`code`=#{code} AND oi.oid=o.id AND p.id=oi.pid
     </select>
 
+    <select id="getOrderDetailById" resultType="com.web.wechat.entity.wxOrderDetail">
+        SELECT
+            o.id id,
+            c.id cid
+        FROM orderitem o,customer c
+        WHERE o.id=#{id}  AND c.id=o.cstid
+    </select>
+
+    <delete id="wxDeleteOrder">
+        delete from orderitem where id = #{id}
+    </delete>
+
 </mapper>

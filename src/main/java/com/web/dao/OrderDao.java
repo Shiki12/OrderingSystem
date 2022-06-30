@@ -7,6 +7,7 @@ import com.web.wechat.entity.cart;
 import com.web.wechat.entity.wxOrder;
 import com.web.wechat.entity.wxOrderDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +26,8 @@ public interface OrderDao {
     List<wxOrder> getAllOrderByToken(String token);
 
     List<wxOrderDetail> getOrderDetailByCode(String code);
+
+    void wxDeleteOrder(@Param("id")int id);
+
+    wxOrderDetail getOrderDetailById(@Param("id")int id);
 }
