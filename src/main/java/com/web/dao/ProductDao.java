@@ -3,6 +3,7 @@ package com.web.dao;
 import com.web.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -21,5 +22,10 @@ public interface ProductDao {
     Product getOnlineById(@Param("id")int id);
 
     List<Product> getOneType(@Param("id")int id);
+
+
+    //数据可视化得到剩余数量最多的食物
+    @Select("select id,name,number from product order by number desc LIMIT 0,6")
+    List<Product> getLastMost();
 
 }

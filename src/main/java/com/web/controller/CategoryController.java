@@ -50,8 +50,19 @@ public class CategoryController {
         }
     }
 
+    @RequestMapping("/getAllPro")
+    @ResponseBody  //得到所有的商品 直接返回给前端
+    public ResponseData getAllPro(){
 
+        List<Product> list = productDao.getAll();
 
+        if (list.isEmpty()){
+            return new ResponseData(0,"响应失败");
+        }
+        else{
+            return  new ResponseData(1,"响应成功",list);
+        }
+    }
 
 
 }

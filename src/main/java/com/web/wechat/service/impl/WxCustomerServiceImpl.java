@@ -37,6 +37,7 @@ public class WxCustomerServiceImpl implements WxCustomerService {
             //AppSecret = a86f77fcf21eafa7559a478109e8ed52
             //调用微信接口
       //https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
+            //https://api.weixin.qq.com/sns/jscode2session?appid=wx930ffb4e79b78151&secret=8ec24d40c377f4994eadca21f37a0a1c&js_code="+code+"&grant_type=authorization_code";
             String url="https://api.weixin.qq.com/sns/jscode2session?appid=wx930ffb4e79b78151&secret=8ec24d40c377f4994eadca21f37a0a1c&js_code="+code+"&grant_type=authorization_code";
 
             String result= HttpClientUtil.doGet(url);
