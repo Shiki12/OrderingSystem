@@ -124,5 +124,22 @@ public class WxCustomerServiceImpl implements WxCustomerService {
             return new ResponseData(0,"修改失败");
         }
     }
+
+    @Override
+    public ResponseData wx_updateUserPwd(String token,String newPwd) {
+        try {
+            Customer customer=customerDao.getCustomerByToken(token);
+            if(customer==null){
+                return new ResponseData(0,"用户搜索异常");
+            }
+            customer.setPassword(newPwd);
+            customerDao.WXupdate(customer);
+            return new ResponseData(1,"修改成功");
+        }catch (Exception e)
+        {
+            System.out.println(e);
+            return new ResponseData(0,"修改失败");
+        }
+    }
 }
 

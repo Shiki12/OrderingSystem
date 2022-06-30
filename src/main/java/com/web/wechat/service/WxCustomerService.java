@@ -11,4 +11,6 @@ public interface WxCustomerService {
     ResponseData wx_getUserInfo(String token);
 
     ResponseData wx_updateUserInfo(String token,String name, String phone, String address);
+
+    ResponseData wx_updateUserPwd(String token,String newPwd);
 }

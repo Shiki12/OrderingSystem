@@ -81,10 +81,35 @@
 
 
 
-    <insert id="addOrder" keyProperty="id" useGeneratedKeys="true">
+    <insert id="wxAddOrder" keyProperty="id" useGeneratedKeys="true">
         insert into orderitem (pid,oid,cstid,number)
-        values (#{pid},#{oid},#{cid},#{number})
+        values (#{pid},null,#{cid},#{number})
     </insert>
 
+    <select id="getOrderByStatusAndToken" resultType="com.web.wechat.entity.wxOrder">
+        select
+            o.id,
+            o.`code`
+        FROM order_ o,customer c
+        WHERE o.`status` = #{status}  and c.id = o.cstid and c.token=#{token}
+    </select>
+
+    <select id="getAllOrderByToken" resultType="com.web.wechat.entity.wxOrder">
+        select
+            o.id,
+            o.`code`
+        FROM order_ o,customer c
+        WHERE  c.id = o.cstid and c.token=#{token}
+    </select>
+
+    <select id="getOrderDetailByCode" resultType="com.web.wechat.entity.wxOrderDetail">
+        SELECT
+            p.id,
+            p.`name`,
+            p.price,
+            oi.number
+        FROM order_ o,orderitem oi,product p
+        WHERE o.`code`=#{code} AND oi.oid=o.id AND p.id=oi.pid
+    </select>
 
 </mapper>
