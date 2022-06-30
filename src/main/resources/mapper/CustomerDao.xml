@@ -18,8 +18,8 @@
             phone = #{phone},
             status = #{status},
         where id = #{id};
-    </update>
 
+    </update>
     <update id="updateCustmoerToken">
         update customer
         set token = #{token}
