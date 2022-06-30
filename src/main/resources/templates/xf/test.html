@@ -1,153 +1,163 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Bootstrap 实例</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-
-    <style>
-        body {
-            position: relative;
-        }
-        ul.nav-pills {
-            top: 20px;
-            position: fixed;
-        }
-        div.col-8 div {
-            height: 500px;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理</title>
+    <!-- Bootstrap Styles-->
+    <link href="../../static/css/xf_css/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../../static/css/xf_css/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../../static/css/xf_css/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+<body>
+<div id="wrapper">
 
-<!--<div class="container-fluid">
-    <div class="row">
-        <nav class="col-sm-3 col-4" id="myScrollspy">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#section1">Section 1</a>
+    <!--导航栏-->
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-comments"></i> <strong>点餐后台 </strong></a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <img src="../../static/img/xf/img.png" width="20" height="20">
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+
+    <!--侧边栏-->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="http://localhost:8001/backstage/index">
+                        <i class="fa fa-dashboard"></i>
+                        首页
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#section2">Section 2</a>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/elements">
+                        <i class="fa fa-desktop"></i>
+                        待定1
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#section3">Section 3</a>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/chart">
+                        <i class="fa fa-bar-chart-o"></i>
+                        待定2
+                    </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Section 4</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#section41">Link 1</a>
-                        <a class="dropdown-item" href="#section42">Link 2</a>
-                    </div>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/panel"><i class="fa fa-qrcode"></i>
+                        待定3
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/table"><i class="fa fa-table"></i>
+                        待定4
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/form"><i class="fa fa-edit"></i>
+                        待定5
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active-menu" href="http://localhost:8001/backstage/empty"><i class="fa fa-fw fa-file"></i>
+                        商品
+                    </a>
                 </li>
             </ul>
-        </nav>
-        <div class="col-sm-9 col-8">
-            <div id="section1" class="bg-success">
-                <h1>Section 1</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-            </div>
-            <div id="section2" class="bg-warning">
-                <h1>Section 2</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-            </div>
-            <div id="section3" class="bg-secondary">
-                <h1>Section 3</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-            </div>
-            <div id="section41" class="bg-danger">
-                <h1>Section 4-1</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-            </div>
-            <div id="section42" class="bg-info">
-                <h1>Section 4-2</h1>
-                <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-            </div>
+
         </div>
-    </div>
-</div>-->
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>
+    </nav>
+    <!-- /. NAV SIDE  -->
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-            </div>
-            <!--添加商品表单-->
+    <div id="page-wrapper" >
+        <div id="page-inner">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-8 col-lg-offset-2">
+                    <h1 class="page-header">
+                        修改商品信息 <small>Best form elements.</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>添加商品 <small>请输入商品信息</small></h4>
+                            请输入新的商品信息
                         </div>
                         <div class="panel-body">
                             <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form">
 
-                                <form role="form"
-                                      class="form-inline"
-                                      th:action="@{/product/upload}"
-                                      enctype="multipart/form-data"
-                                      method="post">
-
-                                    <div class="form-group"  th:class="col-lg-2">
-                                        <label for="na">商品名称</label>
-                                        <input class="form-control" type="text" name="name" id="na">
-
-                                    </div>
-
-                                    <div class="form-group" th:class="col-lg-2">
-                                        <label for="pri">价格</label>
-                                        <input  placeholder="Enter text" type="text" class="form-control" name = "price"
-                                                id="pri" >
-                                    </div>
-
-                                    <div class="form-group" th:class="col-lg-2">
-                                        <label for="num">数量</label>
-                                        <input type="text" class="form-control" name = "number" id="num">
-                                    </div>
-
-                                    <div class="form-group" th:class="col-lg-2">
-                                        <label for="ms">描述</label>
-                                        <input type="text" class="form-control" name = "miaoshu" id="ms">
-                                    </div>
-
-                                    <div class="form-group" th:class="col-lg-3">
-                                        <label>上传文件</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="请选择文件" />
-                                            <span class="input-group-btn">
-
-                                                        <label for="fl" class="form-control btn btn-info">
-                                                            上传文件
-                                                        </label>
-                                                        <input type="file" name="file" class="form-control" id="fl" style="display: none">
-                                                    </span>
+                                        <div class="form-group">
+                                            <label>Text Input</label>
+                                            <input class="form-control">
+                                            <p class="help-block">Example block-level help text here.</p>
                                         </div>
-                                        <!-- /input-group -->
-                                    </div>
 
-                                    <!--<button type="submit" class="btn btn-default">Submit Button</button>-->
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="form-group" th:class="col-lg-2">
-                                        <button><input type="submit"></button>
-                                    </div>
+                                        <div class="form-group">
+                                            <label>Text Input with Placeholder</label>
+                                            <input class="form-control" placeholder="Enter text">
+                                        </div>
 
-                                </form>
+                                        <div class="form-group">
+                                            <label>Static Control</label>
+                                            <p class="form-control-static">email@example.com</p>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label>File input</label>
+                                            <input type="file">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Text area</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
 
                             </div>
                             <!-- /.row (nested) -->
@@ -159,20 +169,22 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+            <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
         </div>
+        <!-- /. PAGE INNER  -->
     </div>
+    <!-- /. PAGE WRAPPER  -->
 </div>
-
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            ...
-        </div>
-    </div>
-</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="../../static/css/xf_css/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../../static/css/xf_css/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../../static/css/xf_css/assets/js/jquery.metisMenu.js"></script>
+<!-- Custom Js -->
+<script src="../../static/css/xf_css/assets/js/custom-scripts.js"></script>
 
 
 </body>

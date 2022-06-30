@@ -1,27 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 
-<html lang="ch" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>后台管理</title>
+
     <!-- Bootstrap Styles-->
     <link href="../../static/css/xf_css/assets/css/bootstrap.css" rel="stylesheet" />
+
     <!-- FontAwesome Styles-->
     <link href="../../static/css/xf_css/assets/css/font-awesome.css" rel="stylesheet" />
+
     <!-- Custom Styles-->
     <link href="../../static/css/xf_css/assets/css/custom-styles.css" rel="stylesheet" />
+
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <!-- TABLE STYLES-->
+    <link href="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
 </head>
-
 <body>
-
 <div id="wrapper">
-
-    <!--导航栏-->
+    <!--Top导航栏-->
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -53,9 +59,9 @@
             <!-- /.dropdown -->
         </ul>
     </nav>
-    <!--/. NAV TOP  -->
+    <!--TOP导航栏 End  -->
 
-    <!--侧边栏-->
+    <!-- Nav 侧边栏 -->
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
@@ -83,7 +89,7 @@
 
                 <li>
                     <a href="http://localhost:8001/backstage/panel"><i class="fa fa-qrcode"></i>
-                        待定3
+                        顾客
                     </a>
                 </li>
 
@@ -109,119 +115,134 @@
         </div>
 
     </nav>
+    <!-- Nav 侧边栏 End-->
 
-    <div id="page-wrapper">
+    <!-- 内容 -->
+    <div id="page-wrapper" >
 
-        <div id="page-inner">
+        <div id = "page-inner">
+
+            <!--添加商品表单-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                    data-target="#myModal">
+                添加商品
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <!--添加商品表单-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4>添加顾客 <small>请输入顾客信息</small></h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+
+                                            <form>
+
+                                            </form>
+                                        </div>
+                                        <!-- /.row (nested) -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row">
-                <div class="col-md-8 col-lg-offset-2">
+                <div class="col-md-12">
                     <h1 class="page-header">
-                        修改商品信息 <small>Best form elements.</small>
+                        顾客信息 <small>Responsive tables</small>
                     </h1>
                 </div>
             </div>
-
             <!-- /. ROW  -->
+
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            请输入新的商品信息
+                            Product Tables
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form  th:action="@{/product/update}"
-                                           enctype="multipart/form-data"
-                                           method="post"
-                                           role="form">
+                            <div class="table-responsive">
 
-                                            <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
+                                <!--商品信息表-->
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 50px" class="text-center">ID</th>
+                                        <th style="width: 150px" class="text-center">昵称</th>
+                                        <th style="width: 150px" class="text-center">密码</th>
+                                        <th style="width: 200px" class="text-center">地址</th>
+                                        <th style="width: 150px" class="text-center">电话</th>
+                                        <th style="width: 50px" class="text-center">等级</th>
+                                        <td style="width: 150px" class="text-center">操作</td>
+                                    </tr>
+                                    </thead>
 
-                                        <div class="form-group">
-                                            <label for="name">商品名称</label>
-                                            <input class="form-control"
-                                                   id="name"
-                                                   type="text" name="name" th:value="${pro.getName()}">
-                                            <p class="help-block">Example block-level help text here.</p>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label for="pri">价格</label>
-                                            <input class="form-control" placeholder="Enter text"
-                                                   type="text" name="price" th:value="${pro.getPrice()}"
-                                            id="pri">
-                                        </div>
+                                </table>
 
-                                        <div class="form-group">
-                                            <label for="num">数量</label>
-                                            <input class="form-control" id="num"
-                                                   type="text" name="zan" th:value="${pro.getZan()}">
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label for="ms">描述</label>
-                                            <textarea class="form-control" rows="3" id="ms" name="miaoshu" th:value="${pro.getMiaoshu()}"></textarea>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <td >
-                                                <img th:src="@{/}+${pro.getImageUrl()}" width="60">
-                                            </td>
-                                        <label for="fil">上传的图片</label>
-                                        <input type="file"
-                                               name="file"
-                                               id="fil">
-                                        </div>
-
-                                        <button type="submit" class="btn btn-default">提交</button>
-                                        <button type="reset" class="btn btn-default">重置</button>
-                                    </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
 
                             </div>
-                            <!-- /.row (nested) -->
+
                         </div>
-                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
+                    <!--End Advanced Tables -->
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
 
-
         </div>
+        <!-- /. PAGE INNER  -->
 
     </div>
 
-
-    <!--<form  th:action="@{/product/update}" enctype="multipart/form-data" method="post">
-        <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
-        商品名称 <input type="text" name="name" th:value="${pro.getName()}"> <br>
-        价格<input type="text" name="price" th:value="${pro.getPrice()}">  <br>
-        数量<input type="text" name="zan" th:value="${pro.getZan()}"> <br>
-        描述<input type="text" name="miaoshu" th:value="${pro.getMiaoshu()}"> <br>
-        <td >
-            <img th:src="@{/}+${pro.getImageUrl()}" width="60">
-        </td>
-        上传的图片：<input type="file" name="file"><br/>
-        <input type="submit">
-    </form>-->
-
 </div>
+<!-- /. WRAPPER  -->
 
 
 
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
 <script src="../../static/css/xf_css/assets/js/jquery-1.10.2.js"></script>
 <!-- Bootstrap Js -->
 <script src="../../static/css/xf_css/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="../../static/css/xf_css/assets/js/jquery.metisMenu.js"></script>
+
+<!-- DATA TABLE SCRIPTS -->
+<script src="../../static/css/xf_css/assets/js/dataTables/jquery.dataTables.js"></script>
+
+<script src="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+
 <!-- Custom Js -->
 <script src="../../static/css/xf_css/assets/js/custom-scripts.js"></script>
 
 </body>
-
 </html>
