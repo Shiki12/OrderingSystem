@@ -291,14 +291,18 @@
 
                                     </table>
 
-                                    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
+                                    <p class="text-right">当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
                                         <span th:text="${pageInfo.pages}"></span> 页,
                                         共 <span th:text="${pageInfo.total}"></span> 条记录</p>
 
-                                    <a th:href="@{/product/getAll}">首页</a>
-                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
-                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
-                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+                                    <div class="text-right">
+
+                                        <a th:href="@{/product/getAll}">首页</a>
+                                        <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                                        <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                                        <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+
+                                    </div>
 
                                 </div>
 
