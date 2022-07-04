@@ -90,5 +90,21 @@ public class WxOrderServiceImpl implements WxOrderService {
         }
     }
 
+    @Override
+    public ResponseData wxDeleteOrder(int id, String token) {
+        try {
+            Customer customer = customerDao.getCustomerByToken(token);
+            wxOrderDetail OrderDetail = orderDao.getOrderDetailById(id);
+            if(customer.getId()==OrderDetail.getCid())
+            {
+                orderDao.wxDeleteOrder(id);
+                return new ResponseData(1,"删除成功");
+            }
+            return new ResponseData(0,"删除失败");
+        }catch (Exception e){
+            return new ResponseData(0,"未知异常，请查看后台");
+        }
+    }
+
 
 }

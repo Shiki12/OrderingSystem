@@ -12,4 +12,6 @@ public interface WxOrderService {
     ResponseData getAllOrderByToken(String token);
 
     ResponseData getOrderDetailByCode(String code);
+
+    ResponseData wxDeleteOrder(int id, String token);
 }

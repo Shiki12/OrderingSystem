@@ -54,4 +54,8 @@ public interface OrderDao {
     //得到所有的订单
     List<Order> getAllOrder();
 
+
+    void wxDeleteOrder(@Param("id")int id);
+
+    wxOrderDetail getOrderDetailById(@Param("id")int id);
 }

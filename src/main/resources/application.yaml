@@ -35,7 +35,6 @@ mybatis:
   type-aliases-package: com.web.entity   # 注意对应实体类的路径  配置包扫描的别名
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 #分页插件
 pagehelper:
   helper-dialect: mysql
