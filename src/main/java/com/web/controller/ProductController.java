@@ -135,6 +135,11 @@ public class ProductController {
         return "admin/index";
     }
 
+    /**
+     *
+     * @param id 用户商品的id
+     * @return
+     */
     @RequestMapping("/getOne")
     @ResponseBody
     public ResponseData getOne(int id){
@@ -144,8 +149,18 @@ public class ProductController {
             return  new ResponseData(1,"请求成功",product);
         }
         return null;
-
     }
+
+    @RequestMapping("/getAllPro")
+    @ResponseBody
+    public ResponseData getOne(){
+        List<Product> list = productService.getAll();
+        if (list!=null){
+            return  new ResponseData(1,"请求成功",list);
+        }
+        return new ResponseData(1,"请求失败");
+    }
+
 
 
 

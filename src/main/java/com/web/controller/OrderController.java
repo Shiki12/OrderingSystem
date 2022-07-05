@@ -4,6 +4,7 @@ import com.web.entity.Alipay;
 import com.web.entity.Customer;
 import com.web.entity.po.OrderItem;
 import com.web.service.OrderService;
+import com.web.wechat.dataUtil.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,12 +43,24 @@ public class OrderController {
      添加购物车
      */
     @RequestMapping("/addOrderShop")
-
-    public String addOrderShop(OrderItem orderItem){
-
+    public ResponseData addOrderShop(OrderItem orderItem){
+            int i = orderService.addOrderShop(orderItem);
+            if (i != 0){
+                return  new ResponseData(1,"添加成功");
+            }
+            else {
+                return  new ResponseData(0,"添加失败");
+            }
 
     }
 
+
+     @RequestMapping("/getOrderShop")
+    public ResponseData  getOrderShop(int id){
+
+
+
+     }
 
 
 

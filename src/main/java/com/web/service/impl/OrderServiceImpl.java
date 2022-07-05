@@ -130,40 +130,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     *
+     *  添加购物车
      * @param orderItem
      * @return
      */
     @Override
     public int addOrderShop(OrderItem orderItem) {
-        int count = orderDao.count(); //得到最大的订单id
-        OrderChild orderChild = new OrderChild();
-        orderChild.setId(count+1); //设置新买的订单id
-        orderItem.setOid(count+1); // 绑定订单id
+        //添加购物车
         try {
-            //现在需要添加进order表  订单表
-            // 这里随机产生一堆数用来构成订单编号
-            String stringDate = Utils.getStringDate()+Utils.genId();
-            orderChild.setCode(stringDate);
-            //设置顾客的id
-            orderChild.setCstid(orderItem.getCstid());
-            //设置地址
-            orderChild.setAddress(orderItem.getAddress());
-            //标志是否出货
-            orderChild.setStatus(0); //这个状态时用来设置到底是支付没有的
-
-            //添加进order表
-            addOrderChild(orderChild);
-
-            String time = Utils.getTime();
-            orderItem.setTime(time);
-            // 添加商品
-            addOrderItem(orderItem); //添加进了orderItem表 即添加了商品
+            orderDao.wxAddOrder(orderItem.getPid(), orderItem.getCstid(),
+                    orderItem.getNumber()
+            );
         }catch (Exception e){
             return 0;
         }
-        return  1;
-
+        return 1;
     }
 
     @Override
