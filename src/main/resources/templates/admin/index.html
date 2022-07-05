@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
@@ -23,10 +23,6 @@
 
     <!-- TABLE STYLES-->
     <link href="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-
-
-
-
 
 </head>
 <body>
@@ -89,30 +85,30 @@
                 <li>
                     <a href="http://localhost:8001/backstage/chart">
                         <i class="fa fa-bar-chart-o"></i>
-                        数据图形化显示
+                        待定2
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/comment/all"><i class="fa fa-qrcode"></i>
-                        评论
+                    <a href="http://localhost:8001/backstage/panel"><i class="fa fa-qrcode"></i>
+                        待定3
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/customer/getAll"><i class="fa fa-table"></i>
-                        顾客
+                    <a href="http://localhost:8001/backstage/table"><i class="fa fa-table"></i>
+                        待定4
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/adminOrder/index"><i class="fa fa-edit"></i>
-                        订单
+                    <a href="http://localhost:8001/backstage/form"><i class="fa fa-edit"></i>
+                        待定5
                     </a>
                 </li>
 
                 <li>
-                    <a class="active-menu" href="http://localhost:8001/product/getAll"><i class="fa fa-fw fa-file"></i>
+                    <a class="active-menu" href="http://localhost:8001/backstage/empty"><i class="fa fa-fw fa-file"></i>
                         商品
                     </a>
                 </li>
@@ -176,8 +172,7 @@
 
                                                 <div class="form-group" th:class="col-lg-2">
                                                     <label for="ms">描述</label>
-                                                    <textarea class="form-control" rows="3"
-                                                              name="miaoshu" id="ms"></textarea>
+                                                    <input type="text" class="form-control" name="miaoshu" id="ms">
                                                 </div>
 
 
@@ -234,20 +229,13 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 50px" class="text-center">ID</th>
-                                        <th style="width: 150px" class="text-center">昵称</th>
+                                        <th style="width: 150px" class="text-center">商品名称</th>
                                         <th style="width: 50px" class="text-center">价格</th>
                                         <th style="width: 80px" class="text-center">点赞数</th>
                                         <th style="width: 100px" class="text-center">图片</th>
                                         <th style="width: 500px" class="text-center">描述</th>
                                         <td style="width: 150px" class="text-center">操作</td>
 
-                                        <!--<th th:class="col-md-1">ID</th>
-                                        <th th:class="col-md-1">昵称</th>
-                                        <th th:class="col-md-1">价格</th>
-                                        <th th:class="col-md-1">点赞数</th>
-                                        <th th:class="col-md-1">图片</th>
-                                        <th th:class="col-md-2">描述</th>
-                                        <td th:class="col-md-1">操作</td>-->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -296,14 +284,18 @@
 
                                 </table>
 
-                                <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
+                                <p class="text-right">当前 <span th:text="${pageInfo.pageNum}"></span> 页,总
                                     <span th:text="${pageInfo.pages}"></span> 页,
                                     共 <span th:text="${pageInfo.total}"></span> 条记录</p>
 
-                                <a th:href="@{/product/getAll}">首页</a>
-                                <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
-                                <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
-                                <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+                                <div class="text-right">
+
+                                    <a th:href="@{/product/getAll}">首页</a>
+                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                                    <a th:href="@{/product/getAll(pageNum=${pageInfo.pages})}">尾页</a>
+
+                                </div>
 
                             </div>
 

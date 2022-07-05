@@ -46,12 +46,20 @@
 
     <!-- 我的样式   -->
     <link rel="stylesheet" href="../../static/css/front-css/addmy-index.css">
+    <script>
+        window.onload=function (){
+            let customer = '[[${session.customer}]]';
+            console.log(customer);
+            if(customer==="")
+                window.location.href="http://localhost:8001/index/cuslogin";
+        }
+    </script>
 </head>
 
 <body>
 
-    <!--====== PRELOADER PART START ======-->
 
+    <!--====== PRELOADER PART START ======-->
     <div class="preloader">
         <div class="loader">
             <div class="ytp-spinner">
@@ -96,7 +104,7 @@
                                             <a class="nav-link" href="http://localhost:8001/index/menu">食物</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="http://localhost:8001/index/about">订单</a>
+                                            <a class="nav-link" href="http://localhost:8001/index/shopping">订单</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -182,11 +190,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-1.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dineone"><img src="../../static/img/front-images/category-shapp.png" alt=""></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(1)" >奶茶专区</a>
+                            <a href="http://localhost:8001/index/menu/#dineone">奶茶专区</a>
                         </div>
                     </div>
                 </div>
@@ -195,11 +203,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-2.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dinetow"><img src="../../static/img/front-images/category-shapp.png" alt=""></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(2)">甜品/蛋糕</a>
+                            <a href="http://localhost:8001/index/menu/#dinetow">甜品/蛋糕</a>
                         </div>
                     </div>
                 </div>
@@ -208,11 +216,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-3.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dinethree"><img src="../../static/img/front-images/category-shapp.png" alt=""></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(3)">包子/早点</a>
+                            <a href="http://localhost:8001/index/menu/#dinethree">包子/早点</a>
                         </div>
                     </div>
                 </div>
@@ -221,11 +229,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-3.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dinefour"><img src="../../static/img/front-images/category-shapp.png" alt=""></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(4)">午饭套餐</a>
+                            <a href="http://localhost:8001/index/menu/#dinefour">午饭套餐</a>
                         </div>
                     </div>
                 </div>
@@ -234,11 +242,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-3.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dinefive"><img src="../../static/img/front-images/category-shapp.png" alt=""></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(5)">肉类炒菜</a>
+                            <a href="http://localhost:8001/index/menu/#dinefive">肉类炒菜</a>
                         </div>
                     </div>
                 </div>
@@ -247,11 +255,11 @@
                         <div class="category-thumb">
                             <img src="../../static/img/front-images/category-3.jpg" alt="category">
                             <div class="item">
-                                <img src="../../static/img/front-images/category-shapp.png" alt="">
+                                <a href="http://localhost:8001/index/menu/#dinesix"><img src="../../static/img/front-images/category-shapp.png"></a>
                             </div>
                         </div>
                         <div class="category-content text-center">
-                            <a onclick="getsortfromindex(6)">素菜专区</a>
+                            <a href="http://localhost:8001/index/menu/#dinesix">素菜专区</a>
                         </div>
                     </div>
                 </div>
@@ -298,130 +306,6 @@
 
     <!--====== FOOD MENU PART START ======-->
     
-    <section class="food-menu-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <img src="../../static/img/front-images/shape/title-shape-2.png" alt="title">
-                        <h3 class="title">每天特别食物</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container custom-container-2">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="food-menu-box bg_cover" style="background-image: url(../../static/img/front-images/food-menu-bg.jpg);">
-                        <div class="project-menu">
-                            <ul>
-                                <li data-filter="*" class="active">所有</li>
-                                <li data-filter=".cat-1">奶茶专区</li>
-                                <li data-filter=".cat-2">甜品/蛋糕</li>
-                                <li data-filter=".cat-3">包子/早点</li>
-                                <li data-filter=".cat-4">午饭套餐</li>
-                                <li data-filter=".cat-5">肉类炒菜</li>
-                                <li data-filter=".cat-5">素菜专区</li>
-                            </ul>
-                        </div>
-                        <div class="row grid">
-                            <div class="col-lg-6 cat-3 cat-4 cat-2">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-1.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 cat-1 cat-5 cat-2">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-2.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 cat-2 cat-3 cat-5">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-3.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 cat-1 cat-3 cat-5">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-4.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 cat-2 cat-5">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-5.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 cat-1 cat-3 cat-4">
-                                <div class="food-menu-item mt-30 d-block d-sm-flex align-items-center">
-                                    <div class="food-menu-thumb">
-                                        <img src="../../static/img/front-images/food-menu-6.jpg" alt="item">
-                                    </div>
-                                    <div class="food-menu-content">
-                                        <a href="#"><h4 class="title">Heirloom Tomato Caprese</h4></a>
-                                        <ul>
-                                            <li>Food Type: Chicken Stick</li>
-                                            <li>Delivery time: 60 Minutes, Delivery Cost: Free</li>
-                                        </ul>
-                                        <span>$86</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!--====== FOOD MENU PART ENDS ======-->
 
     <!--====== DOWNLOAD PART START ======-->
@@ -464,88 +348,6 @@
 
     <!--====== CLIENT PART START ======-->
     
-    <section class="client-area bg_cover pt-150 pb-140" style="background-image: url(../../static/img/front-images/client-bg.jpg);">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-2 col-md-3 col-sm-3">
-                    <div class="client-area-thumb-ltem" id="commondone">
-                        <ul>
-                            <li><img src="../../static/img/front-images/client-user-1.png" alt="user"></li>
-                            <li><img src="../../static/img/front-images/client-user-2.png" alt="user"></li>
-                            <li><img src="../../static/img/front-images/client-user-3.png" alt="user"></li>
-                            <li><img src="../../static/img/front-images/client-user-2.png" alt="user"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-9 col-sm-9">
-                    <div class="client-slide" id="commmodtow">
-                        <div class="client-box">
-                            <h4 class="title">Very Taste and Professional Behave </h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <div class="user mt-40">
-                                <div class="thumb">
-                                    <img src="../../static/img/front-images/user-1.png" alt="">
-                                </div>
-                                <span>Chad S. Jones</span>
-                                <p>Food Lover Customer</p>
-                            </div>
-                        </div>
-                        <div class="client-box">
-                            <h4 class="title">Very Taste and Professional Behave </h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <div class="user mt-40">
-                                <div class="thumb">
-                                    <img src="../../static/img/front-images/user-2.png" alt="">
-                                </div>
-                                <span>Chad S. Jones</span>
-                                <p>Food Lover Customer</p>
-                            </div>
-                        </div>
-                        <div class="client-box">
-                            <h4 class="title">Very Taste and Professional Behave </h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <ul>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                            <div class="user mt-40">
-                                <div class="thumb">
-                                    <img src="../../static/img/front-images/user-3.png" alt="">
-                                </div>
-                                <span>Chad S. Jones</span>
-                                <p>Food Lover Customer</p>
-                            </div>
-                        </div>
-                        <div class="client-box">
-                            <h4 class="title">Very Taste and Professional Behave </h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
-                            <ul>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                            <div class="user mt-40">
-                                <div class="thumb">
-                                    <img src="../../static/img/front-images/user-2.png" alt="">
-                                </div>
-                                <span>Chad S. Jones</span>
-                                <p>Food Lover Customer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="client-thumb">
-            <img src="../../static/img/front-images/client-thumb.png" alt="">
-        </div>
-    </section>
-    
     <!--====== CLIENT PART ENDS ======-->
 
     <!--====== BLOG PART START ======-->
@@ -576,19 +378,6 @@
                             <li><a href="../../templates/about.html">关于</a></li>
                             <li><a href="../../templates/menu.html">菜品</a></li>
                             <li><a href="../../templates/contact.html">个人</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 footer-grid">
-                    <div class="footer-grid-heading">
-                        <h4>Follow</h4>
-                    </div>
-                    <div class="social">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
                         </ul>
                     </div>
                 </div>

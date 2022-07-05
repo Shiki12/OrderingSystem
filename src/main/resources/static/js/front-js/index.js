@@ -42,7 +42,56 @@ function getdine(){
         },
     });
 }
-function recommendfood(){
+function indexcommend(){//推荐食物
+    var commendone=document.getElementById('commendindex');
+    commendone.innerText="";
+    $.ajax({
+        type: "get",
+        url: 'http://localhost:8001/index/search',
+        dataType: 'json',
+        success: function (data) {
+            var commoddata=data.data;
+            for (let i=0;i<commoddata.length;i++)
+            {
+                var divone=document.createElement('div');
+                divone.className="col-lg-6 cat-3 cat-4 cat-2";
+                var divtow=document.createElement('div');
+                divtow.className="food-menu-item mt-30 d-block d-sm-flex align-items-center";
+
+               var divfirst=document.createElement('div');
+               divfirst.className="food-menu-thumb";
+               var imgone=document.createElement('img');
+               imgone.src=data.data;//图片数据
+               divfirst.appendChild(imgone);
+
+               var divsecond=document.createElement('div');
+               divsecond.className="food-menu-content";
+               var aone=document.createElement('a');
+               aone.innerHTML="<h4 className=\"title\">"+data.data+"</h4>";//菜品名字
+               aone.href="";//定义跳转或是直接想菜品一样
+               var ulone=document.createElement('ul');
+               var lione=document.createElement('li');
+               lione.innerText=data.data;
+               var litow=document.createElement('li');
+               litow.innerText=data.data;
+               ulone.appendChild(lione);
+               ulone.appendChild(litow);
+
+               var spanone=document.createElement('span');
+               spanone.innerText=data.data;//价格
+               divsecond.appendChild(aone);
+               divsecond.appendChild(ulone);
+               divsecond.appendChild(spanone);
+
+               divtow.appendChild(divfirst);
+               divtow.appendChild(divsecond);
+               divone.appendChild(divtow);
+               commendone.appendChild(divone);
+            }
+        }
+    })
+}
+function recommendfood(){//评论
     var com1=document.getElementById('commondone');//用户图片，用于定位的
     var com2=document.getElementById('commmodtow');
     com1.innerHTML="";

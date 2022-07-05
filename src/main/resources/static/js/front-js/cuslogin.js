@@ -144,7 +144,7 @@ function tosurepasssame(){
     }
 }
 
-function tosuremissage(one) {//获取验证码
+function tosuremissage(one) {//注册获取验证码
     var imgworry=document.getElementById('worryimgthree');
     var resmail=document.getElementById('resmail');
     var mailtext=document.getElementById('mailtext');
@@ -168,6 +168,50 @@ function tosuremissage(one) {//获取验证码
                     if(data.toString()=="发送成功")
                     {
                         mailtext.innerText="邮件发送成功";
+                        imgworry.className="worrypicno";
+                        for(let a=0;a<60;a++){
+                            one.value=a;
+                            setInterval("RandomImage();",1000);
+                        }
+                    }
+                    else{
+                    }
+                },
+                error() {
+                    alert("出现异常！！！");
+                },
+            });
+        }
+    }
+    else{
+        mailtext.innerText="邮件不能为空";
+        imgworry.className="worrypicno";
+    }
+
+}
+function tosuremissageone(one) {//注册获取验证码
+    var imgworry=document.getElementById('forimgthree');
+    var resmail=document.getElementById('formail');
+    console.log(resmail.value);
+    if(resmail.value!=="")
+    {
+        var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+        if(!reg.test(resmail.value))
+        {
+            mailtext.innerText="邮件格式有错";
+            imgworry.className="worrypicno";
+        }
+        else{
+            mailtext.innerText="邮件正确";
+            $.ajax({
+                type: "get",
+                url: 'http://localhost:8001/login/mail',
+                data:{"mail":resmail.value},
+                dataType: 'text',
+                success: function (data) {
+                    if(data.toString()=="发送成功")
+                    {
+                        alert("邮件发送成功！！！");
                         imgworry.className="worrypicno";
                         for(let a=0;a<60;a++){
                             one.value=a;
@@ -249,16 +293,18 @@ function toforgetnumber(){
         "        <div class=\"inputBox\">\n" +
         "            <input type=\"text\" id=\"foruser\" required=\"\">\n" +
         "            <label>请输入用户名</label>\n" +
+        "            <img id=\"forimgone\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"inputBox\">\n" +
-        "            <input type=\"password\" id=\"formail\" required=\"\">\n" +
+        "            <input type=\"text\" id=\"formail\" required=\"\">\n" +
         "            <label>请输入邮箱</label>\n" +
+        "            <img id=\"forimgtow\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"inputBoxnumber\">\n" +
-        "            <input class=\"inputone\" type=\"text\" id=\"resnumsureone\" required=\"\">\n" +
+        "            <input class=\"inputone\" type=\"text\" id=\"fornumsureone\" required=\"\">\n" +
         "            <label id=\"ressurenumber\">验证码</label>\n" +
-        "            <button class=\"inputtow\" onclick=\"tosuremissage(this)\" type=\"button\" id=\"resnumsure\">获取验证码</button>>\n" +
-        "            <img id=\"worryimgfour\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
+        "            <button class=\"inputtow\" onclick=\"tosuremissageone(this)\" type=\"button\" id=\"fornumsure\">获取验证码</button>>\n" +
+        "            <img id=\"forimgthree\" src=\"../../static/img/front-images/icon/worry.png\" class=\"worrypicno\">"+
         "        </div>\n" +
         "        <div class=\"cusloginbottom\">\n" +
         "            <button type=\"button\" onclick=\"forgetnumber()\">找回</button>>\n" +

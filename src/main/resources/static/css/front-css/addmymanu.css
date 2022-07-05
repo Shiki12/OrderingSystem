@@ -15,22 +15,60 @@
 .lititle1:hover .dineall{
     display: block;
 }
-.contentdine{
+.contentdineone{
     margin-left: 100px;
     margin-top: 100px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-style: outset;
+    width: 1000px;
+    float: left;
+    display: block;
+}
+.contentdinetow{
+    margin-left: 100px;
+    margin-top: 100px;
+    height: auto;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: outset;
+    display: none;
 }
 .spaceondine{
     margin-top: 10px;
 }
 .dinepic{
-    width: 15%;
-    height: auto;
+    width: auto;
+    height: 150px;
     transition: all 0.2s linear;
 }
-.dinepic:hover{
-    transform: scale(1.5);
+.spanmenupic{
+    font-size: 10px;
+    display: none;
+}
+.dinedivone{
+    position: relative;
+    float: left;
+    width: 180px;
+    padding: 20px;
+    height: auto;
+}
+.dinedivone:hover .dinepic{
+    transform: scale(1.3);
     transition: all 0.2s linear;
+    opacity:0.5;
+}
+.dinedivone:hover .spanmenupic{
+    position: absolute;
+    display: block;
+    top: 40%;
+    left: 32%;
+    font-size: 30px;
+    color: black;
+    letter-spacing: 0;
+    text-shadow: 0px 1px 0px #ffffff, 0px 2px 0px #fdfdfd, 0px 3px 0px #fdfdfd, 0px 4px 0px #ffffff, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 ;
 }
 .expressdinepic{
     position: fixed;
@@ -38,15 +76,222 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 999;
+    z-index: 200;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-color: rgba(52, 52, 52, 0.8);
     background-size: 50%;
 }
-.spanmenupic{
-    position: absolute;
+.expressdinepicone{
+    position: fixed;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
+    z-index: 400;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: rgba(52, 52, 52, 0);
+    background-size: 50%;
+}
+.bottomdinepicone {
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    width: 150px;
+    height: 40px;
+    background-color: whitesmoke;
+}
+.bottomdinepictow {
+    /*按钮右*/
+    margin-left: 35px;
+    width: 70px;
+    height: 35px;
+    line-height: 22px;
+    color: #F60;
+    font-size: 12px;
+    border: 1px solid  #f60;
+}
+.divonemenu{
+    float: left;
+}
+/*加入购物车*/
+.add_btn {
+    /*按钮左*/
+    width: 70px;
+    height: 35px;
+    line-height: 22px;
+    color: #F60;
+    font-size: 12px;
+    border: 1px solid  #f60;
+}
+.item_count_i{
+    height: 100px;
+    width:150px;
+    /*border: 1px solid black;*/
+    float: left;
+    margin-left: 75%;
+}
+.num_count{
+    width:150px;
+    height:40px;
+    border: 1.2px solid #000000;
+    float:right;
+    background-color: white;
+    margin-top: 21px;
+
+}
+.count_d{
+    width:30%;
+    height:40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
+    font-size:25px;
+    color: #000000;
+}
+.count_d:hover{
+    width:30%;
+    height:40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
+    font-size:25px;
+    color: #000000;
+    background: #ccc4c4;
+    cursor: pointer;
+}
+.c_num{
+    width:40%;
+    height:40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
+    font-size:16px;
+    color: #000000;
+}
+.count_i{
+     width:30%;
+     height:40px;
+     line-height: 40px;
+     float: left;
+     text-align: center;
+     font-size:21px;
+     color: #000000;
+ }
+.count_i:hover{
+    width:30%;
+    height:40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
+    font-size:21px;
+    color: #000000;
+    background: #ccc4c4;
+    cursor: pointer;
+}
+.divmenuone{
+    min-height: 40px;
+}
+.divmainmenu{
+    float: left;
+    margin-left: 5px;
+}
+.divmainmenu .menumiaoshu{
+    height: auto;
+    width: 200px;
+}
+.divmainmenu .menumiaoshu span{
+    font-size:16px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 150px;
+    text-overflow:ellipsis;
+}
+.divmainmenu .yuanmenuprice{
+
+}
+.divmainmenu .yuanmenuprice span{
+    font-size: 16px;
+    color: #a0a0a0;
+    text-decoration: line-through;
+}
+.divmainmenu .menuprice{
+    font-size:30px;
+    color: #ff5000;
+}
+.addmenuone{
+    height: 16px;
+    width: 16px;
+    border:1px solid black;
+    line-height: 16px;
+}
+.addmenuone .addmenutoshopper{
+    display: none;
+}
+.addmenuone .addmenutoshopperone{
+    display: block;
+    margin-top: -2px;
+    background-color: #ff5000;;
+}
+.mainonemenu{
+
+}
+.mainonemenu:hover{
+    display: block;
+    background-color: white;
+    border:1px solid #5a57bb;
+}
+.divmainmenu .addshoppingmenu{
+    margin-left: 180px;
+    margin-top: 20px;
+}
+.divmainmenu .addshoppingmenu .divoneone{
+    border-radius: 30px;
+    float: left;
+    height: 10px;
+    width: 10px;
+}
+.divmainmenu .addshoppingmenu  .divoneone .spanone{
+    font-size:45px;
+    margin-top: -24px;
+    margin-left: -100px;
+}
+.divmainmenu .addshoppingmenu .divoneone .spantow{
+    font-size:30px;
+    margin-left: -20px;
+    margin-top: -13px;
+}
+.addallto{
+    /*结算按钮*/
+    margin-top:20%;
+    margin-left: 76%;
+    position: fixed;
+}
+.addallto button{
+    background-color: #00BFF0;
+    color: white;
+    height: 40px;
+    width: 100px;
+}
+.addalltoone{
+    /*结算按钮*/
+    margin-top:17%;
+    margin-left: 76%;
+    position: fixed;
+}
+.addalltoone button{
+    background-color: #00BFF0;
+    color: white;
+    height: 40px;
+    width: 100px;
+}
+.mainmenugetone{
+    float: left;
+    width: 45% ;
+    height: 220px;
+    margin: 20px;
+    border:2px solid black;
 }
