@@ -1,20 +1,213 @@
 <!doctype html>
 
-<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<html lang="ch" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
-<p> ����ҳ�� </p>
-<form th:action="@{/product/update}" enctype="multipart/form-data" method="post">
-      <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
-    ��Ʒ���� <input type="text" name="name" th:value="${pro.getName()}"> <br>
-    �۸�<input type="text" name="price" th:value="${pro.getPrice()}">  <br>
-    ����<input type="text" name="zan" th:value="${pro.getZan()}"> <br>
-    ����<input type="text" name="miaoshu" th:value="${pro.getMiaoshu()}"> <br>
-    <td >
-        <img th:src="@{/}+${pro.getImageUrl()}" width="60">
-    </td>
-    �ϴ���ͼƬ��<input type="file" name="file"><br/>
-    <input type="submit">
-</form>
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理</title>
+    <!-- Bootstrap Styles-->
+    <link href="../../static/css/xf_css/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../../static/css/xf_css/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="../../static/css/xf_css/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!--导航栏-->
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-comments"></i> <strong>点餐后台 </strong></a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <img src="../../static/img/xf/img.png" width="20" height="20">
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+
+    <!--侧边栏-->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="http://localhost:8001/backstage/index">
+                        <i class="fa fa-dashboard"></i>
+                        首页
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/elements">
+                        <i class="fa fa-desktop"></i>
+                        待定1
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/backstage/chart">
+                        <i class="fa fa-bar-chart-o"></i>
+                        数据图形化显示
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/comment/all"><i class="fa fa-qrcode"></i>
+                        评论
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/customer/getAll"><i class="fa fa-table"></i>
+                        顾客
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8001/adminOrder/index"><i class="fa fa-edit"></i>
+                        订单
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active-menu" href="http://localhost:8001/product/getAll"><i class="fa fa-fw fa-file"></i>
+                        商品
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div id="page-inner">
+
+            <div class="row">
+                <div class="col-md-8 col-lg-offset-2">
+                    <h1 class="page-header">
+                        修改商品信息 <small>Best form elements.</small>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            请输入新的商品信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form  th:action="@{/product/update}"
+                                           enctype="multipart/form-data"
+                                           method="post"
+                                           role="form">
+
+                                        <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
+
+                                        <div class="form-group">
+                                            <label for="name">商品名称</label>
+                                            <input class="form-control"
+                                                   id="name"
+                                                   type="text" name="name" th:value="${pro.getName()}">
+                                            <p class="help-block">Example block-level help text here.</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pri">价格</label>
+                                            <input class="form-control" placeholder="Enter text"
+                                                   type="text" name="price" th:value="${pro.getPrice()}"
+                                                   id="pri">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="num">数量</label>
+                                            <input class="form-control" id="num"
+                                                   type="text" name="zan" th:value="${pro.getZan()}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ms">描述</label>
+                                            <textarea class="form-control" rows="3" id="ms" name="miaoshu" th:value="${pro.getMiaoshu()}"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <td >
+                                                <img th:src="@{/}+${pro.getImageUrl()}" width="60">
+                                            </td>
+                                            <label for="fil">上传的图片</label>
+                                            <input type="file"
+                                                   name="file"
+                                                   id="fil">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default">提交</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="../../static/css/xf_css/assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../../static/css/xf_css/assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../../static/css/xf_css/assets/js/jquery.metisMenu.js"></script>
+<!-- Custom Js -->
+<script src="../../static/css/xf_css/assets/js/custom-scripts.js"></script>
+
+</body>
 
 </html>

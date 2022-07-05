@@ -30,6 +30,10 @@
         from review r,customer c,product p
         WHERE r.cstid = c.id AND p.id = r.pid AND r.cstid=#{id}
     </select>
+    <select id="getAllcomment" resultType="com.web.entity.Comment">
+        select *
+        from  review
+    </select>
 
 
 </mapper>

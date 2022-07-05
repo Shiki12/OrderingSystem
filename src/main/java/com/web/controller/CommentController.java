@@ -1,13 +1,16 @@
 package com.web.controller;
 
+import com.web.dao.CommentDao;
 import com.web.entity.Comment;
 import com.web.entity.Customer;
+import com.web.entity.Order;
 import com.web.entity.po.CommentPo;
 import com.web.entity.po.CommentVo;
 import com.web.service.CommentService;
 import com.web.wechat.dataUtil.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,8 +21,20 @@ import java.util.List;
 @RequestMapping("/comment")
 public class CommentController{
 
+
+    @RequestMapping("/all")
+    public String tocomment(Model model){
+        List<Comment> comm = commentDao.getAllcomment();
+        model.addAttribute("comm",comm);
+        return "admin/comment";
+    }
+
     @Autowired
     CommentService commentService;
+
+
+    @Autowired
+    CommentDao commentDao;
     //通过商品id查找到所有的评论
     @RequestMapping("/get")
     @ResponseBody

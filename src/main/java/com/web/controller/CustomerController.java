@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -31,10 +32,14 @@ public class CustomerController {
     }
 
     @RequestMapping("/add")
-    public String addCustomer(Customer customer){
+    public String addCustomer(Customer customer, Model model){
         log.info("customer={}",customer);
 
         if (customerService.addCustomer(customer)>0){
+            List<Customer> customers = customerService.getAll();
+
+            model.addAttribute("customers",customers);
+
             return "admin/cusIndex";
         }
         else {
@@ -44,22 +49,28 @@ public class CustomerController {
     }
 
     @RequestMapping("/delete/{id}")
-   public String delete(@PathVariable("id") int id){
+   public String delete(@PathVariable("id") int id, Model model){
 
         log.info("删除的id是={}",id);
 
         if (customerService.deleteById(id)>0){
+            List<Customer> customers = customerService.getAll();
+
+            model.addAttribute("customers",customers);
             return "admin/cusIndex";
         }
         return "admin/404"; //返回视图
 
     }
 
-    @RequestMapping("/update")
-    public String update(Customer customer){
+    @PostMapping("/update")
+    public String update(Customer customer, Model model){
         log.info("需要更新的用户是={}",customer);
 
         if (customerService.update(customer)>0){
+            List<Customer> customers = customerService.getAll();
+
+            model.addAttribute("customers",customers);
             return "admin/cusIndex";
         }
 
@@ -70,17 +81,11 @@ public class CustomerController {
     public String toUpdate(@PathVariable("id") int id,Model model){
         Customer customer = customerService.getById(id);
         if (customer!=null){
-            model.addAttribute("customer",customer);
-            return "admin/cusIndex";
+            model.addAttribute("cus",customer);
+            return "admin/cusUpdate";
         }
         model.addAttribute("msg","数据请求错误");
         return "admin/404";
     }
-
-
-
-
-
-
 
 }
