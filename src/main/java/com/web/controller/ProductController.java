@@ -151,6 +151,10 @@ public class ProductController {
         return null;
     }
 
+    /**
+     * 这是用来返回前端所有的商品
+     * @return
+     */
     @RequestMapping("/getAllPro")
     @ResponseBody
     public ResponseData getOne(){

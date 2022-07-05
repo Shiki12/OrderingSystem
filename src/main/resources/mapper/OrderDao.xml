@@ -40,6 +40,14 @@
         set status = #{status}
         where id = #{id};
     </update>
+    <update id="updateOrderItem">
+
+        update orderitem
+        set oid = #{oid},
+            time = #{time}
+
+        where id = #{id};
+    </update>
 
     <!-- 加上o.id 就表示同一次订单购买了哪些东西，即下单多选 能够得到完整的订单信息
      不加上就说明 这个用户买了哪些  我的想法是先不加上 可以新建一个vo用来整合这个用户购买的
@@ -85,6 +93,10 @@
         insert into orderitem (pid,oid,cstid,number)
         values (#{pid},null,#{cid},#{number})
     </insert>
+    <insert id="addOrderShop">
+        insert into orderitem (pid,oid,cstid,number)
+        values (#{pid},null,#{cstid},#{number})
+    </insert>
 
     <select id="getOrderByStatusAndToken" resultType="com.web.wechat.entity.wxOrder">
         select
@@ -126,6 +138,18 @@
             c.id cid
         FROM orderitem o,customer c
         WHERE o.id=#{id}  AND c.id=o.cstid
+    </select>
+    <select id="getOrderShop" resultMap="orderByCustomer">
+        SELECT c.id userid,c.`name` username,c.phone ,
+               p.`name` p_name,p.number p_number,p.price p_price,p.imageurl,
+               oi.number order_number,oi.id id
+        FROM orderitem oi, product p ,customer c
+        WHERE isNull(oi.oid) and oi.pid=p.id AND oi.cstid=c.id  AND c.id=#{id}
+    </select>
+    <select id="getOrderItemById" resultType="com.web.entity.po.OrderItem">
+        select *
+        from orderitem
+       where id = #{id};
     </select>
 
     <delete id="wxDeleteOrder">

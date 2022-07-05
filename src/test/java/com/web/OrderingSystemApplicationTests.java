@@ -123,4 +123,20 @@ class OrderingSystemApplicationTests {
             System.out.println(alipayDto);
         }
     }
+
+    @Test
+    void testAddOrderShop(){
+//        OrderItem orderItem = new OrderItem();
+//        orderItem.setPid(1);
+//        orderItem.setCstid(1);
+//        orderItem.setNumber(10);
+//        orderDao.addOrderShop(orderItem);
+
+
+        List<Order> list = orderDao.getOrderShop(1);
+
+        for (Order orderItem : list) {
+            System.out.println(orderItem);
+        }
+    }
 }

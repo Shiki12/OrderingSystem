@@ -2,6 +2,7 @@ package com.web.controller;
 
 import com.web.entity.Alipay;
 import com.web.entity.Customer;
+import com.web.entity.Order;
 import com.web.entity.po.OrderItem;
 import com.web.service.OrderService;
 import com.web.wechat.dataUtil.ResponseData;
@@ -43,6 +44,7 @@ public class OrderController {
      添加购物车
      */
     @RequestMapping("/addOrderShop")
+    @ResponseBody
     public ResponseData addOrderShop(OrderItem orderItem){
             int i = orderService.addOrderShop(orderItem);
             if (i != 0){
@@ -54,13 +56,39 @@ public class OrderController {
 
     }
 
+    /**
+     *
+     * @param id  查找用户的购物车
+     * @return
+     */
 
      @RequestMapping("/getOrderShop")
+     @ResponseBody
     public ResponseData  getOrderShop(int id){
-
-
-
+         List<Order> orderShop = orderService.getOrderShop(id);
+         if (orderShop!= null){
+             return  new ResponseData(1,"请求成功",orderShop);
+         }
+         else {
+             return  new ResponseData(0,"添加失败");
+         }
      }
+
+
+    /**
+     *  购物车下单
+     * @param id
+     * @return
+     */
+    @RequestMapping("/placeOrderShop")
+    public String  placeOrderShop(int id,String address,RedirectAttributes re){
+
+        Alipay alipay = orderService.placeOrderShop(id,address);
+
+        re.addFlashAttribute("alipay",alipay);
+        return "redirect:/alipay/create";
+
+    }
 
 
 

@@ -21,7 +21,9 @@ public interface OrderService {
      //添加购物车
      int addOrderShop(OrderItem orderItem);
      //得到购物车
-     List<>
+     //得到某人的购物车  通过用户id
+     List<Order> getOrderShop(int id);
+     Alipay placeOrderShop( int id,String address);
 
 
 

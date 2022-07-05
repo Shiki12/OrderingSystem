@@ -31,7 +31,7 @@ public interface OrderDao {
 
     List<cart> getOrderByToken(String token);
 
-    void wxAddOrder(int pid, int cid ,int number);
+    int wxAddOrder(int pid, int cid ,int number);
 
     //统计最大的订单id
     int count();
@@ -58,4 +58,18 @@ public interface OrderDao {
     void wxDeleteOrder(@Param("id")int id);
 
     wxOrderDetail getOrderDetailById(@Param("id")int id);
+
+
+    int addOrderShop(OrderItem orderItem);
+
+    //得到某人的购物车中所有的商品  通过用户id
+     List<Order> getOrderShop(@Param("id")int id);
+
+     //得到某件orderItem
+    OrderItem getOrderItemById(@Param("id")int id);
+
+    //更新OrderItem表
+    int updateOrderItem(OrderItem orderItem);
+
+
 }

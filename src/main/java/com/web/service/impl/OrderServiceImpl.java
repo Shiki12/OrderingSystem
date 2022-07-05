@@ -138,13 +138,67 @@ public class OrderServiceImpl implements OrderService {
     public int addOrderShop(OrderItem orderItem) {
         //添加购物车
         try {
-            orderDao.wxAddOrder(orderItem.getPid(), orderItem.getCstid(),
-                    orderItem.getNumber()
-            );
+           orderDao.addOrderShop(orderItem);
+            return 1;
         }catch (Exception e){
             return 0;
         }
-        return 1;
+
+    }
+
+    @Override
+    public List<Order> getOrderShop(int id) {
+        return  orderDao.getOrderShop(id);
+    }
+
+    @Override
+    public Alipay placeOrderShop(int id,String address) {
+
+        Alipay alipay = new Alipay();
+        //得到当前的商品
+        OrderItem orderItem = orderDao.getOrderItemById(id);
+
+        //创建订单
+        int count = orderDao.count(); //得到最大的订单id
+        OrderChild orderChild = new OrderChild();
+        orderChild.setId(count+1); //设置新买的订单id
+        orderChild.setAddress(address);
+        orderItem.setOid(count+1); // 绑定订单id
+
+        try {
+            // 这里随机产生一堆数用来构成订单编号
+            String stringDate = Utils.getStringDate()+Utils.genId();
+            orderChild.setCode(stringDate);
+
+            orderChild.setCstid(orderItem.getCstid());
+            orderChild.setStatus(0); //默认是支付
+
+            //添加进order表
+            addOrderChild(orderChild);
+
+            //设置返回的单号
+            alipay.setTraceNo(stringDate);
+
+            //设置总金额
+            // alipay.setTotalAmount();
+
+            ProductChild child = orderDao.selectPriceAndName(orderItem.getPid());
+
+            double totalPrice = child.getPrice() * orderItem.getNumber();
+            alipay.setTotalAmount(String.valueOf(totalPrice));
+
+            alipay.setSubject(child.getName());
+
+            //设置下单时间
+            String time = Utils.getTime();
+            orderItem.setTime(time);
+
+            orderDao.updateOrderItem(orderItem);
+
+        }catch (Exception e){
+            return  null;
+        }
+        return alipay;
     }
 
     @Override
