@@ -22,5 +22,9 @@ public interface OrderService {
      //添加orderItem订单表
      int addOrderItem(OrderItem orderItem);
 
+     //添加购物车
+     int addOrderShop(OrderItem orderItem);
+
+
 
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -29,7 +28,6 @@ public class AdminOrderController {
 
     //得到某一人的所有订单
     @RequestMapping("/getOnePerson")
-    @ResponseBody
     public String getCustomerOrder(Customer customer, Model model){
 
         List<Order> orders = orderService.getCustomerOrder(customer);

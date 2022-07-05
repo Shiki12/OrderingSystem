@@ -38,4 +38,17 @@ public class OrderController {
         return "redirect:/alipay/create";
     }
 
+    /*
+     添加购物车
+     */
+    @RequestMapping("/addOrderShop")
+
+    public String addOrderShop(OrderItem orderItem){
+
+
+    }
+
+
+
+
 }

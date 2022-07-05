@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.web.entity.Product;
 import com.web.service.ProductService;
+import com.web.wechat.dataUtil.ResponseData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -133,6 +134,19 @@ public class ProductController {
         model.addAttribute("pageInfo",pageInfo);
         return "admin/index";
     }
+
+    @RequestMapping("/getOne")
+    @ResponseBody
+    public ResponseData getOne(int id){
+
+        Product product = productService.getById(id);
+        if (product!=null){
+            return  new ResponseData(1,"请求成功",product);
+        }
+        return null;
+
+    }
+
 
 
 }

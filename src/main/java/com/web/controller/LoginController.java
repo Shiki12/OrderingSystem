@@ -1,10 +1,14 @@
 package com.web.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.web.dao.AdministratorDao;
 import com.web.entity.Administrator;
 import com.web.entity.Customer;
+import com.web.entity.Product;
 import com.web.entity.po.VerCode;
 import com.web.service.CustomerService;
+import com.web.service.ProductService;
 import com.web.utils.Utils;
 import com.web.wechat.dataUtil.ResponseData;
 import org.apache.shiro.SecurityUtils;
@@ -26,6 +30,7 @@ import javax.servlet.http.HttpSession;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RequestMapping("/login")
 @Controller
@@ -35,6 +40,9 @@ public class LoginController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    ProductService productService;
 
 
     JavaMailSender javaMailSender;//注入
@@ -60,10 +68,12 @@ public class LoginController {
     }
 
     @RequestMapping ("/admin")  //管理员登录功能
-    @ResponseBody
     public String login(
             @RequestParam("username")String username,
-            @RequestParam("password")String password, Model model, HttpSession session){
+            @RequestParam("password")String password, Model model, HttpSession session,
+
+            @RequestParam(defaultValue = "1",value = "pageNum")int pageNum
+            ){
 
         //得到subject对象
         Subject subject = SecurityUtils.getSubject();
@@ -89,6 +99,14 @@ public class LoginController {
                 Date strtodate = sdf.parse(format, pos);
                 administrator.setLasttime(strtodate);
                 administratorDao.update(administrator);
+
+                //设置页面大小
+                PageHelper.startPage(pageNum,10);
+                List<Product> list = productService.getAll();
+                //pageHelper 包装之后的代码
+                PageInfo<Product> pageInfo = new PageInfo<>(list);
+                model.addAttribute("pageInfo",pageInfo);
+
                 return "admin/index";
             }
 
