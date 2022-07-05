@@ -77,30 +77,30 @@
                 <li>
                     <a href="http://localhost:8001/backstage/chart">
                         <i class="fa fa-bar-chart-o"></i>
-                        待定2
+                        数据图形化显示
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/backstage/panel"><i class="fa fa-qrcode"></i>
-                        待定3
+                    <a href="http://localhost:8001/comment/all"><i class="fa fa-qrcode"></i>
+                        评论
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/backstage/table"><i class="fa fa-table"></i>
-                        待定4
+                    <a href="http://localhost:8001/customer/getAll"><i class="fa fa-table"></i>
+                        顾客
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://localhost:8001/backstage/form"><i class="fa fa-edit"></i>
-                        待定5
+                    <a href="http://localhost:8001/adminOrder/index"><i class="fa fa-edit"></i>
+                        订单
                     </a>
                 </li>
 
                 <li>
-                    <a class="active-menu" href="http://localhost:8001/backstage/empty"><i class="fa fa-fw fa-file"></i>
+                    <a class="active-menu" href="http://localhost:8001/product/getAll"><i class="fa fa-fw fa-file"></i>
                         商品
                     </a>
                 </li>
@@ -137,7 +137,7 @@
                                            method="post"
                                            role="form">
 
-                                            <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
+                                        <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
 
                                         <div class="form-group">
                                             <label for="name">商品名称</label>
@@ -151,7 +151,7 @@
                                             <label for="pri">价格</label>
                                             <input class="form-control" placeholder="Enter text"
                                                    type="text" name="price" th:value="${pro.getPrice()}"
-                                            id="pri">
+                                                   id="pri">
                                         </div>
 
                                         <div class="form-group">
@@ -169,10 +169,10 @@
                                             <td >
                                                 <img th:src="@{/}+${pro.getImageUrl()}" width="60">
                                             </td>
-                                        <label for="fil">上传的图片</label>
-                                        <input type="file"
-                                               name="file"
-                                               id="fil">
+                                            <label for="fil">上传的图片</label>
+                                            <input type="file"
+                                                   name="file"
+                                                   id="fil">
                                         </div>
 
                                         <button type="submit" class="btn btn-default">提交</button>
@@ -195,20 +195,6 @@
         </div>
 
     </div>
-
-
-    <!--<form  th:action="@{/product/update}" enctype="multipart/form-data" method="post">
-        <input type="hidden" name="id" th:value="${pro.getId()} "> <br>
-        商品名称 <input type="text" name="name" th:value="${pro.getName()}"> <br>
-        价格<input type="text" name="price" th:value="${pro.getPrice()}">  <br>
-        数量<input type="text" name="zan" th:value="${pro.getZan()}"> <br>
-        描述<input type="text" name="miaoshu" th:value="${pro.getMiaoshu()}"> <br>
-        <td >
-            <img th:src="@{/}+${pro.getImageUrl()}" width="60">
-        </td>
-        上传的图片：<input type="file" name="file"><br/>
-        <input type="submit">
-    </form>-->
 
 </div>
 

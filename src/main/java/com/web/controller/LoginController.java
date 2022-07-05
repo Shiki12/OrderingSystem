@@ -41,8 +41,10 @@ public class LoginController {
     @Autowired
     CustomerService customerService;
 
+
     @Autowired
     ProductService productService;
+
 
 
     JavaMailSender javaMailSender;//注入
@@ -73,7 +75,7 @@ public class LoginController {
             @RequestParam("password")String password, Model model, HttpSession session,
 
             @RequestParam(defaultValue = "1",value = "pageNum")int pageNum
-            ){
+    ){
 
         //得到subject对象
         Subject subject = SecurityUtils.getSubject();
@@ -94,7 +96,7 @@ public class LoginController {
                 lastLoginTime = sdf.format(time);
                 //当前时间
                 String format = sdf.format(new Date());
-                //string转date  不处理时间格式会不理想
+                //ring转date  不处理时间格式会不理想
                 ParsePosition pos = new ParsePosition(0);
                 Date strtodate = sdf.parse(format, pos);
                 administrator.setLasttime(strtodate);

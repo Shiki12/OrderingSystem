@@ -1,37 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ch" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
 
 <head>
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>后台管理</title>
-
     <!-- Bootstrap Styles-->
     <link href="../../static/css/xf_css/assets/css/bootstrap.css" rel="stylesheet" />
-
     <!-- FontAwesome Styles-->
     <link href="../../static/css/xf_css/assets/css/font-awesome.css" rel="stylesheet" />
-
     <!-- Custom Styles-->
     <link href="../../static/css/xf_css/assets/css/custom-styles.css" rel="stylesheet" />
-
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
-    <!-- TABLE STYLES-->
-    <link href="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-
-
-
-
-
 </head>
+
 <body>
+
 <div id="wrapper">
-    <!--Top导航栏-->
+
+    <!--导航栏-->
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -63,9 +53,9 @@
             <!-- /.dropdown -->
         </ul>
     </nav>
-    <!--TOP导航栏 End  -->
+    <!--/. NAV TOP  -->
 
-    <!-- Nav 侧边栏 -->
+    <!--侧边栏-->
     <nav class="navbar-default navbar-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
@@ -119,132 +109,107 @@
         </div>
 
     </nav>
-    <!-- Nav 侧边栏 End-->
 
-    <!-- 内容 -->
-    <div id="page-wrapper" >
+    <div id="page-wrapper">
 
-        <div id = "page-inner">
-
+        <div id="page-inner">
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8 col-lg-offset-2">
                     <h1 class="page-header">
-                        订单信息 <small>Responsive tables</small>
+                        修改顾客信息 <small>Best form elements.</small>
                     </h1>
                 </div>
             </div>
-            <!-- /. ROW  -->
 
+            <!-- /. ROW  -->
             <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
+                <div class="col-lg-8 col-lg-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Product Tables
+                            请输入新的顾客信息
                         </div>
                         <div class="panel-body">
-                            <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form  th:action="@{/customer/update}"
+                                           enctype="multipart/form-data"
+                                           method="post"
+                                           role="form">
 
-                                <!--商品信息表-->
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th style="width: 50px" class="text-center">ID</th>
-                                        <th style="width: 150px" class="text-center">用户</th>
-                                        <th style="width: 50px" class="text-center">价格</th>
-                                        <th style="width: 80px" class="text-center">点赞</th>
-                                        <th style="width: 100px" class="text-center">图片</th>
-                                        <th style="width: 500px" class="text-center">菜名</th>
-                                        <td style="width: 150px" class="text-center">地址</td>
+                                        <input type="hidden" name="id" th:value="${cus.getId()} "> <br>
 
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr  th:each="order : ${orders}" class="text-center">
-                                        <td  th:text="${order.getCode()}">
+                                        <div class="form-group">
+                                            <label for="name">顾客名称</label>
+                                            <input class="form-control"
+                                                   id="name"
+                                                   type="text" name="name" th:value="${cus.getName()}">
+                                            <p class="help-block">Example block-level help text here.</p>
+                                        </div>
 
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
+                                        <div class="form-group">
+                                            <label for="pd">密码</label>
+                                            <input class="form-control" placeholder="Enter text"
+                                                   type="text" name="price"
+                                                   th:value="${cus.getPassword()}"
+                                                   id="pd">
+                                        </div>
 
-                                        </td>
-                                        <td  th:text="${order.getCustomer().getName()}">
+                                        <div class="form-group">
+                                            <label for="ad">地址</label>
+                                            <input class="form-control" id="ad"
+                                                   type="text" name="address"
+                                                   th:value="${cus.getAddress()}">
+                                        </div>
 
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div></td>
+                                        <div class="form-group">
+                                            <label for="ph">联系电话</label>
+                                            <input class="form-control"  id="ph" name="phone" th:value="${cus.getPhone()}">
+                                        </div>
 
-                                        <td  th:text="${order.getProducts().getPrice()}">
+                                        <div class="form-group">
+                                            <label for="sta">等级</label>
+                                            <input class="form-control"  id="sta" name="status" th:value="${cus.getStatus()}">
+                                        </div>
 
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
+                                        <div class="form-group">
+                                            <label for="mail">邮箱</label>
+                                            <input disabled="disabled" class="form-control"  id="mail" name="mail" th:value="${cus.getMail()}">
+                                        </div>
 
-                                        </td>
-                                        <td  th:text="${order.getProducts().getNumber()}">
-
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div>
-
-                                        </td>
-                                        <td >
-
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;">
-                                                <img  th:src="@{/} + ${order.getProducts().getImageUrl()}" width="60">
-                                            </div>
-
-                                        </td>
-
-                                        <td  th:text="${order.getProducts().getName()}">
-
-                                            <div style="height:50px; overflow:hidden; text-overflow: ellipsis;"></div></td>
-
-
-                                        <td th:text="${order.getAddress()}"
-                                            style="height:20px; width: 500px; overflow:hidden; text-overflow: ellipsis;">
-
-
-                                        </td>
-
-                                    </tr>
-                                    </tbody>
-
-                                </table>
+                                        <button type="submit" class="btn btn-default">提交</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
 
                             </div>
-
+                            <!-- /.row (nested) -->
                         </div>
+                        <!-- /.panel-body -->
                     </div>
-                    <!--End Advanced Tables -->
+                    <!-- /.panel -->
                 </div>
+                <!-- /.col-lg-12 -->
             </div>
 
+
         </div>
-        <!-- /. PAGE INNER  -->
 
     </div>
 
 </div>
-<!-- /. WRAPPER  -->
 
 
 
-
-<!-- JS Scripts-->
-<!-- jQuery Js -->
 <script src="../../static/css/xf_css/assets/js/jquery-1.10.2.js"></script>
 <!-- Bootstrap Js -->
 <script src="../../static/css/xf_css/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="../../static/css/xf_css/assets/js/jquery.metisMenu.js"></script>
-
-<!-- DATA TABLE SCRIPTS -->
-<script src="../../static/css/xf_css/assets/js/dataTables/jquery.dataTables.js"></script>
-
-<script src="../../static/css/xf_css/assets/js/dataTables/dataTables.bootstrap.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').dataTable();
-    });
-</script>
-
 <!-- Custom Js -->
 <script src="../../static/css/xf_css/assets/js/custom-scripts.js"></script>
 
 </body>
+
 </html>

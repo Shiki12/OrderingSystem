@@ -11,6 +11,9 @@ import java.util.List;
 @Mapper
 public interface CommentDao {
 
+
+    List<Comment> getAllcomment() ;
+
     //通过商品id 拿到这件商品的所有评论
     List<CommentPo> getCommentById(@Param("id") int id);
 

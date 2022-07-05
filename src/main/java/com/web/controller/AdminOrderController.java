@@ -34,6 +34,8 @@ public class AdminOrderController {
         model.addAttribute("orders",orders);
         return "admin/orderIndex";
     }
+
+
     @RequestMapping("/index") //
     public String getAll(Model model){
 
