@@ -4,29 +4,26 @@
   <view class="cart_title">购物车</view>
   <view class="cart_main">
     <block wx:if="{{cart.length > 0}}">
-      <view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+      <view class="cart_item" wx:for="{{cart}}" wx:key="id">
         <!-- 复选框 -->
         <view class="item_cb_wrap">
-          <checkbox-group data-id="{{item.goods_id}}" bindchange="onChangeSelectItem">
-            <checkbox checked="{{item.is_cart_selected}}"></checkbox>
+          <checkbox-group data-id="{{item.id}}" bindchange="onChangeSelectItem">
+            <checkbox checked="{{item.checked}}"></checkbox>
           </checkbox-group>
         </view>
         <!-- 商品图片 -->
-        <navigator class="item_img_wrap">
-          <image mode="widthFix" src="{{item.goods_small_img}}"></image>
-        </navigator>
+        <!-- <navigator class="item_img_wrap">
+          <image mode="widthFix" src="{{item.imageurl}}"></image>
+        </navigator> -->
         <!-- 商品信息 -->
         <view class="item_info_wrap">
-          <view class="goods_title">{{item.goods_title}}</view>
+          <view class="goods_title">{{item.name}}</view>
           <view class="goods_price_wrap">
-            <view class="goods_price">￥{{item.goods_price}}</view>
-            <view class="goods_num_tool">
-              <view class="num_edit" data-id="{{item.goods_id}}" data-opera="{{-1}}" bindtap="onTapItemNumEdit">-</view>
-              <view class="goods_num">{{item.in_cart_number}}</view>
-              <view class="num_edit" data-id="{{item.goods_id}}" data-opera="{{1}}" bindtap="onTapItemNumEdit">+</view>
-            </view>
+            <view class="goods_price">￥{{item.price}}</view>
+            <!-- <view class="goods_num">数量：{{item.number}}</view> -->
           </view>
         </view>
+        <view class="num_edit" data-id="{{item.id}}" bindtap="DeleteItem">X</view>
       </view>
     </block>
     <block wx:else>
@@ -53,5 +50,5 @@
     </view>
   </view>
   <!-- 结算 -->
-  <view class="order_pay_wrap" style="background-color: tomato;" bindtap="onTapPay">结算({{totalSelectedGoodsNum}})</view>
+  <view class="order_pay_wrap" style="background-color: rgb(62, 209, 57);" bindtap="onTapPay">结算({{totalSelectedGoodsNum}})</view>
 </view>

@@ -1,0 +1,15 @@
+<view>
+  <block wx:if="{{orderList.length > 0}}">
+  <view class="main">
+    <view class="order_item" wx:for="{{orderList}}" bindtap="toOrderDetail" data-id="{{item.code}}" wx:key="id">
+      <view class="no_row">
+        <view class="no_title">订单编号</view>
+        <view class="no_value">{{item.code}}</view>
+      </view>
+    </view>
+  </view>
+  </block>
+  <block wx:else> 
+      <view class="emptyTips">您还没有该类订单哦~</view>
+  </block>
+</view>

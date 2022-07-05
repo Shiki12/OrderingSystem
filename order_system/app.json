@@ -5,10 +5,13 @@
     "pages/index/index",
     "pages/proDetail/proDetail",
     "pages/cart/cart",
+    "pages/pay/pay",
     "pages/my/my",
     "pages/order/order",
+    "pages/orderDetail/orderDetail",
     "pages/feedback/feedback",
     "pages/address/address",
+    "pages/pwd/pwd",
     "pages/aboutUs/aboutUs",
     "pages/register/register"
   ],
@@ -16,18 +19,18 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "image/squares.png",
-        "selectedIconPath": "image/squares_.png"
+        "iconPath": "images/squares.png",
+        "selectedIconPath": "images/squares_.png"
       },
       {
         "pagePath": "pages/cart/cart",
-        "iconPath": "image/shoppingcart.png",
-        "selectedIconPath": "image/shoppingcart_.png"
+        "iconPath": "images/shoppingcart.png",
+        "selectedIconPath": "images/shoppingcart_.png"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "image/customer.png",
-        "selectedIconPath": "image/customer_.png"
+        "iconPath": "images/customer.png",
+        "selectedIconPath": "images/customer_.png"
       }
     ]
   },

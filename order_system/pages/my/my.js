@@ -17,7 +17,7 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success (res) {
-        console.log(" my页面取出用户缓存:",res.data)
+        //console.log(" my页面取出用户缓存:",res.data)
         that.setData({
           userInfo:res.data
         })

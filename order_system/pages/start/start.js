@@ -53,7 +53,7 @@ Page({
                 wx.showToast({
                   title: res.data.msg,
                   icon: 'error',
-                  duration: 2000
+                  duration: 1000
                 })
               }
             }

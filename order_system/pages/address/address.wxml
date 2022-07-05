@@ -1,2 +1,22 @@
-<!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view class="main">
+  <view class="title">个人信息管理</view>
+  <form class="userInfo_item" catchsubmit="formSubmit">
+    <view class="name_row">
+      <view>昵称：</view>
+      <input class="user_name_input" name="name_input" placeholder="{{userInfo.name}}" />
+    </view>
+    <view class="phone_row">
+      <view>电话：</view>
+      <input class="user_phone_input" name="phone_input" placeholder="{{userInfo.phone}}" />
+    </view>
+    <view class="address_row">
+      <view>地址：</view>
+      <input class="user_address_input" name="address_input" placeholder="{{userInfo.address}}" />
+    </view>
+
+    <view class="btn-area">
+      <button class="changePwd" bindtap="toChangePwd">修改密码</button>
+      <button class="update"  type="primary" formType="submit">更新</button>
+    </view>
+  </form>
+</view>

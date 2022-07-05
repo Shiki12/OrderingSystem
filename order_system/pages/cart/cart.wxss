@@ -60,23 +60,19 @@ page {
   color: var(--themeColor);
 }
 
-/* 购物车商品项数量小工具样式 */
-.cart_content .cart_main .cart_item .item_info_wrap .goods_price_wrap .goods_num_tool {
-  display: flex;
-}
 
-.cart_content .cart_main .cart_item .item_info_wrap .goods_price_wrap .goods_num_tool .num_edit,
-.cart_content .cart_main .cart_item .item_info_wrap .goods_price_wrap .goods_num_tool .goods_num {
+/* 购物车商品项数量小工具样式 */
+.cart_content .cart_main .cart_item .num_edit {
+  border-radius: 20%;
   width: 26px;
   height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  background-color: rgb(255, 77, 77);
 }
 
-.cart_content .cart_main .cart_item .item_info_wrap .goods_price_wrap .goods_num_tool .num_edit {
-  border: solid 1px #CCC;
-}
 
 .cart_content .emptyTips {
   text-align: center;

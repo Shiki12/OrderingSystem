@@ -1,33 +1,15 @@
-/* pages/aboutUs/aboutUs.wxss */
-page{
-  width: 100%;
+.main .about_us {
+  padding: 10px;
+  
+  border-bottom: solid 1px #CCC;
 }
 
-.company{
-  font-weight: bold;
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.address{
-  font-weight: bold;
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.phone{
-  font-weight: bold;
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.consult{
-  font-weight: bold;
-  width: 80%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.main .about_us .name_row,
+.main .about_us .address_row,
+.main .about_us .phone_row,
+.main .about_us .qq_row
+ {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
 }

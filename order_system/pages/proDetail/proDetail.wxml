@@ -1,9 +1,9 @@
 <!--pages/proDetail/proDetail.wxml-->
 <view class="page_goods_detail">
   <view class="imageContainer">
-    <image class="bgImage"></image>
+    <image class="bgImage" src="http://localhost:8001/{{proInfo.imageUrl}}"></image>
     <view class="proImage">
-      <image class="pro_image"></image>
+      <image class="pro_image" src="http://localhost:8001/{{proInfo.imageUrl}}"></image>
     </view>
   </view>
   <view class="goods_price">￥{{proInfo.price}}</view>

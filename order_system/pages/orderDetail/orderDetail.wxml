@@ -1,0 +1,23 @@
+<view>
+  <view class="main">
+    <view class="order_item" wx:for="{{orderDetailList}}" wx:key="id">
+      <view class="no_row">
+        <view class="no_title">商品名称</view>
+        <view class="no_value">{{item.name}}</view>
+      </view>
+      <view class="price_row">
+        <view class="no_title">单价</view>
+        <view class="no_value">{{item.price}}￥</view>
+      </view> 
+      <view class="price_row">
+        <view class="no_title">数量</view>
+        <view class="no_value">{{item.number}}份</view>
+      </view>
+      <view class="price_row">
+        <view class="no_title">总价</view>
+        <view class="no_value">{{item.number*item.price}}￥</view>
+      </view>
+    </view>
+    
+  </view>
+</view>

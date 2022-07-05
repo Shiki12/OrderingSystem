@@ -31,19 +31,18 @@ Page({
     })
   },
   onTapAddToCart(e){
-    //console.log(e)
+    //console.log(e.currentTarget.dataset.id.id)
     wx.getStorage({
       key: 'token',
       success (res) {
         console.log(res.data)
         //把参数打包，同时发起请求
         wx.request({
-          url: 'http://localhost:8001/wx_order/addOrder', //仅为示例，并非真实的接口地址
-          method:"POST",
+          url: 'http://localhost:8001/wx_order/wxAddOrder',
           data: {
-            pid: e.currentTarget.dataset.id,
-            number: e.currentTarget.dataset.id,
-            token:res.data,
+            pid: e.currentTarget.dataset.id.id,
+            //number: e.currentTarget.dataset.id,
+            token:res.data
           },
           header: {
             'content-type': 'application/json' // 默认值

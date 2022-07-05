@@ -6,15 +6,24 @@ Page({
    */
   data: {
     //循环推荐
-    bannerData: [],
+    bannerData: [{
+      id:1,
+      imageUrl: '/images/banner/1.jpg',
+    }, {
+      id:2,
+      imageUrl: '/images/banner/2.jpg',
+    }, {
+      id:3,
+      imageUrl: '/images/banner/3.jpg'
+    }],
     //左导航
-    leftMenuList:[],
-    currentLeftmenuIndex:0,
+    leftMenuList: [],
+    currentLeftmenuIndex: 0,
     //右商品
     RightItems: [],
-    currentRightmenuIndex:0,
+    currentRightmenuIndex: 0,
     //商品排列表
-    RightItemsNumber:[],
+    RightItemsNumber: [],
   },
 
   /**
@@ -24,44 +33,44 @@ Page({
     var that = this
     //请求商品分类
     wx.request({
-      url: 'http://localhost:8001/wx_category/getAll',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
+        url: 'http://localhost:8001/wx_category/getAll',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
           that.setData({
-            leftMenuList:res.data
-          })
-      }
-    }),
-    //请求所有商品清单
-    wx.request({
-      url: 'http://localhost:8001/wx_product/getProInfos', 
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
-        if(res.data.code == 1){
-          that.setData({
-            RightItems:res.data.data
+            leftMenuList: res.data
           })
         }
-      }
-    }),
-    //请求各类商品数量
-    wx.request({
-      url: 'http://localhost:8001/wx_product/getProNum', 
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success (res) {
-        if(res.data.code == 1){
-          that.setData({
-            RightItemsNumber:res.data.data
-          })
+      }),
+      //请求所有商品清单
+      wx.request({
+        url: 'http://localhost:8001/wx_product/getProInfos',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              RightItems: res.data.data
+            })
+          }
         }
-      }
-    })
+      }),
+      //请求各类商品数量
+      wx.request({
+        url: 'http://localhost:8001/wx_product/getProNum',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          if (res.data.code == 1) {
+            that.setData({
+              RightItemsNumber: res.data.data
+            })
+          }
+        }
+      })
 
   },
 
@@ -71,19 +80,19 @@ Page({
   onTapLeftmenu(ev) {
     // console.log(ev)
     this.setData({
-      currentLeftmenuIndex:ev.currentTarget.dataset.index,
-      currentRightmenuIndex:ev.currentTarget.dataset.rightindex,
+      currentLeftmenuIndex: ev.currentTarget.dataset.index,
+      currentRightmenuIndex: ev.currentTarget.dataset.rightindex,
     });
   },
 
   /**
    * 商品详细界面跳转
    */
-  toProDetail:function(e){
+  toProDetail: function (e) {
     //console.log("点击商品id为：",e.currentTarget.dataset.id)
     //页面跳转至项目详情页面
     wx.navigateTo({
-      url: '/pages/proDetail/proDetail?id='+e.currentTarget.dataset.id,
+      url: '/pages/proDetail/proDetail?id=' + e.currentTarget.dataset.id,
     })
   },
 

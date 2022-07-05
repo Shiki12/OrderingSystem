@@ -1,0 +1,13 @@
+<view class="wapper">
+  <form catchsubmit="formSubmit">
+    <view class="formItem">
+      <text>新密码：</text>
+      <input type="password" name="newPwd1" placeholder="请输入新密码"></input>
+    </view>
+    <view class="formItem">
+      <text decode="{{true}}">确&nbsp;&nbsp;&nbsp;认：</text>
+      <input type="password" name="newPwd2" placeholder="请确认新密码"></input>
+    </view>
+    <button class="btn" style="width: 80%;" formType="submit">修改密码</button>
+  </form>
+</view>

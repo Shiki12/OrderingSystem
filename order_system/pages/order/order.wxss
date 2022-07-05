@@ -1,0 +1,17 @@
+.main .order_item {
+  padding: 10px;
+  border-bottom: solid 1px #CCC;
+}
+
+.main .order_item .no_row,
+.main .order_item .price_row,
+.main .order_item .time_row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.emptyTips {
+  text-align: center;
+  margin-top: 20px;
+}

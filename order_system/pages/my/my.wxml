@@ -17,22 +17,22 @@
     <view class="order_wrap">
       <view class="title">我的订单</view>
       <view class="order_content">
-        <navigator class="navi" url="/pages/order/order?type=0">
+        <navigator class="navi" url="/pages/order/order?status=3">
           <view class="order_name">全部订单</view>
         </navigator>
-        <navigator class="navi" url="/pages/order/order?type=1">
+        <navigator class="navi" url="/pages/order/order?status=0">
           <view class="order_name">待付款</view>
         </navigator>
-        <navigator class="navi" url="/pages/order/order?type=2">
+        <navigator class="navi" url="/pages/order/order?status=1">
           <view class="order_name">正在路上</view>
         </navigator>
-        <navigator class="navi" url="/pages/order/order?type=3">
+        <navigator class="navi" url="/pages/order/order?status=2">
           <view class="order_name">退款/退货</view>
         </navigator>
       </view>
     </view>
     <!-- 收货地址管理 -->
-    <navigator class="address_wrap" url="/pages/address/address">收货地址管理</navigator>
+    <navigator class="address_wrap" url="/pages/address/address">个人信息管理</navigator>
     <!-- 应用相关 -->
     <view class="app_wrap">
       <navigator class="info_item" url="/pages/feedback/feedback">意见反馈</navigator>

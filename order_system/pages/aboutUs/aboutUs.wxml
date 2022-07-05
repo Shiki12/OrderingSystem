@@ -1,8 +1,23 @@
-<page>
-  <view class="container">
-    <text class="company">名称：XXXX食品有限公司</text>
-    <text class="address">地址：XXXX1216</text>
-    <text class="phone"> 电话：6666-6666</text>
-    <text class="consult">客服QQ：132</text>
+<view>
+  <view class="main">
+    <view class="about_us">
+      <view class="name_row">
+        <view class="no_title">名称</view>
+        <view class="no_value">XXXX食品有限公司</view>
+      </view>
+      <view class="address_row">
+        <view class="no_title">地址</view>
+        <view class="no_value">XXXX1216</view>
+      </view> 
+      <view class="phone_row">
+        <view class="no_title">电话</view>
+        <view class="no_value">6666-6666</view>
+      </view>
+      <view class="qq_row">
+        <view class="no_title">客服QQ</view>
+        <view class="no_value">132</view>
+      </view>
+    </view>
+    
   </view>
-</page>
+</view>

@@ -7,7 +7,6 @@ page {
 swiper {
   flex-grow: 1;
   height: 248rpx;
-  background-color: aqua;
 }
 
 swiper image {
@@ -62,4 +61,18 @@ swiper image {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.proInfo{
+ display: flex;
+}
+.proInfo .proText .proname{
+  font-size: 17px;
+}
+.proInfo .proText .proprice{
+  color: rgb(79, 214, 1);
+  font-size: 16px;
+}
+.proInfo .proText .like{
+  color: rgb(255, 0, 191);
+  font-size: 16px;
 }
