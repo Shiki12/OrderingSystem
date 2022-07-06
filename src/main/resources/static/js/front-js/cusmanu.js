@@ -8,56 +8,59 @@ function getmenuall(){
     menumain.innerHTML="";
     $.ajax({
         type: "get",
-        url: 'http://localhost:8001/category/',
+        url: 'http://localhost:8001/category/getAllPro',
         dataType: 'text',
         success: function (data) {
-            // <div style="display: flex ">
-            //     <div className="dinedivone" onClick="menupicexpress(this)">
-            //         <img src="../../static/img/1.jpg" className="dinepic" id="imgdinepic">
-            //             <span className="spanmenupic">详细</span>
-            //     </div>
-            // </div>
-            // <li><span id="dineone" onClick="dineone()">奶茶专区</span></li>
-            // <li><span id="dinetow" onClick="dinetow()">甜品/蛋糕</span></li>
-            // <li><span id="dinethree" onClick="dinethree()">包子/早点</span></li>
-            // <li><span id="dinefour" onClick="dinefour()">午饭套餐</span></li>
-            // <li><span id="dinefive" onClick="dinefive()">肉类炒菜</span></li>
-            // <li><span id="dinesix" onClick="dinesix()">素菜专区</span></li>
-            var jsondata = $.parseJSON(data);
-            console.log(jsondata);
-            for(var a=0;a<jsondata.data.length;a++)
-            {
-                var lione=document.createElement('li');
-                var spanone=document.createElement('span');
-                spanone.id="dine"+a;
-                spanone.innerText=jsondata.data[a].name;
-                (function (n) {
-                    spanone.onclick=function (){dineone(n);
-                    };
-                })(a);
-                lione.appendChild(spanone);
-                kindmenu.appendChild(lione);
-
-                // $.ajax({
-                //     type: "get",
-                //     url: 'http://localhost:8001/category/getOneType',
-                //     data:{"id":a+1},
-                //     dataType: 'text',
-                //     success: function (data) {
-                //         alert("123");
-                //         var jsondataone = $.parseJSON(data);
-                //         console.log(jsondataone);
-                //         // menumain.innerHTML="<div style=\"display: flex \">\n" +
-                //         //     "\t\t\t\t<div class=\"dinedivone\" onclick=\"menupicexpress(this)\">\n" +
-                //         //     "\t\t\t\t\t<img src="+jsondataone.data +" class=\"dinepic\"  id=\"imgdinepic\" >\n" +
-                //         //     "\t\t\t\t\t<span class=\"spanmenupic\">详细</span>\n" +
-                //         //     "\t\t\t\t</div>\n" +
-                //         //     "\t\t\t</div>"
-                //     },
-                //     error(){
-                //         alert("有错！！")
-                //     }
-                // })
+            var jsondataone = $.parseJSON(data);
+            console.log(jsondataone);
+            for(var a=0;a<jsondataone.data.length;a++) {
+                console.log(jsondataone.data[a]);
+                menumain.innerHTML += "<div class=\"mainmenugetone\" >\n" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].price + "\">\n" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].id + "\">\n" +
+                    "\t\t\t\t<div class=\"addmenuone\" onclick=\"getred(this)\">\n" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].id + "\">\n" +
+                    "\t\t\t\t\t<i  class=\"addmenutoshopper\">√</i>\n" +
+                    "\t\t\t\t</div>\n" +
+                    "\t\t\t   <div onclick=\"menupicexpress(" + jsondataone.data[a].id + ")\" name= \"mainonemenupress\" class=\"mainonemenu\">\n" +
+                    "\t\t\t\t   <div class=\"dinedivone\">\n" +
+                    "\t\t\t\t\t   <img src=\"../../static/img/1.jpg\"  class=\"dinepic\"  id=\"imgdinepic\" >\n" +
+                    "\t\t\t\t\t   <span class=\"spanmenupic\">详细</span>\n" +
+                    "\t\t\t\t   </div >\n" +
+                    "\t\t\t\t   <div class=\"divmainmenu\">\n" +
+                    "\t\t\t\t\t   <div><span>" + jsondataone.data[a].name + "</span></div>\n" +
+                    "\t\t\t\t\t   <div class=\"menumiaoshu\">\n" +
+                    "\t\t\t\t\t\t   <span>" + jsondataone.data[a].miaoshu + " </span>\n" +
+                    "\t\t\t\t\t   </div>\n" +
+                    "\t\t\t\t\t   <div class=\"\">\n" +
+                    "\t\t\t\t\t\t   <span>月售出：1000</span>\n" +
+                    "\t\t\t\t\t\t   <span>获赞：" + jsondataone.data[a].zan + "</span>\n" +
+                    "\t\t\t\t\t   </div>\n" +
+                    "\t\t\t\t\t   <div class=\"yuanmenuprice\">\n" +
+                    "\t\t\t\t\t\t   <span>原价：" + jsondataone.data[a].price * 3 + "</span>\n" +
+                    "\t\t\t\t\t   </div>\n" +
+                    "\t\t\t\t\t   <div class=\"\">\n" +
+                    "\t\t\t\t\t\t   <span>现价：" + jsondataone.data[a].price + "</span>\n" +
+                    "\t\t\t\t\t   </div>\n" +
+                    "\t\t\t\t\t   <div class=\"addshoppingmenu\" onclick=''>\n" +
+                    "<div class='divoneone'>" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].price + "\">\n" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].id + "\">\n" +
+                    "\t\t\t\t\t\t   <span class=\"spanone\" onclick=\"jianqu(this)\">-</span>\n" +
+                    "</div>" +
+                    "             <div style='float: left;margin-left: -80px;'>" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + 0 + "\">\n" +
+                    "                <span id=\"textone" + jsondataone.data[a].id + "\">数量:0</span>" +
+                    "             </div>" +
+                    "<div class='divoneone'>" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].price + "\">\n" +
+                    "\t\t\t\t\t<input type='hidden' value=\"" + jsondataone.data[a].id + "\">\n" +
+                    "\t\t\t\t\t\t   <span class=\"spantow\" onclick=\"addmenuorder(this)\">+</span>\n" +
+                    "</div>" +
+                    "\t\t\t\t\t   </div>\n" +
+                    "\t\t\t\t   </div>\n" +
+                    "\t\t\t   </div>\n" +
+                    "\t\t\t</div>";
             }
         },
         error(){
@@ -223,11 +226,15 @@ function testone(){
     });
 }
 
-
-function menupicexpress(one,tow) {
-    var nametext=document.getElementsByClassName()
-    document.cookie="orderproductid"+'='+one+ ';expires=' + data;
-    document.cookie="ordersortid"+'='+tow+ ';expires=' + data;
+function StandardPost(html) {
+    localStorage.removeItem('callbackHTML');
+    localStorage.setItem('callbackHTML',html);
+    window.location.href = window.location.href.split('/h5/')[0] + '/h5/callBack.html';
+}
+function menupicexpress(one) {
+    console.log(one);
+    document.cookie="orderproductid"+'='+one;
+    window.location.href="http://localhost:8001/index/order";
 }
 function toshopping(one){
     var customer=getcustomer();
@@ -324,20 +331,37 @@ function getred(one){
 }
 function topaymenu(){
     var liname=document.getElementsByClassName('addmenutoshopperone');
-    console.log(liname);
-    for(var a=0;a<liname.length;a++)
+    var address=document.getElementById('adressmenu');
+    if(address.value==="")
     {
-        var one=liname[a].previousSibling.previousSibling;
-        var linameone=document.getElementById('textone'+one.value.toString());
-        var linametow=linameone.previousSibling.previousSibling;
-        var custom=getcustomer();
-        console.log(custom)
-        console.log(linametow)
-        document.cookie=a+"ordershoppingid"+'='+one.value;
-        document.cookie=a+"ordershoppingcusid"+'='+custom;
-        document.cookie=a+"ordershoppingnum"+'='+linametow.value;
+        alert("请填写地址");
     }
-
+    else{
+        console.log(liname);
+        for(var a=0;a<liname.length;a++)
+        {
+            var one=liname[a].previousSibling.previousSibling;
+            var linameone=document.getElementById('textone'+one.value.toString());
+            var linametow=linameone.previousSibling.previousSibling;
+            var custom=getcustomer();
+            console.log(custom);
+            console.log(linametow);
+            $.ajax({
+                type: "get",
+                url: 'http://localhost:8001/order/placeOrder',
+                data:{"pid":one.value,"cstid":custom,"address":address.value,"number":linametow.value},
+                dataType: 'text',
+                success: function (data) {
+                    StandardPost(data);
+                    document.write(localStorage.getItem('callbackHTML'));
+                    document.close();
+                    alert("成功");
+                }, error() {
+                    alert("失败");
+                }
+            })
+        }
+    }
 }
 function jianqu(one){
     var tow=one.previousSibling.previousSibling;
@@ -370,4 +394,29 @@ function addmenuorder(one){
     var allpr=document.getElementById('allpriceorder');
     allpr.innerText="总价："+allprice;
     textone.innerText="数量："+tem.value;
+}
+function togocar(){
+    var liname=document.getElementsByClassName('addmenutoshopperone');
+    console.log(liname);
+    for(var a=0;a<liname.length;a++)
+    {
+        var one=liname[a].previousSibling.previousSibling;
+        var linameone=document.getElementById('textone'+one.value.toString());
+        var linametow=linameone.previousSibling.previousSibling;
+        var custom=getcustomer();
+        console.log(custom)
+        console.log(linametow)
+        $.ajax({
+            type: "get",
+            url: 'http://localhost:8001/order/addOrderShop',
+            data:{"pid":one.value,"cstid":custom,"number":linametow.value},
+
+            dataType: 'text',
+            success: function (data) {
+                alert("添加成功");
+            }, error() {
+                alert("添加失败");
+            }
+        })
+    }
 }

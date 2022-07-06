@@ -87,9 +87,5 @@ public class OrderController {
 
         re.addFlashAttribute("alipay",alipay);
         return "redirect:/alipay/create";
-
     }
-
-
-
 }

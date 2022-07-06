@@ -9,37 +9,151 @@
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
         window.onload=function (){
-            var cookieArr = document.cookie.split(";");
-            for(var i = 0; i < cookieArr.length; i++) {
-                var cookiePair = cookieArr[i].split("=");
-            }
-            console.log(cookiePair);
-            // $.ajax({
-            //     type: "get",
-            //     url: 'http://localhost:8001/category/getList',
-            //     dataType: 'text',
-            //     success: function (data) {
-            //         var photos = data.data;
-            //         sorttext=photos[sortid];
-            //     },
-            //     error(){
-            //     }
-            // })
-            // $.ajax({
-            //     type: "get",
-            //     url: 'http://localhost:8001/index/',
-            //     data:{"orderproductid":one,"oid":"","cstid":customer.id,},
-            //     dataType: 'text',
-            //     success: function (data) {},
-            //     error(){
-            //     }
-            // })
+            var ordid=searchCookie("orderproductid");
+            console.log(ordid);
+            $.ajax({
+                type: "get",
+                url: 'http://localhost:8001/category/getAllPro',
+                dataType: 'text',
+                success: function (data) {
+                    var jsondataone = $.parseJSON(data);
+                    var photos = jsondataone.data;
+                    for (var a=0;a<photos.length;a++)
+                    {
+                        if(photos[a].id===ordid)
+                        {
+                            var ond=document.getElementById('ordertext');
+                            ond.innerHTML="" +
+                                "<h2 style=\"text-align: center\">"+photos[a].name+"</h2>\n" +
+                                "            <div class=\"a21\">\n" +
+                                "                <div class=\"a211\">\n" +
+                                "                    <div class=\"divorder\"><span class=\"color\">售价:</span></div>\n" +
+                                "                    <div class=\"divorderone\"><span class=\"prices\">￥"+photos[a].price+"</span></div>\n" +
+                                "                </div>\n" +
+                                "                <div class=\"a22\">\n" +
+                                "                    <p></p>\n" +
+                                "                    <div>\n" +
+                                "                        <span>描述：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            "+photos[a].miaoshu+"</span>\n" +
+                                "                    </div>\n" +
+                                "                    <p></p>\n" +
+                                "                    <div>\n" +
+                                "                        <span>月销量：5000</span>\n" +
+                                "                    </div>\n" +
+                                "                    <p></p>\n" +
+                                "                    <div>\n" +
+                                "                        <input type='text' id=\"adressmenu\" placeholder=\"地址\">\n" +
+                                "                    </div>\n" +
+                                "                    <div>\n" +
+                                "                        <input type='text' id=\"numbermenu\" placeholder=\"数量\" value='1'>\n" +
+                                "                    </div>\n" +
+                                "                    <p></p>\n" +
+                                "                    <div>\n" +
+                                "                        <span>电话：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            </span>\n" +
+                                "                    </div>\n" +
+                                "                    <div>\n" +
+                                "                        <span>预计到达时间：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            半小时</span>\n" +
+                                "                    </div>\n" +
+                                "                    <div>\n" +
+                                "                        <span>支付方式：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            暂且支持微信支付</span>\n" +
+                                "                    </div>\n" +
+                                "                    <div>\n" +
+                                "                        <span>餐具个数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            1</span>\n" +
+                                "                    </div>\n" +
+                                "                    <div>\n" +
+                                "                        <span>备注：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                                "                            无</span>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                "                <div class=\"a25\">\n" +
+                                "                    <a href=\"#\"><button class=\"a25color1\" onclick=\"toorder("+photos[a].id+")\">结算</button></a>\n" +
+                                "                    <a href=\"#\"><button class=\"a25color2\" onclick=\"togocarone("+photos[a].id+")\">加入购物车</button></a>\n" +
+                                "                </div>\n" +
+                                "            </div>";
+
+                        }
+                    }
+                },
+                error(){
+                }
+            })
+            $.ajax({
+                type: "get",
+                url: 'http://localhost:8001/comment/get',
+                data:{"id":ordid},
+                dataType: 'text',
+                success: function (data) {
+                    var jsondataone = $.parseJSON(data);
+                    var coment=document.getElementById('commentone');
+                    for(var a=0;a<jsondataone.data.length;a++)
+                    coment.innerHTML+="<span>"+jsondataone.data[a].content+"时间："+jsondataone.data[a].createtime+"</span>";
+                },
+                error(){
+
+                }
+            })
         }
     </script>
     <script>
         function searchCookie(cookieName) {
             let re = new RegExp("\s?" + cookieName + "=([^;]+)(;|$)")
             return document.cookie.match(re)[1];
+        }
+        function getcustomer(){
+            let customer = '[[${session.customer}]]';
+            console.log(customer);
+            if(customer==="")
+            {
+                alert("你还未登录！！！");
+                window.location.href="http://localhost:8001/index/cuslogin";
+            }
+            else
+            {
+                return '[[${session.customer.id}]]';
+            }
+        }
+    </script>
+    <script>
+        function togocarone(one){
+            var num=document.getElementById('numbermenu');
+            var cus=getcustomer();
+            $.ajax({
+                type: "get",
+                url: 'http://localhost:8001/order/addOrderShop',
+                data:{"pid":one,"cstid":cus,"number":num.value},
+                dataType: 'text',
+                success: function (data) {
+                    alert("添加成功");
+                }, error() {
+                    alert("添加失败");
+                }
+            })
+        }
+        function toorder(one){
+            var adress=document.getElementById('adressmenu');
+            var num=document.getElementById('numbermenu');
+            var cus=getcustomer();
+            if(adress.value==="")
+            {
+                alert("填写地址");
+            }
+            else{
+                $.ajax({
+                    type: "get",
+                    url: 'http://localhost:8001/order/placeOrder',
+                    data:{"pid":one,"cstid":cus,"address":adress.value,"number":num.value},
+                    dataType: 'text',
+                    success: function (data) {
+                        alert("下单成功");
+                    }, error() {
+                        alert("下单失败");
+                    }
+                })
+            }
         }
     </script>
 </head>
@@ -51,80 +165,14 @@
         <div class="a1">
             <img class="big" src="../../static/img/front-images/about-sub-1.jpg">
         </div>
-        <div class="a2">
-            <h2 style="text-align: center">提拉米苏(约2磅)</h2>
-            <div class="a21">
-                <div class="a211">
-                    <div class="divorder"><span class="color">售价:</span></div>
-                    <div class="divorderone"><span class="prices">￥198</span></div>
-                    <div class="divorder"><span class="color">促销价:</span></div>
-                    <div class="divorderone"><span class="prices">￥198</span></div>
-                </div>
-                <div class="a22">
-                    <p></p>
-                    <div>
-                        <span>描述：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <p></p>
-                    <div>
-                        <span>月销量：</span>
-                    </div>
-                    <p></p>
-                    <div>
-                        <span>地址：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <p></p>
-                    <div>
-                        <span>电话：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <div>
-                        <span>预计到达时间：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <div>
-                        <span>支付方式：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <div>
-                        <span>餐具个数：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                    <div>
-                        <span>备注：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            鸡蛋、奶油、小麦粉、芒果、榴莲肉、巧克力、干酪</span>
-                    </div>
-                </div>
-                <div class="a23">
-                    <p></p>
-                    <span class="color">配送说明</span>
-                    <p>北京、上海、广州、深圳、天津、重庆、南京、长沙</p>
-                    <span class="color">配送至</span>
-                    <p>郑州</p>
-                    <span class="color">说明</span>
-                    <p>深圳大鹏新区暂不配送</p>
-                </div>
-                <div class="a24">
-                    <span class="color">选择</span>
-                    <p></p>
-                    <span class="bang">2磅</span>
-                    <span class="bang">3磅</span>
-                    <span class="bang">4磅</span>
-                </div>
-                <div class="a25">
-                    <a href="#"><button class="a25color1" onclick="">加入购物车</button></a>
-                    <a href="#"><button class="a25color2">加入购物车</button></a>
-                </div>
-            </div>
+        <div class="a2" id="ordertext">
         </div>
     </div>
     <div style="clear: both;"></div>
     <div class="commmendorder">
         <div>
-            <div>
-                <span>评论</span>
+            <span>评论</span>
+            <div id="commentone">
             </div>
         </div>
     </div>

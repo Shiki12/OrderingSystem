@@ -270,6 +270,12 @@
     margin-left: 76%;
     position: fixed;
 }
+.addalltotow{
+    /*结算按钮*/
+    margin-top:23%;
+    margin-left: 76%;
+    position: fixed;
+}
 .addallto button{
     background-color: #00BFF0;
     color: white;
@@ -282,7 +288,25 @@
     margin-left: 76%;
     position: fixed;
 }
+.addalltothree{
+    /*结算按钮*/
+    margin-top:14%;
+    margin-left: 76%;
+    position: fixed;
+}
+.addalltothree input{
+    background-color: #00BFF0;
+    color: white;
+    height: 40px;
+    width: 100px;
+}
 .addalltoone button{
+    background-color: #00BFF0;
+    color: white;
+    height: 40px;
+    width: 100px;
+}
+.addalltotow button{
     background-color: #00BFF0;
     color: white;
     height: 40px;

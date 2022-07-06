@@ -56,4 +56,14 @@ public class IndexController {
         return "评论";
     }
 
+    @RequestMapping("/shopper")
+    public String toorder(){
+        return "cus/shopper";
+    }
+
+    @RequestMapping("/order")
+    public String toorderone(){
+        return "cus/order";
+    }
+
 }

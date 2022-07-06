@@ -57,6 +57,10 @@
 					{
 						mainlist.innerHTML+="<li><span id=\"dinemenu"+a+"\" onClick=\"dineone("+photos[a].id+")\">"+photos[a].name+"</span></li>";
 					}
+					getmenuall();
+				},
+				error(){
+					alert("失败")
 				}
 			})
 		}
@@ -78,7 +82,7 @@
 
 	</script>
 </head>
-<body  >
+<body >
 <!--onload="getmenuall()"-->
 
 <!--====== PRELOADER PART ENDS ======-->
@@ -138,11 +142,17 @@
 				</ul>
 			</ul>
 		</nav>
+        <div class="addalltothree" >
+            <input type="text" id="adressmenu" placeholder="地址" required="">
+        </div>
 		<div class="addalltoone">
 			<button type="button" id="allpriceorder" >总价:0</button>
 		</div>
 		<div class="addallto" onclick="topaymenu()">
 			<button type="button" >去结算</button>
+		</div>
+		<div class="addalltotow" onclick="togocar()">
+			<button type="button" >加入购物车</button>
 		</div>
 		<!--			<div class="divsearchdine">-->
 		<!--				<form>-->
